@@ -148,11 +148,45 @@ namespace TuTienLauncher {
 
                 if (File.Exists(sourceMod)) {
                     File.Copy(sourceMod, destMod, true);
-                } else if (!File.Exists(destMod)) {
-                    // Nếu máy mới chưa có file mod thì tự động tải từ GitHub về
-                    DownloadModSync();
+                } else {
+                    // Trích xuất trực tiếp bản mod tích hợp sẵn bên trong TuTien2D.exe
+                    bool extracted = ExtractEmbeddedMod(destMod);
+                    if (extracted) {
+                        try { File.Copy(destMod, sourceMod, true); } catch { }
+                    } else if (!File.Exists(destMod)) {
+                        DownloadModSync();
+                    }
                 }
             } catch { }
+        }
+
+        private bool ExtractEmbeddedMod(string targetPath) {
+            try {
+                var asm = System.Reflection.Assembly.GetExecutingAssembly();
+                string[] resNames = asm.GetManifestResourceNames();
+                string targetRes = null;
+                foreach (string name in resNames) {
+                    if (name.IndexOf("tutien2d-helper.user.js", StringComparison.OrdinalIgnoreCase) >= 0) {
+                        targetRes = name;
+                        break;
+                    }
+                }
+                if (targetRes != null) {
+                    using (var stream = asm.GetManifestResourceStream(targetRes)) {
+                        if (stream != null) {
+                            using (var fs = new FileStream(targetPath, FileMode.Create, FileAccess.Write)) {
+                                byte[] buf = new byte[8192];
+                                int len;
+                                while ((len = stream.Read(buf, 0, buf.Length)) > 0) {
+                                    fs.Write(buf, 0, len);
+                                }
+                            }
+                            return true;
+                        }
+                    }
+                }
+            } catch { }
+            return false;
         }
 
         private static void EnableTls() {
