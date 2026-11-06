@@ -87,6 +87,55 @@ namespace TuTienLauncher {
             return btn;
         }
 
+        private string FindBrowser() {
+            // 1. Dò tìm qua Registry của Windows
+            string[] regKeys = new string[] {
+                @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe",
+                @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe"
+            };
+            foreach (string rk in regKeys) {
+                try {
+                    using (var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(rk)) {
+                        if (key != null) {
+                            object val = key.GetValue("");
+                            if (val != null && File.Exists(val.ToString())) return val.ToString();
+                        }
+                    }
+                    using (var key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(rk)) {
+                        if (key != null) {
+                            object val = key.GetValue("");
+                            if (val != null && File.Exists(val.ToString())) return val.ToString();
+                        }
+                    }
+                } catch { }
+            }
+
+            // 2. Dò tìm các đường dẫn cài đặt phổ biến của Edge, Chrome, Cốc Cốc, Brave
+            string localApp = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string progFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            string progFilesX86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+
+            string[] candidates = new string[] {
+                Path.Combine(progFilesX86, @"Microsoft\Edge\Application\msedge.exe"),
+                Path.Combine(progFiles, @"Microsoft\Edge\Application\msedge.exe"),
+                Path.Combine(localApp, @"Microsoft\Edge\Application\msedge.exe"),
+                Path.Combine(progFiles, @"Google\Chrome\Application\chrome.exe"),
+                Path.Combine(progFilesX86, @"Google\Chrome\Application\chrome.exe"),
+                Path.Combine(localApp, @"Google\Chrome\Application\chrome.exe"),
+                Path.Combine(localApp, @"CocCoc\Browser\Application\browser.exe"),
+                Path.Combine(progFiles, @"CocCoc\Browser\Application\browser.exe"),
+                Path.Combine(progFilesX86, @"CocCoc\Browser\Application\browser.exe"),
+                Path.Combine(progFiles, @"BraveSoftware\Brave-Browser\Application\brave.exe"),
+                Path.Combine(progFilesX86, @"BraveSoftware\Brave-Browser\Application\brave.exe")
+            };
+
+            foreach (string p in candidates) {
+                if (!string.IsNullOrEmpty(p) && File.Exists(p)) return p;
+            }
+
+            return null;
+        }
+
         private void PrepareExtension() {
             try {
                 if (!Directory.Exists(extDir)) Directory.CreateDirectory(extDir);
@@ -96,8 +145,26 @@ namespace TuTienLauncher {
 
                 string sourceMod = Path.Combine(baseDir, "tutien2d-helper.user.js");
                 string destMod = Path.Combine(extDir, "tutien2d-helper.user.js");
+
                 if (File.Exists(sourceMod)) {
                     File.Copy(sourceMod, destMod, true);
+                } else if (!File.Exists(destMod)) {
+                    // Nếu máy mới chưa có file mod thì tự động tải từ GitHub về
+                    DownloadModSync();
+                }
+            } catch { }
+        }
+
+        private void DownloadModSync() {
+            try {
+                ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072 | (SecurityProtocolType)12288 | SecurityProtocolType.Tls;
+                using (WebClient wc = new WebClient()) {
+                    wc.Headers.Add("User-Agent", "TuTienLauncher");
+                    string code = wc.DownloadString("https://raw.githubusercontent.com/HaTuanHuy/tutien2d-mod/main/tutien2d-helper.user.js");
+                    if (!string.IsNullOrEmpty(code) && code.Length > 1000) {
+                        File.WriteAllText(Path.Combine(baseDir, "tutien2d-helper.user.js"), code);
+                        File.WriteAllText(Path.Combine(extDir, "tutien2d-helper.user.js"), code);
+                    }
                 }
             } catch { }
         }
@@ -105,13 +172,19 @@ namespace TuTienLauncher {
         private void LaunchAcc(string accId) {
             try {
                 PrepareExtension();
+                string browserPath = FindBrowser();
+                if (string.IsNullOrEmpty(browserPath) || !File.Exists(browserPath)) {
+                    MessageBox.Show(
+                        "Không tìm thấy trình duyệt Microsoft Edge hoặc Google Chrome trên máy này!\n\nVui lòng cài đặt Microsoft Edge hoặc Google Chrome để mở game.",
+                        "Thông báo",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
+                }
+
                 string profile = Path.Combine(profilesDir, accId);
                 if (!Directory.Exists(profile)) Directory.CreateDirectory(profile);
-
-                string edge = @"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe";
-                if (!File.Exists(edge)) {
-                    edge = @"C:\Program Files\Microsoft\Edge\Application\msedge.exe";
-                }
 
                 string args = string.Format(
                     "--app=\"https://tutien2d.com\" " +
@@ -129,7 +202,7 @@ namespace TuTienLauncher {
                     profile, extDir
                 );
 
-                Process.Start(new ProcessStartInfo(edge, args) { UseShellExecute = false });
+                Process.Start(new ProcessStartInfo(browserPath, args) { UseShellExecute = false });
                 lblStatus.Text = "Đã mở " + accId.ToUpper() + " thành công!";
             } catch (Exception ex) {
                 MessageBox.Show("Lỗi mở game: " + ex.Message);
@@ -175,4 +248,3 @@ namespace TuTienLauncher {
         }
     }
 }
-
