@@ -22,7 +22,23 @@ Trợ thủ tự động hóa toàn diện dành cho game **Tu Tiên 2D Online**
 
 ---
 
-## 🛠 Hướng Dẫn Cài Đặt Trợ Thủ (Tampermonkey)
+## ⚡ Bộ Khởi Động Đóng Gói (TuTien2D.jar & TuTien2D.exe)
+
+Dành cho người chơi muốn cắm farm đa tài khoản (2-3 nick) siêu nhẹ, tiết kiệm ~85% RAM:
+
+### 1. Bản Java: `TuTien2D.jar` (Khuyên Dùng Nhất 🌟)
+- **Ưu điểm**: Chạy qua máy ảo Java (`javaw.exe`) của Oracle nên **Windows 11 Smart App Control KHÔNG BAO GIỜ chặn**.
+- **Cách dùng**: Nhấp đúp chuột vào file [`TuTien2D.jar`](file:///d:/Tutien2d/tutien2d.com/TuTien2D.jar) để mở bảng điều khiển Dark Mode chọn tài khoản 1, 2, 3 và cập nhật Mod từ GitHub.
+
+### 2. Bản Windows Executable: `TuTien2D.exe`
+- **Cách dùng**: Nhấp đúp chuột vào file [`TuTien2D.exe`](file:///d:/Tutien2d/tutien2d.com/TuTien2D.exe).
+- Nếu Windows 11 hiện cảnh báo Smart App Control, hãy sử dụng bản `TuTien2D.jar`.
+
+> **Cơ chế Sandbox Profile**: Cả 2 bản đều tự động cách ly cookies và cấu hình bot vào thư mục `profiles/` riêng biệt cho từng nick, hỗ trợ cắm song song 2-3 tài khoản mà không sợ bị đá nick hay xung đột cấu hình.
+
+---
+
+## 🛠 Hướng Dẫn Cài Đặt Trợ Thủ Trên Trình Duyệt (Tampermonkey)
 
 Chơi trực tiếp trên mọi trình duyệt Chromium (Google Chrome, Microsoft Edge, Cốc Cốc, Brave, Kiwi Browser...):
 1. Cài đặt tiện ích **[Tampermonkey](https://www.tampermonkey.net/)** cho trình duyệt của bạn.
