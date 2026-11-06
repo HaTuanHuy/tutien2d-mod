@@ -44,3 +44,4 @@ Nếu bạn vẫn muốn chơi trên Chrome / Edge / Kiwi Browser:
 1. Cài đặt tiện ích **Tampermonkey**.
 2. Thêm script mới và dán toàn bộ nội dung file [`tutien2d-helper.user.js`](https://raw.githubusercontent.com/HaTuanHuy/tutien2d-mod/main/tutien2d-helper.user.js) vào.
 3. Truy cập `https://tutien2d.com` và bấm phím `` ` `` (hoặc `F8`) để mở bảng điều khiển trợ thủ.
+
