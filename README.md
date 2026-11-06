@@ -1,6 +1,6 @@
-# Tu Tiên 2D Helper & Ultra-Light Launcher 🚀
+# Tu Tiên 2D Helper 🚀
 
-Trợ thủ tự động hóa toàn diện và Launcher siêu nhẹ (tiết kiệm ~85% RAM) dành cho game **Tu Tiên 2D Online** (`https://tutien2d.com`).
+Trợ thủ tự động hóa toàn diện dành cho game **Tu Tiên 2D Online** (`https://tutien2d.com`).
 
 ---
 
@@ -22,28 +22,20 @@ Trợ thủ tự động hóa toàn diện và Launcher siêu nhẹ (tiết ki�
 
 ---
 
-## ⚡ Hướng Dẫn Sử Dụng Bộ Khởi Động Siêu Nhẹ & Đa Tài Khoản
+## 🛠 Hướng Dẫn Cài Đặt Trợ Thủ (Tampermonkey)
 
-Bộ khởi động sử dụng nhân Microsoft Edge Chromium ở chế độ App độc lập:
-- **Tiêu tốn RAM**: Chỉ **~120MB** (so với 1.2GB của Chrome).
-- **Tiêu tốn CPU**: Chỉ **1% - 2%** (Card đồ họa GPU gánh Canvas).
-- **Tự động cập nhật**: Game tải trực tiếp từ `tutien2d.com`, mod tự động cập nhật từ GitHub repository này.
-- **Tương thích 100% Windows 11**: Khởi động trực tiếp thông qua các file lệnh `.bat` gốc của Windows, tránh hoàn toàn cảnh báo Smart App Control.
-
-### 🎮 Cách Chơi:
-- **Tài khoản 1 (Chính)**: Nhấp đúp vào `Choi_Acc1.bat`.
-- **Tài khoản 2 (Phụ - chạy song song)**: Nhấp đúp vào `Choi_Acc2.bat`.
-- **Tài khoản 3**: Nhấp đúp vào `Choi_Acc3.bat`.
-- **Bảng điều khiển chọn tài khoản**: Nhấp đúp vào `ChoiGame.bat` hoặc `ChoiGame_GUI.bat` để mở giao diện Dark Mode.
-
-> **Cơ chế Sandbox độc lập**: Mỗi tài khoản được cấp một thư mục Profile riêng (`profiles/profile_acc_1`, `profile_acc_2`...), tách biệt hoàn toàn Cookies, phiên đăng nhập và cài đặt Mod. Bạn có thể mở 2-3 tài khoản cùng lúc mà không sợ bị đá nick hay đè cấu hình.
+Chơi trực tiếp trên mọi trình duyệt Chromium (Google Chrome, Microsoft Edge, Cốc Cốc, Brave, Kiwi Browser...):
+1. Cài đặt tiện ích **[Tampermonkey](https://www.tampermonkey.net/)** cho trình duyệt của bạn.
+2. Thêm script mới và dán toàn bộ mã nguồn file [`tutien2d-helper.user.js`](https://raw.githubusercontent.com/HaTuanHuy/tutien2d-mod/main/tutien2d-helper.user.js).
+3. Truy cập `https://tutien2d.com`, đăng nhập vào game và bấm phím `` ` `` (hoặc `F8`) để mở bảng điều khiển trợ thủ.
 
 ---
 
-## 🛠 Cài Đặt Trên Trình Duyệt Bằng Tampermonkey
+## 👥 Hướng Dẫn Treo Đa Tài Khoản (Multi-Account) Không Bị Xung Đột
 
-Nếu bạn vẫn muốn chơi trên Chrome / Edge / Kiwi Browser:
-1. Cài đặt tiện ích **Tampermonkey**.
-2. Thêm script mới và dán toàn bộ nội dung file [`tutien2d-helper.user.js`](https://raw.githubusercontent.com/HaTuanHuy/tutien2d-mod/main/tutien2d-helper.user.js) vào.
-3. Truy cập `https://tutien2d.com` và bấm phím `` ` `` (hoặc `F8`) để mở bảng điều khiển trợ thủ.
+Để treo 2 hoặc nhiều tài khoản cùng lúc mà không bị văng nick hay đè cấu hình:
+1. Trên trình duyệt Chrome / Edge: Nhấp vào **biểu tượng Avatar (Hồ sơ người dùng)** ở góc trên cùng bên phải.
+2. Chọn **"Thêm" (Add Profile)** để tạo một hồ sơ người dùng mới (ví dụ: *Tu Tiên Acc 2*).
+3. Cài tiện ích Tampermonkey và nạp script trên hồ sơ mới này.
+4. Mỗi hồ sơ người dùng là một không gian độc lập 100% (Cookies, tài khoản và cài đặt Mod riêng biệt), bạn có thể mở song song 2 cửa sổ để treo cả ngày mà không bao giờ bị đá nhau!
 
