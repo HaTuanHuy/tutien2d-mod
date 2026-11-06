@@ -138,29 +138,41 @@ namespace TuTienLauncher {
 
         private void UpdateMod() {
             lblStatus.Text = "Đang tải bản Mod mới từ GitHub...";
-            try {
-                using (WebClient wc = new WebClient()) {
-                    wc.Headers.Add("User-Agent", "TuTienLauncher");
-                    string code = wc.DownloadString("https://raw.githubusercontent.com/HaTuanHuy/tutien2d-mod/main/tutien2d-helper.user.js");
-                    if (!string.IsNullOrEmpty(code) && code.Length > 1000) {
-                        File.WriteAllText(Path.Combine(baseDir, "tutien2d-helper.user.js"), code);
-                        File.WriteAllText(Path.Combine(extDir, "tutien2d-helper.user.js"), code);
-                        lblStatus.Text = "Cập nhật Mod mới nhất thành công!";
-                        MessageBox.Show("Đã cập nhật bản Mod mới nhất từ GitHub thành công!");
+            System.Threading.ThreadPool.QueueUserWorkItem(delegate {
+                try {
+                    ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072 | (SecurityProtocolType)12288 | SecurityProtocolType.Tls;
+                    using (WebClient wc = new WebClient()) {
+                        wc.Headers.Add("User-Agent", "TuTienLauncher");
+                        string code = wc.DownloadString("https://raw.githubusercontent.com/HaTuanHuy/tutien2d-mod/main/tutien2d-helper.user.js");
+                        if (!string.IsNullOrEmpty(code) && code.Length > 1000) {
+                            File.WriteAllText(Path.Combine(baseDir, "tutien2d-helper.user.js"), code);
+                            File.WriteAllText(Path.Combine(extDir, "tutien2d-helper.user.js"), code);
+                            this.BeginInvoke((MethodInvoker)delegate {
+                                lblStatus.Text = "Cập nhật Mod mới nhất thành công!";
+                                MessageBox.Show("Đã cập nhật bản Mod mới nhất từ GitHub thành công!");
+                            });
+                            return;
+                        }
                     }
+                } catch (Exception ex) {
+                    this.BeginInvoke((MethodInvoker)delegate {
+                        lblStatus.Text = "Lỗi cập nhật: " + ex.Message;
+                    });
                 }
-            } catch (Exception ex) {
-                lblStatus.Text = "Lỗi cập nhật: " + ex.Message;
-            }
+            });
         }
     }
 
     static class Program {
         [STAThread]
         static void Main() {
+            try {
+                ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072 | (SecurityProtocolType)12288 | SecurityProtocolType.Tls;
+            } catch { }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
         }
     }
 }
+
