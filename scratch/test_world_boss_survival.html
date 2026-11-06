@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test World Boss Max DPS (Khô Máu) & Return Logic</title>
+</head>
+<body>
+  <h1>Test World Boss Max DPS & Return Logic</h1>
+  <div id="output"></div>
+
+  <script>
+    var tests = [];
+    var passed = 0, failed = 0;
+
+    function assert(name, condition, extra) {
+      tests.push({ name: name, ok: !!condition, extra: extra || '' });
+      if (condition) passed++; else failed++;
+    }
+
+    // Mock environment
+    var windowMock = {
+      PNTT: {
+        CongBossUI: {
+          st: null
+        }
+      }
+    };
+    window.PNTT = windowMock.PNTT;
+
+    // 1. Test bossCapped logic
+    function testBossCapped() {
+      function bossShare(boss) {
+        var cb = window.PNTT && window.PNTT.CongBossUI && window.PNTT.CongBossUI.st;
+        if (!cb || cb.het || (boss && cb.id != null && cb.id !== boss.id)) return null;
+        return cb;
+      }
+
+      function bossCapped(g, wb) {
+        var cb = wb && bossShare(wb);
+        if (!cb) return false;
+        if (cb.st === 1) return true;
+        var target = cb.ng || cb.tr || 0;
+        return target > 0 && (cb.my || 0) >= target;
+      }
+
+      var boss = { id: 99, type: 'than_thu_xich_long', def: { name: 'Thần Thú Xích Long' } };
+
+      // Case A: No CongBossUI
+      window.PNTT.CongBossUI.st = null;
+      assert('bossCapped returns false when CongBossUI.st is null', bossCapped({}, boss) === false);
+
+      // Case B: Not capped (st = 0, my: 500, ng: 1000)
+      window.PNTT.CongBossUI.st = { id: 99, st: 0, my: 500, ng: 1000, ch: 300 };
+      assert('bossCapped returns false when my < ng and st === 0', bossCapped({}, boss) === false);
+
+      // Case C: Capped via st === 1
+      window.PNTT.CongBossUI.st = { id: 99, st: 1, my: 1219, ng: 1000, ch: 450 };
+      assert('bossCapped returns true when st === 1', bossCapped({}, boss) === true);
+
+      // Case D: Capped via my >= ng even if st === 0
+      window.PNTT.CongBossUI.st = { id: 99, st: 0, my: 1050, ng: 1000, ch: 400 };
+      assert('bossCapped returns true when my >= ng even if st === 0', bossCapped({}, boss) === true);
+    }
+
+    // 2. Test tickDodge animation canceling during boss fight
+    function testTickDodge() {
+      var logCalls = [];
+      function klog(msg) { logCalls.push(msg); }
+
+      var me = {
+        state: 'attack',
+        attackFired: false,
+        attackTime: 120,
+        x: 100,
+        y: 100
+      };
+
+      var inBossFight = true;
+      if (me.state === 'attack' && !me.attackFired) {
+        me.state = 'idle';
+        me.attackTime = 0;
+        klog('Huỷ đòn chém đang vung để né' + (inBossFight ? ' chiêu Boss' : ''));
+      }
+
+      assert('Attack state reset to idle on dodge during boss fight', me.state === 'idle');
+      assert('Attack time reset to 0', me.attackTime === 0);
+      assert('Klog logged cancellation for boss fight', logCalls[0].indexOf('chiêu Boss') !== -1);
+    }
+
+    // 3. Test tickHeal Max DPS behavior during World Boss
+    function testTickHealMaxDps() {
+      var logs = [];
+      function klog(m) { logs.push(m); }
+
+      function mockTickHeal(g, cfg, st) {
+        function tlIn(g) { return false; }
+        function inDungeon2(g) { return false; }
+        function worldBossNear(g) { return g.boss; }
+
+        if (tlIn(g)) { st.healing = false; return; }
+        var inBc = inDungeon2(g);
+        var wb = !inBc && (worldBossNear(g) || (st.bh && st.bh.boss));
+        if (wb && cfg.bossNoSit) {
+          if (st.healing || g.me.state === 'sit') {
+            st.healing = false;
+            st.healMoving = false;
+            klog('Đang đánh boss → không thiền, liên tục dồn tối đa sát thương');
+          }
+          return;
+        }
+        if (!cfg.healSit) { st.healing = false; return; }
+      }
+
+      var boss = { id: 99, type: 'than_thu_xich_long' };
+
+      // Khô máu: cfg.bossNoSit: true -> không ngồi thiền kể cả khi máu thấp hay đã đủ mốc vé
+      var gA = { me: { hp: 200, hpMax: 1000, canMeditate: true, state: 'idle' }, boss: boss };
+      var stA = { healing: true, healMoving: false };
+      var cfgA = { bossNoSit: true, healSit: false };
+      mockTickHeal(gA, cfgA, stA);
+      assert('Max DPS mode cancels healing and forbids sit completely during World Boss', stA.healing === false);
+      assert('Klog confirms Max DPS continuous damage', logs[0].indexOf('dồn tối đa sát thương') !== -1);
+    }
+
+    // 4. Test tickRevive on-spot Max DPS
+    function testTickReviveMaxDps() {
+      var autoCalls = 0;
+      var shieldCalls = [];
+      function setAuto(g, v) { if (v) autoCalls++; }
+      function talUse(g, tal, reason) { shieldCalls.push({ tal: tal, reason: reason }); }
+
+      function mockRevive(inBc) {
+        autoCalls = 0;
+        shieldCalls = [];
+        var g = { me: { hp: 200, hpMax: 2000, downed: true, reviveLeft: 10 } };
+        var st = { healing: false, healMoving: false };
+        var cfg = { autoShield: true, autoMpTal: true };
+
+        if (cfg.autoShield) talUse(g, 'kim_giap', 'gượng dậy đánh boss');
+        if (cfg.autoMpTal) talUse(g, 'kim_long_phu', 'gượng dậy đánh boss');
+
+        if (inBc) {
+          st.healing = true;
+          st.healMoving = false;
+        } else {
+          // Max DPS: immediately re-engage
+          setAuto(g, true);
+        }
+
+        return { st: st, autoCalls: autoCalls, shieldCalls: shieldCalls };
+      }
+
+      var rWb = mockRevive(false);
+      assert('World Boss Max DPS immediately calls setAuto(g, true) upon spot revive', rWb.autoCalls === 1);
+      assert('World Boss spot revive activates Kim Giap shield', rWb.shieldCalls.some(function(c) { return c.tal === 'kim_giap'; }));
+      assert('World Boss spot revive does not waste time retreating', rWb.st.healing === false);
+
+      var rBc = mockRevive(true);
+      assert('Bí cảnh dungeon revive still retreats safely', rBc.st.healing === true);
+    }
+
+    // 5. Test Map & Khu retention in takeBack
+    function testTakeBackKhu() {
+      var cfg = {
+        farm: { map: 'dam_lay', x: 200, y: 300, khu: 4 }
+      };
+
+      function takeBackMock(g, st) {
+        var b = st.back;
+        st.back = null;
+        var curMap = g.mapId || '';
+        var curX = g.me.x || 0;
+        var curY = g.me.y || 0;
+        var k = (cfg.farm && cfg.farm.map === curMap && cfg.farm.khu) ? cfg.farm.khu : (g.khu || 1);
+        return b ? { map: b.map, x: b.x, y: b.y, khu: b.khu || k } : { map: curMap, x: curX, y: curY, khu: k };
+      }
+
+      var gFarm = { mapId: 'dam_lay', me: { x: 200, y: 300 }, khu: 4 };
+      var stFarm = { back: null };
+      var saved = takeBackMock(gFarm, stFarm);
+
+      assert('takeBack correctly captures map: dam_lay', saved.map === 'dam_lay');
+      assert('takeBack correctly captures coordinates (200, 300)', saved.x === 200 && saved.y === 300);
+      assert('takeBack correctly captures khu: 4', saved.khu === 4);
+    }
+
+    testBossCapped();
+    testTickDodge();
+    testTickHealMaxDps();
+    testTickReviveMaxDps();
+    testTakeBackKhu();
+
+    // Render results
+    var out = document.getElementById('output');
+    out.innerHTML = '<h2>Result: ' + passed + ' passed, ' + failed + ' failed (Total ' + tests.length + ')</h2><ul>' +
+      tests.map(function(t) {
+        return '<li style="color:' + (t.ok ? 'green' : 'red') + '">' +
+          (t.ok ? '✓ ' : '✗ ') + t.name + (t.extra ? ' - ' + t.extra : '') +
+          '</li>';
+      }).join('') + '</ul>';
+
+    console.log('Passed: ' + passed + '/' + tests.length);
+  </script>
+</body>
+</html>

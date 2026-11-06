@@ -1,0 +1,2 @@
+on(){P=!1,w=null,I&&(I.style.display="none")};var Y=0,S=null,x=0,Q=null;function q(){return Math.max(0,Y-Date.now())}function B(){var a=i();if(a&&"undefined"!=typeof document){Q||(Q=D("div","hct-dai")
+onMs-n>0},a.nhan=function(n){n&&("giam"===n.act&&(Y=n.conMs>0?Date.now()+n.conMs:0),"kham"===n.act&&(S=n.kham||null,x=Date.now()),B())},"function"==typeof setInterval&&"undefined"!=typeof document&&se

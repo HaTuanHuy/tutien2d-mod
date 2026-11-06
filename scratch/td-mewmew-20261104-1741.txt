@@ -1,0 +1,44 @@
+Thương Đội (săn & tin Thiên Đạo) · Rừng Trúc k1 · mewmew · trợ thủ v0.63.8 · bắt đầu 17:41:40 4/11/2026
+===== TÓM TẮT =====
+✅ Thương Đội (săn & tin Thiên Đạo) · Rừng Trúc k1 · mewmew · 2:00
+Kết quả: Không tìm thấy Thương Đội → về
+🎁 Thu được: Oán Hồn ×1
+📜 Diễn biến cuối:
+[0:58] → đi tới Bãi Đá
+[1:05] → đổi sang khu 19 (Thiên Đạo báo)
+[1:05] → dò khắp Bãi Đá khu 19 tìm đoàn (còn 15 chỗ)
+[1:36] → đi tới Mỏ Linh Thạch
+[1:40] → đổi sang khu 19 (Thiên Đạo báo)
+[1:40] → dò khắp Mỏ Linh Thạch khu 19 tìm đoàn (còn 3 chỗ)
+[1:45] Hoàn thành: Không tìm thấy Thương Đội → về
+[2:00] Kết thúc · Kết quả: Không tìm thấy Thương Đội → về
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Thương Đội (săn & tin Thiên Đạo) · Rừng Trúc k1 · mewmew · trợ thủ đang bật · v0.63.8
+[0:00] → đi tới Rừng Trúc
+[0:00] máu 99% · LL 99% · Miếu Ông Trường Con (269,271) · quái <400px 1 · người thù 0 · Tự Động tắt · đánh Thạch Quy Đội Bia 71% · việc: đi tới Rừng Trúc · việc: đi tới Rừng Trúc
+[0:10] máu 100% · LL 100% · Bãi Đá (340,813) · quái <400px 1 · người thù 0 · Tự Động tắt · việc: đi tới Rừng Trúc · việc: đi tới Rừng Trúc
+[0:20] → đổi sang khu 1 (Thiên Đạo báo)
+[0:20] máu 100% · LL 100% · Rừng Trúc (288,88) · quái <400px 8 · người thù 0 · Tự Động tắt · việc: đổi sang khu 1 (Thiên Đạo báo) · việc: đổi sang khu 1 (Thiên Đạo báo)
+[0:21] → săn Tiêu Sư · khu 1
+[0:30] máu 100% · LL 98% · Rừng Trúc (405,310) · quái <400px 7 · người thù 0 · Tự Động bật · đánh Tiêu Sư 42% · việc: săn Tiêu Sư · khu 1 · việc: săn Tiêu Sư · khu 1 · mục tiêu Tiêu Sư 42%
+[0:37] Hạ Tiêu Sư
+[0:40] máu 100% · LL 93% · Rừng Trúc (405,310) · quái <400px 0 · người thù 0 · Tự Động bật · việc: săn Tiêu Sư · khu 1 · việc: săn Tiêu Sư · khu 1 · mục tiêu Tiêu Sư 37%
+[0:44] Hạ Tiêu Sư
+[0:44] → săn Thương Nhân · khu 1
+[0:50] máu 100% · LL 88% · Rừng Trúc (405,310) · quái <400px 0 · người thù 0 · Tự Động bật · đánh Thương Nhân 48% · việc: săn Thương Nhân · khu 1 · việc: săn Thương Nhân · khu 1 · mục tiêu Thương Nhân 48%
+[0:56] Hạ Thương Nhân
+[0:56] → nhặt hồn rơi
+[0:57] Hoàn thành: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+[0:58] → đi tới Bãi Đá
+[1:00] máu 100% · LL 98% · Chân Núi Tản Viên (426,753) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: đi tới Bãi Đá · việc: đi tới Bãi Đá
+[1:05] → đổi sang khu 19 (Thiên Đạo báo)
+[1:05] → dò khắp Bãi Đá khu 19 tìm đoàn (còn 15 chỗ)
+[1:10] máu 100% · LL 100% · Bãi Đá (821,592) · quái <400px 4 · người thù 0 · Tự Động tắt · việc: dò khắp Bãi Đá khu 19 tìm đoàn (còn 12 chỗ) · việc: dò khắp Bãi Đá khu 19 tìm đoàn (còn 12 chỗ)
+[1:20] máu 100% · LL 100% · Bãi Đá (767,112) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: dò khắp Bãi Đá khu 19 tìm đoàn (còn 5 chỗ) · việc: dò khắp Bãi Đá khu 19 tìm đoàn (còn 5 chỗ)
+[1:30] máu 100% · LL 100% · Bãi Đá (822,880) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: dò khắp Bãi Đá khu 19 tìm đoàn (còn 2 chỗ) · việc: dò khắp Bãi Đá khu 19 tìm đoàn (còn 2 chỗ)
+[1:36] → đi tới Mỏ Linh Thạch
+[1:40] → đổi sang khu 19 (Thiên Đạo báo)
+[1:40] → dò khắp Mỏ Linh Thạch khu 19 tìm đoàn (còn 3 chỗ)
+[1:41] máu 100% · LL 100% · Mỏ Linh Thạch (125,414) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: dò khắp Mỏ Linh Thạch khu 19 tìm đoàn (còn 3 chỗ) · việc: dò khắp Mỏ Linh Thạch khu 19 tìm đoàn (còn 3 chỗ)
+[1:45] Hoàn thành: Không tìm thấy Thương Đội → về
+[2:00] Kết thúc · Kết quả: Không tìm thấy Thương Đội → về

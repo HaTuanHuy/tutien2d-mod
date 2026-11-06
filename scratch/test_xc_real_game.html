@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Real Game Xổng Chuồng Test</title>
+</head>
+<body>
+  <div id="logs"></div>
+  <script>
+    window.testResults = { passed: 0, failed: 0, logs: [] };
+    function log(msg, pass) {
+      var d = document.createElement('div');
+      d.textContent = (pass === true ? '[PASS] ' : pass === false ? '[FAIL] ' : '[INFO] ') + msg;
+      document.getElementById('logs').appendChild(d);
+      if (pass === true) window.testResults.passed++;
+      if (pass === false) { window.testResults.failed++; window.testResults.logs.push(msg); }
+      console.log(d.textContent);
+    }
+  </script>
+
+  <!-- Define PNTT before scripts -->
+  <script>
+    window.PNTT = {};
+  </script>
+
+  <!-- Load real game scripts -->
+  <script src="../src/core/utils.f3a5ec533e9c.js"></script>
+  <script src="../src/world/mapdata.430a546fd419.js"></script>
+  <script src="../src/world/map_tamgioi.c3a33f0e9b23.js"></script>
+  <script src="../src/world/map_three_maps.3fbb466c6c1e.js"></script>
+  <script src="../src/world/map_thung_lung_v2.1253d7c3f604.js"></script>
+  <script src="../src/entities/enemy.7739f83bfc3f.js"></script>
+
+  <script>
+    // Mock player and scene
+    var swMock = {
+      player: {
+        id: 'player_1',
+        name: 'memooo',
+        x: 500, y: 500, hp: 1000, hpMax: 1000, mp: 500, mpMax: 500,
+        speed: 160, state: 'idle', downed: false, canMeditate: true,
+        path: [], setPath: function(p) { this.path = p; }, stop: function() { this.path = []; }
+      },
+      map: { data: window.PNTT.MapData.TAN_VIEN },
+      enemies: [], drops: [], players: [], autoOn: true
+    };
+
+    window.PNTT.CONFIG = { TILE: 32, PLAYER: { SPEED: 160, RUN_MULT: 1.5, HIT_RADIUS: 24 }, TARGET: { RANGE: 400 } };
+    window.PNTT.Gateway = { connected: true, selfId: 'player_1', cmd: function(op, d, cb) { if(cb) cb({ok:true}); }, send: function(){return true;} };
+    window.PNTT.Game = { scene: swMock, time: 100 };
+    window.PNTT.SceneWorld = swMock;
+    window.PNTT.Player = { stand: function(){}, reach: function(){return 26;} };
+    window.PNTT.Pathfinder = { route: function(map, x1, y1, x2, y2){ return [{ x: x2, y: y2 }]; } };
+    window.PNTT.Input = { run: true, hasManualMove: function(){return false;}, pressMeditate: function(){}, pressAutoToggle: function(){swMock.autoOn = !swMock.autoOn;} };
+    window.PNTT.Loot = { PICK_R: 40 };
+    window.PNTT.Inventory = { bag: { linh_thach: 10000 } };
+    window.PNTT.Progress = { stones: 10000 };
+    window.PNTT.KhuUI = { khu: 1, soKhu: 20 };
+    window.unsafeWindow = window;
+  </script>
+
+  <script src="../tutien2d-helper.user.js"></script>
+
+  <script>
+    (function() {
+      try {
+        var TB = window.TTBot;
+        log('TTBot loaded', !!TB);
+        
+        // Let's check mapByName for "Bãi Đá"
+        var P = window.PNTT;
+        var mapId = TB.dev.eval('mapByName(window.PNTT, "Bãi Đá")');
+        log('mapByName("Bãi Đá") -> ' + mapId, mapId === 'bai_da_hang_gio');
+
+        // Let's check mapGraph
+        var gph = TB.dev.eval('mapGraph(window.PNTT)');
+        log('mapGraph has bai_da_hang_gio', !!gph['bai_da_hang_gio']);
+        log('bai_da_hang_gio portals count: ' + (gph['bai_da_hang_gio'] ? gph['bai_da_hang_gio'].portals.length : 0), !!(gph['bai_da_hang_gio'] && gph['bai_da_hang_gio'].portals.length));
+
+        // Let's check BFS from tan_vien to bai_da_hang_gio
+        var hop = TB.dev.eval('nextHop(mapGraph(window.PNTT), "tan_vien", "bai_da_hang_gio")');
+        log('nextHop("tan_vien" -> "bai_da_hang_gio"): ' + hop, hop === 'bai_da_hang_gio');
+
+        // Now test simulation: Character is in tan_vien training!
+        swMock.map = { data: window.PNTT.MapData.TAN_VIEN };
+        var g = TB.game();
+        log('TB.game() exists: ' + !!g, !!g);
+
+        // Send announcement
+        var newsText = 'Thiên Đạo: Ba Xích Nhãn Ngưu và ba Bạch Hổ Tuyết sắp xổng chuồng tại Bãi Đá, khu 20 (20 giây nữa)!';
+        TB.dev.eval('readNews("' + newsText.replace(/"/g, '\\"') + '", window.lastInfo = {})');
+
+        var xcEvents = TB.dev.eval('xcEvents');
+        log('xcEvents count: ' + xcEvents.length, xcEvents.length > 0);
+        var ev = xcEvents[xcEvents.length - 1];
+        log('ev.map is bai_da_hang_gio: ' + (ev && ev.map), ev && ev.map === 'bai_da_hang_gio');
+
+        // Now run tick() or tickXongChuong()
+        var ret = TB.dev.eval('tickXongChuong(game())');
+        log('tickXongChuong started: ' + ret, ret === true);
+        var stXc = TB.st.xc;
+        log('st.xc exists: ' + !!stXc, !!stXc);
+        log('st.travel exists: ' + !!TB.st.travel, !!TB.st.travel);
+        if (TB.st.travel) {
+          log('st.travel target: ' + TB.st.travel.map, TB.st.travel.map === 'bai_da_hang_gio');
+        }
+
+        // Now test tickTravel
+        var retTravel = TB.dev.eval('tickTravel(game())');
+        log('tickTravel running towards portal: ' + retTravel, retTravel === true);
+
+        // Simulation 2: Character arrives at bai_da_hang_gio!
+        swMock.map = { data: window.PNTT.MapData.BAI_DA_HANG_GIO };
+        window.PNTT.KhuUI.khu = 20; // Arrived at khu 20
+        var g2 = TB.game();
+        log('Arrived at map: ' + g2.mapId, g2.mapId === 'bai_da_hang_gio');
+
+        // Test during 20s wait
+        var retWait = TB.dev.eval('tickXongChuong(game())');
+        log('tickXongChuong waiting for spawn: ' + retWait, retWait === true);
+        log('st.xc step: ' + TB.st.xc.step, /chờ yêu thú/.test(TB.st.xc.step));
+
+        // Test after spawn time
+        ev.spawnAt = 0; // spawn time elapsed!
+        var retSpawn = TB.dev.eval('tickXongChuong(game())');
+        log('tickXongChuong after spawn: ' + retSpawn, retSpawn === true);
+        log('st.xc step after spawn: ' + (TB.st.xc ? TB.st.xc.step : 'XC CLOSED'), !TB.st.xc || /dò khắp|săn|đánh/.test(TB.st.xc.step));
+        log('ev.done status: ' + ev.done, ev.done === false);
+
+        // Simulation 3: Escaped beast killed & drops item (Yêu Đan + Nanh Hổ + Linh Thạch) 150px away
+        TB.cfg.runLoot = false; // default setting!
+        TB.cfg.autoLoot = true;
+        var deadMob = { id: 991, type: 'bach_ho_tuyet', x: 250, y: 250, dead: true, hp: 0, hpMax: 50000 };
+        TB.st.xc.target = deadMob;
+        TB.st.xc.lastSeen = Date.now();
+        swMock.enemies = []; // beast is dead
+
+        var dropItem = {
+          lootId: 8881,
+          kind: 'item',
+          itemId: 'yeu_dan_cap_1',
+          x: 250,
+          y: 250,
+          owner: 'player1', // Player's own drop!
+          age: 0.5,
+          state: 'ground'
+        };
+        swMock.drops = [dropItem];
+
+        // Verify lootable with force=true
+        var canLootForce = TB.dev.eval('lootable(game(), game().sw.drops[0], true)');
+        log('lootable(drop, force=true) with ownPull: ' + canLootForce, canLootForce === true);
+
+        // Run tickXongChuong: must actively approach the drop!
+        var retLoot = TB.dev.eval('tickXongChuong(game())');
+        log('tickXongChuong approaches drop: ret=' + retLoot, retLoot === true);
+        log('st.xc step during loot: ' + TB.st.xc.step, /tiến tới nhặt đồ rơi xổng chuồng/.test(TB.st.xc.step));
+        log('st.looting is active: ' + (TB.st.looting && TB.st.looting.drop && TB.st.looting.drop.itemId), TB.st.looting && TB.st.looting.drop && TB.st.looting.drop.itemId === 'yeu_dan_cap_1');
+
+        // Test with another beast still alive on map: must STILL prioritize approaching the drop before chasing!
+        var aliveMob2 = { id: 992, type: 'xich_nhan_nguu', x: 600, y: 600, dead: false, hp: 40000, hpMax: 40000 };
+        swMock.enemies = [aliveMob2];
+        var retLootPriority = TB.dev.eval('tickXongChuong(game())');
+        log('tickXongChuong prioritizes loot over next beast: ret=' + retLootPriority, retLootPriority === true);
+        log('st.xc step still looting: ' + TB.st.xc.step, /tiến tới nhặt đồ rơi xổng chuồng/.test(TB.st.xc.step));
+
+        // Simulation 4: Point-blank hugging (d <= 2px) from 100% HP (v0.63.12)
+        swMock.drops = []; // No drops left
+        TB.st.xc.lastSeen = 0;
+        TB.st.looting = null;
+        var fullHpMob = { id: 993, type: 'xich_nhan_nguu', x: 230, y: 230, dead: false, hp: 50000, hpMax: 50000, def: { bodyRadius: 10 } };
+        swMock.enemies = [fullHpMob];
+        swMock.player.x = 200; swMock.player.y = 200; // d = ~42px, within normal reach!
+        swMock.player.path = [];
+
+        var retEngageFullHp = TB.dev.eval('evEngage(game(), st.xc, game().sw.enemies[0])');
+        log('evEngage from 100% HP hugs point-blank: ret=' + retEngageFullHp, retEngageFullHp === true);
+        log('swMock.player moved fighting: path.length=' + swMock.player.path.length, swMock.player.path.length > 0);
+        var endPt = swMock.player.path[swMock.player.path.length - 1];
+        log('Path target matches mob center (230, 230): (' + endPt.x + ', ' + endPt.y + ')', endPt.x === 230 && endPt.y === 230);
+
+        // Verify smartMove hugClose sets reach=2 instead of skillRange
+        TB.st.farmTarget = fullHpMob;
+        window.PNTT.Targeting = { key: 'foe:993', list: [{ key: 'foe:993' }] };
+        swMock.player.path = []; // reset path before testing smartMove
+        var retSmartMove = TB.dev.eval('smartMove(game())');
+        log('smartMove on XC target moves point-blank instead of holding skill range: ' + retSmartMove, retSmartMove === true);
+
+      } catch (err) {
+        log('CRASH: ' + err.message + '\n' + err.stack, false);
+      }
+    })();
+  </script>
+</body>
+</html>

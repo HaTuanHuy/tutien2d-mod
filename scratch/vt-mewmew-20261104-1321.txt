@@ -1,0 +1,21 @@
+Vận Tiêu · Tiêu Kỳ Đỏ · mewmew · trợ thủ v0.63.7 · bắt đầu 13:21:57 4/11/2026
+===== TÓM TẮT =====
+✅ Vận Tiêu · Tiêu Kỳ Đỏ · mewmew · 0:56
+Kết quả: Mất xe giữa đường (het_han)
+🎁 Thu được: không có gì
+📜 Diễn biến cuối:
+[0:00] Bắt đầu Vận Tiêu · Tiêu Kỳ Đỏ · mewmew · trợ thủ đang tắt (đánh tay) · v0.63.7
+[0:18] ≡ bat {"op":"vantieu","act":"bat","hang":"do","heSo":0.78,"co":"do","han":23282,"hp":580,"hm":2016,"dung":0}
+[0:41] ≡ het {"op":"vantieu","act":"het","ly":"het_han","co":"luc"}
+[0:41] Mất xe giữa đường (het_han)
+[0:56] Kết thúc · Kết quả: Mất xe giữa đường (het_han)
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Vận Tiêu · Tiêu Kỳ Đỏ · mewmew · trợ thủ đang tắt (đánh tay) · v0.63.7
+[0:00] máu 100% · LL 100% · Bãi Đá (112,927) · quái <400px 0 · người thù 0 · Tự Động tắt · xe Tiêu Kỳ Đỏ cách 29px (máu 100%)
+[0:11] máu 100% · LL 100% · Bãi Đá (582,667) · quái <400px 0 · người thù 1 · Tự Động tắt · xe Tiêu Kỳ Đỏ cách 144px (máu 27%)
+[0:18] ≡ bat {"op":"vantieu","act":"bat","hang":"do","heSo":0.78,"co":"do","han":23282,"hp":580,"hm":2016,"dung":0}
+[0:21] máu 100% · LL 100% · Mỏ Linh Thạch (141,473) · quái <400px 7 · người thù 0 · Tự Động tắt · xe Tiêu Kỳ Đỏ cách 64px (máu 30%)
+[0:31] máu 100% · LL 100% · Mỏ Linh Thạch (676,757) · quái <400px 3 · người thù 1 · Tự Động tắt · xe Tiêu Kỳ Đỏ cách 49px (máu 31%)
+[0:41] ≡ het {"op":"vantieu","act":"het","ly":"het_han","co":"luc"}
+[0:41] Mất xe giữa đường (het_han)
+[0:56] Kết thúc · Kết quả: Mất xe giữa đường (het_han)

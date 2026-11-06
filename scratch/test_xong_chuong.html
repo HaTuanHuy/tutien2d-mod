@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Test Yêu Thú Xổng Chuồng Regex & Auto-Hunt (v0.63.7)</title>
+  <style>
+    body {
+      font-family: monospace;
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 20px;
+    }
+
+    .pass {
+      color: #4ec9b0;
+    }
+
+    .fail {
+      color: #f14c4c;
+      font-weight: bold;
+    }
+
+    .log {
+      margin-bottom: 4px;
+    }
+
+    h2 {
+      color: #569cd6;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>=== TEST SUITE: YÊU THÚ XỔNG CHUỒNG (v0.63.7) ===</h2>
+  <div id="logs"></div>
+
+  <script>
+    window.testResults = { passed: 0, failed: 0, tests: [] };
+    function log(msg, pass) {
+      var d = document.createElement('div');
+      d.className = 'log ' + (pass === true ? 'pass' : pass === false ? 'fail' : '');
+      d.textContent = (pass === true ? '  [PASS] ' : pass === false ? '  [FAIL] ' : '') + msg;
+      document.getElementById('logs').appendChild(d);
+      if (pass === true) window.testResults.passed++;
+      if (pass === false) { window.testResults.failed++; window.testResults.tests.push(msg); }
+      console.log(d.textContent);
+    }
+
+    var sentTgMessages = [];
+
+    var swMock = {
+      player: {
+        id: 'player_1',
+        name: 'memooo',
+        x: 500,
+        y: 500,
+        hp: 1000,
+        hpMax: 1000,
+        mp: 500,
+        mpMax: 500,
+        speed: 160,
+        state: 'idle',
+        downed: false,
+        canMeditate: true,
+        path: [],
+        setPath: function (p) { this.path = p; },
+        stop: function () { this.path = []; }
+      },
+      map: {
+        id: 'thao_duoc_coc',
+        data: {
+          id: 'thao_duoc_coc',
+          name: 'Thảo Dược Cốc',
+          enemies: []
+        },
+        props: [],
+        portals: []
+      },
+      enemies: [
+        {
+          id: 'nguu_1',
+          type: 'xich_nhan_nguu',
+          name: 'Xích Nhãn Ngưu',
+          x: 520,
+          y: 520,
+          hp: 20000,
+          hpMax: 20000,
+          dead: false,
+          def: { name: 'Xích Nhãn Ngưu', isBoss: true, lootLastHitOnly: true, bodyRadius: 30 }
+        },
+        {
+          id: 'ho_1',
+          type: 'bach_ho_tuyet',
+          name: 'Bạch Hổ Tuyết',
+          x: 540,
+          y: 540,
+          hp: 20000,
+          hpMax: 20000,
+          dead: false,
+          def: { name: 'Bạch Hổ Tuyết', isBoss: true, lootLastHitOnly: true, bodyRadius: 30 }
+        }
+      ],
+      drops: [],
+      players: [],
+      autoOn: false
+    };
+
+    window.PNTT = {
+      CONFIG: {
+        TILE: 32,
+        PLAYER: { SPEED: 160, RUN_MULT: 1.5, HIT_RADIUS: 24 },
+        TARGET: { RANGE: 400 }
+      },
+      Gateway: {
+        connected: true,
+        selfId: 'player_1',
+        cmd: function (op, data, cb) { if (cb) cb({ ok: true }); },
+        send: function () { return true; }
+      },
+      Game: { scene: swMock, time: 100 },
+      SceneWorld: swMock,
+      Player: {
+        stand: function () { },
+        reach: function () { return 26; }
+      },
+      Pathfinder: {
+        route: function () { return [{ x: 520, y: 520 }]; }
+      },
+      Input: {
+        run: true,
+        pressMeditate: function () { },
+        pressAutoToggle: function () { swMock.autoOn = !swMock.autoOn; }
+      },
+      MapData: {
+        thao_duoc_coc: { id: 'thao_duoc_coc', name: 'Thảo Dược Cốc', portals: [] },
+        bai_da: { id: 'bai_da', name: 'Bãi Đá', portals: [] }
+      },
+      ENEMY_DEFS: {
+        xich_nhan_nguu: { name: 'Xích Nhãn Ngưu', lootLastHitOnly: true },
+        bach_ho_tuyet: { name: 'Bạch Hổ Tuyết', lootLastHitOnly: true },
+        thach_quy: { name: 'Thạch Quy' }
+      },
+      Loot: {
+        PICK_R: 40
+      },
+      Inventory: {
+        bag: { linh_thach: 10000 }
+      },
+      Progress: {
+        stones: 10000
+      },
+      KhuUI: {
+        khu: 1,
+        soKhu: 20
+      }
+    };
+  </script>
+
+  <!-- Load script -->
+  <script src="../tutien2d-helper.user.js"></script>
+
+  <script>
+    (function () {
+      try {
+        var TB = window.TTBot;
+        if (!TB) { log('TTBot not loaded', false); return; }
+        log('TTBot loaded successfully', true);
+
+        // Test 1: xcHunt defaults to true or loads true
+        log('xcHunt is true by default / auto-upgraded', TB.cfg.xcHunt === true);
+
+        // Test 2: Telegram mock
+        TB.cfg.tgOn = true;
+        TB.cfg.tgToken = '123456:fake-token';
+        TB.cfg.tgChat = '-1004343654191';
+        TB.cfg.tgEv_xc = true;
+        TB.dev.eval('tgSend = function(text, cb) { window.sentTgMessages.push(text); if (cb) cb({ok: true}); }');
+
+        // Test 3: Parse actual announcement from screenshot:
+        // "Thiên Đạo: Ba Xích Nhãn Ngưu và ba Bạch Hổ Tuyết sắp xổng chuồng tại Bãi Đá, khu 20 (20 giây nữa)!"
+        var newsText = 'Thiên Đạo: Ba Xích Nhãn Ngưu và ba Bạch Hổ Tuyết sắp xổng chuồng tại Bãi Đá, khu 20 (20 giây nữa)!';
+        var info = {};
+        TB.dev.eval('readNews("' + newsText.replace(/"/g, '\\"') + '", window.lastInfo = {})');
+
+        var xcEvents = TB.dev.eval('xcEvents');
+        log('readNews recognized xổng chuồng event', xcEvents.length > 0);
+        var ev = xcEvents[xcEvents.length - 1];
+        log('Event map is bai_da', ev && ev.map === 'bai_da');
+        log('Event khu is 20', ev && ev.khu === 20);
+        log('Event types contains xich_nhan_nguu', ev && ev.types.indexOf('xich_nhan_nguu') >= 0);
+        log('Event types contains bach_ho_tuyet', ev && ev.types.indexOf('bach_ho_tuyet') >= 0);
+        log('Event has spawnAt countdown (~20s in future)', ev && ev.spawnAt > performance.now());
+
+        // Test 4: Telegram alert was sent
+        var tgMsg = window.sentTgMessages.find(function (m) { return m.indexOf('Xổng chuồng') >= 0 || m.indexOf('xổng chuồng') >= 0; });
+        log('Telegram alert sent for Xổng Chuồng', !!tgMsg);
+        if (tgMsg) {
+          log('Telegram message contains Bãi Đá and Khu 20', tgMsg.indexOf('Bãi Đá') >= 0 && tgMsg.indexOf('Khu 20') >= 0);
+          log('Telegram message contains 20s nữa', tgMsg.indexOf('20s nữa') >= 0);
+        }
+
+        // Test 5: Also test classic variant "vừa xổng chuồng"
+        var newsText2 = 'Thiên Đạo: Ba Xích Nhãn Ngưu vừa xổng chuồng tại Bãi Đá, khu 5!';
+        TB.dev.eval('readNews("' + newsText2.replace(/"/g, '\\"') + '", window.lastInfo = {})');
+        var ev2 = xcEvents[xcEvents.length - 1];
+        log('readNews also supports classic "vừa xổng chuồng" (Khu 5)', ev2 && ev2.khu === 5);
+
+        // Test 6: tickXongChuong wait state when arriving early
+        var g = TB.game();
+        g.mapId = 'bai_da';
+        g.sw.map.id = 'bai_da';
+        g.sw.map.data.id = 'bai_da';
+        window.PNTT.KhuUI.khu = 20; // Player is at Khu 20
+        g.sw.enemies = []; // Mobs not yet spawned
+
+        ev.spawnAt = performance.now() + 10000; // 10s left
+        TB.dev.eval('st.xc = { ev: xcEvents[' + (xcEvents.length - 2) + '], back: null, at: performance.now(), khuWant: 0, khuAt: 0, touches: 0, touchAt: 0, routeAt: 0, travels: 0, pts: null, kills: 0, target: null, lastSeen: 0, step: "" }');
+
+        var retWait = TB.dev.eval('tickXongChuong(game())');
+        log('tickXongChuong returns true to hold character', retWait === true);
+        var xcStep = TB.st.xc && TB.st.xc.step;
+        log('Status shows waiting countdown: ' + xcStep, xcStep && xcStep.indexOf('chờ yêu thú xổng chuồng') >= 0);
+
+      } catch (err) {
+        log('ERROR in test: ' + err.message + '\n' + err.stack, false);
+      }
+
+      console.log('Total tests: ' + (window.testResults.passed + window.testResults.failed) + ' | Passed: ' + window.testResults.passed + ' | Failed: ' + window.testResults.failed);
+    })();
+  </script>
+</body>
+
+</html>

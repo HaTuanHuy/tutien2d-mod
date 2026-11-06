@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test Dungeon Survival Optimizations (v0.63.4)</title>
+  <style>
+    body { font-family: monospace; background: #1e1e1e; color: #d4d4d4; padding: 20px; }
+    .pass { color: #4ec9b0; }
+    .fail { color: #f14c4c; font-weight: bold; }
+    .log { margin-bottom: 4px; }
+    h2 { color: #569cd6; }
+  </style>
+</head>
+<body>
+  <h2>=== TEST SUITE: DUNGEON SURVIVAL OPTIMIZATIONS (v0.63.4) ===</h2>
+  <div id="logs"></div>
+
+  <script>
+    window.testResults = { passed: 0, failed: 0, tests: [] };
+    function log(msg, pass) {
+      var d = document.createElement('div');
+      d.className = 'log ' + (pass === true ? 'pass' : pass === false ? 'fail' : '');
+      d.textContent = (pass === true ? '  [PASS] ' : pass === false ? '  [FAIL] ' : '') + msg;
+      document.getElementById('logs').appendChild(d);
+      if (pass === true) window.testResults.passed++;
+      if (pass === false) { window.testResults.failed++; window.testResults.tests.push(msg); }
+      console.log(d.textContent);
+    }
+
+    var swMock = {
+      player: {
+        id: 'player_1',
+        x: 500,
+        y: 500,
+        hp: 200,
+        hpMax: 1000,
+        mp: 500,
+        mpMax: 500,
+        speed: 160,
+        state: 'idle',
+        downed: false,
+        canMeditate: true,
+        path: [],
+        setPath: function(p) { this.path = p; },
+        stop: function() { this.path = []; }
+      },
+      map: {
+        id: 'dam_lay_boss',
+        data: {
+          id: 'dam_lay_boss',
+          enemies: []
+        },
+        props: [],
+        portals: []
+      },
+      enemies: [
+        {
+          id: 'boss_1',
+          type: 'u_minh_cu_mang',
+          name: 'U Minh Cự Mãng',
+          x: 520,
+          y: 520,
+          hp: 50000,
+          hpMax: 100000,
+          dead: false,
+          def: { isBoss: true, contactDmg: 50, aggro: 300, bodyRadius: 40 }
+        }
+      ],
+      drops: [],
+      players: [],
+      autoOn: false,
+      reviveOnSpot: function() {
+        this.player.downed = false;
+        this.player.hp = 300;
+        return true;
+      }
+    };
+
+    window.PNTT = {
+      CONFIG: {
+        TILE: 32,
+        PLAYER: { SPEED: 160, RUN_MULT: 1.5, HIT_RADIUS: 24 },
+        TARGET: { RANGE: 400 }
+      },
+      Gateway: {
+        connected: true,
+        selfId: 'player_1',
+        cmd: function(op, data, cb) { if (cb) cb({ ok: true }); },
+        send: function() { return true; }
+      },
+      Game: { scene: swMock, time: 100 },
+      SceneWorld: swMock,
+      Player: {
+        stand: function() {},
+        reach: function() { return 26; }
+      },
+      Input: {
+        run: true,
+        pressMeditate: function() { swMock.player.state = swMock.player.state === 'sit' ? 'idle' : 'sit'; },
+        pressAutoToggle: function() { swMock.autoOn = !swMock.autoOn; }
+      },
+      MapData: {
+        dam_lay_boss: { id: 'dam_lay_boss', name: 'Huyết Xích Cấm Địa · Đầm Lầy' },
+        map_normal: { id: 'map_normal', name: 'Đầm Lầy U Ám' }
+      }
+    };
+  </script>
+
+  <!-- Load updated tutien2d-helper.user.js -->
+  <script src="../tutien2d-helper.user.js"></script>
+
+  <script>
+    (function () {
+      try {
+        var TB = window.TTBot;
+        if (!TB) { log('TTBot not loaded', false); return; }
+        log('TTBot v' + (TB.cfg.version || '0.63.4') + ' loaded successfully', true);
+
+        var g = TB.game();
+        log('TB.game() in dam_lay_boss: mapId = ' + (g && g.mapId), g && g.mapId === 'dam_lay_boss');
+
+        // 1. Verify inDungeon2 detects dam_lay_boss
+        var dev = TB.dev;
+        var inBc = dev.eval('inDungeon2(game())');
+        log('inDungeon2 returns true for dam_lay_boss', inBc === true);
+
+        // 2. Verify tickHeal allows retreat & meditation inside Bí Cảnh when near boss
+        g.me.hp = 200; // 20% (< healLow=35%)
+        TB.st.healing = false;
+        dev.eval('tickHeal(game())');
+        log('tickHeal triggers st.healing=true in Bí Cảnh despite boss presence', TB.st.healing === true);
+
+        // 3. Verify in normal map, tickHeal refuses to sit near boss (preserves world boss DPS)
+        g.mapId = 'map_normal';
+        g.sw.map.id = 'map_normal';
+        g.sw.map.data.id = 'map_normal';
+        TB.st.healing = true;
+        dev.eval('tickHeal(game())');
+        log('In normal map with boss near, tickHeal cancels healing (st.healing=false)', TB.st.healing === false);
+
+        // Switch back to dungeon
+        g.mapId = 'dam_lay_boss';
+        g.sw.map.id = 'dam_lay_boss';
+        g.sw.map.data.id = 'dam_lay_boss';
+
+        // 4. Verify tickRevive in Bí Cảnh enables st.healing instead of blind setAuto(true)
+        g.me.downed = true;
+        g.me.reviveLeft = 5;
+        g.me.downTime = 10000;
+        TB.cfg.autoRevive = true;
+        TB.cfg.reviveMode = 'spot';
+        swMock.autoOn = false;
+        TB.st.healing = false;
+        TB.st.lastRevive = 0;
+
+        dev.eval('tickRevive(game())');
+        log('tickRevive revives player on spot', g.me.downed === false);
+        log('In Bí Cảnh after revive, st.healing is set to true for safety', TB.st.healing === true);
+        log('Auto is NOT immediately turned ON while low HP', swMock.autoOn === false);
+
+        // 5. Verify bcFight does not force d <= 4px
+        var boss = g.sw.enemies[0];
+        g.me.x = 480; g.me.y = 520; // d = 40px
+        var aMock = { target: null, routeAt: 0 };
+        dev.eval('bcFight(game(), { target: null, routeAt: 0 }, game().sw.enemies[0])');
+        // Reach is 26 + 40 = 66px. Distance 40px <= reach -> character attacks at safe range without resetting path to center
+        log('bcFight sets farmTarget to boss', TB.st.farmTarget === boss);
+
+      } catch (err) {
+        log('ERROR in test: ' + err.message + '\n' + err.stack, false);
+      }
+
+      console.log('Total tests: ' + (window.testResults.passed + window.testResults.failed) + ' | Passed: ' + window.testResults.passed + ' | Failed: ' + window.testResults.failed);
+    })();
+  </script>
+</body>
+</html>

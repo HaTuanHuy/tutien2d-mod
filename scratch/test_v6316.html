@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test Suite v0.63.16 Morning Update</title>
+</head>
+<body>
+  <div id="logs"></div>
+  <script>
+    window.testResults = { passed: 0, failed: 0, logs: [] };
+    function log(msg, pass) {
+      var d = document.createElement('div');
+      d.textContent = (pass === true ? '[PASS] ' : pass === false ? '[FAIL] ' : '[INFO] ') + msg;
+      document.getElementById('logs').appendChild(d);
+      if (pass === true) window.testResults.passed++;
+      if (pass === false) { window.testResults.failed++; window.testResults.logs.push(msg); }
+      console.log(d.textContent);
+    }
+  </script>
+
+  <script>
+    window.PNTT = {};
+  </script>
+
+  <script src="../src/core/utils.f3a5ec533e9c.js"></script>
+  <script src="../src/world/mapdata.430a546fd419.js"></script>
+  <script src="../src/world/map_tamgioi.c3a33f0e9b23.js"></script>
+  <script src="../src/entities/enemy.7739f83bfc3f.js"></script>
+  <script src="../src/systems/formations.b88e901817ed.js"></script>
+
+  <script>
+    var P = window.PNTT;
+    P.CONFIG = P.CONFIG || {};
+    P.CONFIG.TILE = 32;
+    P.CONFIG.PLAYER = { HITBOX_W: 24, HITBOX_H: 32 };
+    P.HauKy = { TQ_LOAI: 'thach_quy' };
+    P.VetNut = {
+      MAP: 'khong_gian_vet_nut',
+      VE: 'toai_khong_phu',
+      laMap: function(m) { return m === 'khong_gian_vet_nut' || m === 'vet_nut'; }
+    };
+    P.VetNutUI = {
+      trangThai: function() { return { tt: 'CHO' }; }
+    };
+    P.HacThi = {
+      LAO: { x0: 49, x1: 54, y0: 10, y1: 12 },
+      O_LAO: { tx: 51, ty: 11 },
+      TRUOC_LAO: { tx: 51, ty: 13 },
+      trongLao: function (tx, ty) { return ty > 10 && ty < 12 && tx > 49 && tx < 54; },
+      giamConMs: function (player) { return (player && player.Progress && player.Progress.hacThi) ? Math.max(0, player.Progress.hacThi.giamDen - Date.now()) : 0; },
+      dangGiam: function (player) { return P.HacThi.giamConMs(player) > 0; },
+      chuGiam: function (ms) { return Math.ceil(ms / 60000) + ' phút'; }
+    };
+    P.Progress = {
+      realmId: 'truc_co_1',
+      hacThi: { giamDen: 0 },
+      stones: 50000
+    };
+    P.Game = { time: 100 };
+    P.Pathfinder = {
+      route: function (x1, y1, x2, y2) { return { path: [{ x: x2, y: y2 }] }; }
+    };
+    P.Input = {
+      pressAutoToggle: function () { },
+      setRun: function () { },
+      pressMeditate: function () { }
+    };
+    P.KhuUI = {
+      isOpen: function () { return false; },
+      close: function () { }
+    };
+    P.Gateway = {
+      send: function () { return true; },
+      selfId: 'player_test',
+      socket: { readyState: 1, send: function () {} }
+    };
+
+    var fakePlayer = {
+      id: 'player_test',
+      name: 'memooo',
+      x: 200, y: 300,
+      hp: 1000, hpMax: 1000,
+      mp: 500, mpMax: 500,
+      path: [],
+      target: null,
+      Progress: P.Progress
+    };
+    var fakeMap = {
+      data: { id: 'thon_da_do', name: 'Thôn Dã Đỏ' },
+      isPassable: function () { return true; }
+    };
+    var fakeSw = {
+      player: fakePlayer,
+      enemies: [],
+      drops: [],
+      map: fakeMap,
+      mapId: 'thon_da_do',
+      findEnemy: function () { return null; },
+      approach: { key: 'foe:1' },
+      autoOn: true
+    };
+    P.SceneWorld = fakeSw;
+    P.Game.scene = P.SceneWorld;
+    P.HUD = {
+      setCaption: function () {},
+      showToast: function () {}
+    };
+    P.Chat = {
+      line: function () {}
+    };
+    P.ITEMS = {
+      tam_yeu_linh_boi: { name: 'Tam Yêu Linh Bội', grade: 'Địa phẩm thượng' },
+      ruong_phi_hanh: { name: 'Rương Phi Hành', grade: 'Địa phẩm' },
+      bi_tich_thanh_an_ho_the: { name: 'Bí Tịch Thánh Ấn Hộ Thế', grade: 'Địa phẩm thượng' },
+      bi_tich_thien_thu_giang_the: { name: 'Bí Tịch Thiên Thư Giáng Thế', grade: 'Địa phẩm thượng' },
+      bi_tich_chu_phe_dinh_toi: { name: 'Bí Tịch Chu Phê Định Tội', grade: 'Địa phẩm thượng' },
+      bi_tich_hao_nhien_thuan: { name: 'Bí Tịch Hạo Nhiên Thuẫn', grade: 'Địa phẩm thượng' },
+      bi_tich_huyet_te_ma_dong: { name: 'Bí Tịch Huyết Tế Ma Đồng', grade: 'Địa phẩm thượng' },
+      van_khuc_thu: { name: 'Văn Khúc Thư', grade: 'Địa phẩm' },
+      huyet_phach_chau: { name: 'Huyết Phách Châu', grade: 'Địa phẩm' },
+      bi_tich_thien_dia_vi_ky: { name: 'Bí Tịch Thiên Địa Vi Kỳ', grade: 'Địa phẩm' },
+      bi_tich_huyet_mau_xuyen_tam: { name: 'Bí Tịch Huyết Mâu Xuyên Tâm', grade: 'Linh phẩm thượng' },
+      bi_tich_huyet_hai_phien_thien: { name: 'Bí Tịch Huyết Hải Phiên Thiên', grade: 'Linh phẩm thượng' },
+      mac_tu: { name: 'Mặc Tự', grade: 'Địa phẩm thượng' },
+      huyet_hon: { name: 'Huyết Hồn', grade: 'Địa phẩm thượng' },
+      thanh_minh_kiem: { name: 'Thanh Minh Kiếm', grade: 'Địa phẩm hạ' },
+      dan_hon_dang: { name: 'Quỷ La Phiên', grade: 'Địa phẩm hạ' },
+      hang_ma_xu: { name: 'Hàng Ma Xử', grade: 'Địa phẩm hạ' },
+      hong_lang: { name: 'Hồng Lăng', grade: 'Địa phẩm hạ' },
+      bach_van_phat_tran: { name: 'Bạch Vân Phất Trần', grade: 'Địa phẩm hạ' },
+      huyet_dao: { name: 'Huyết Ẩm Đao', grade: 'Địa phẩm hạ' },
+      hao_nhien_truc_gian: { name: 'Hạo Nhiên Trúc Giản', grade: 'Linh phẩm thượng' },
+      huyet_kich: { name: 'Huyết Sát Kích', grade: 'Linh phẩm thượng' },
+      huyen_thiet_phu: { name: 'Huyền Thiết Phủ', grade: 'Linh phẩm thượng' }
+    };
+  </script>
+
+  <!-- Tampermonkey environment mocks -->
+  <script>
+    window.GM_getValue = function (k, d) { return d; };
+    window.GM_setValue = function () { };
+    window.GM_xmlhttpRequest = function () { };
+    window.unsafeWindow = window;
+  </script>
+
+  <script src="../tutien2d-helper.user.js"></script>
+
+  <script>
+    try {
+      log('--- 1. TEST INITIALIZATION & VERSION ---', null);
+      var TB = window.TTBot || window._ttbot;
+      log('TB dev interface available', !!(TB && TB.dev && TB.dev.eval));
+
+      var v = TB.dev.eval('VERSION');
+      log('Version is ' + v, v === '0.63.16');
+
+      log('--- 2. TEST NEW SECTS, WEAPONS & LOOT SCORES ---', null);
+      var scoreTamYeu = TB.dev.eval('LOOT_SPECIAL_SCORES["tam_yeu_linh_boi"]');
+      log('Tam Yêu Linh Bội score is 29000: ' + scoreTamYeu, scoreTamYeu === 29000);
+
+      var scoreThanhAn = TB.dev.eval('LOOT_SPECIAL_SCORES["bi_tich_thanh_an_ho_the"]');
+      var scoreThienThu = TB.dev.eval('LOOT_SPECIAL_SCORES["bi_tich_thien_thu_giang_the"]');
+      var scoreChuPhe = TB.dev.eval('LOOT_SPECIAL_SCORES["bi_tich_chu_phe_dinh_toi"]');
+      var scoreHaoNhien = TB.dev.eval('LOOT_SPECIAL_SCORES["bi_tich_hao_nhien_thuan"]');
+      log('Nho Tu Bí tịch Thánh Ấn (18500): ' + scoreThanhAn, scoreThanhAn === 18500);
+      log('Nho Tu Bí tịch Thiên Thư (18500): ' + scoreThienThu, scoreThienThu === 18500);
+      log('Nho Tu Bí tịch Chu Phê (18200): ' + scoreChuPhe, scoreChuPhe === 18200);
+      log('Nho Tu Bí tịch Hạo Nhiên Thuẫn (18000): ' + scoreHaoNhien, scoreHaoNhien === 18000);
+
+      var scoreHuyetTe = TB.dev.eval('LOOT_SPECIAL_SCORES["bi_tich_huyet_te_ma_dong"]');
+      var scoreHuyetMau = TB.dev.eval('LOOT_SPECIAL_SCORES["bi_tich_huyet_mau_xuyen_tam"]');
+      var scoreHuyetHai = TB.dev.eval('LOOT_SPECIAL_SCORES["bi_tich_huyet_hai_phien_thien"]');
+      log('Huyết Tu Bí tịch Huyết Tế (18000): ' + scoreHuyetTe, scoreHuyetTe === 18000);
+      log('Huyết Tu Bí tịch Huyết Mâu (17200): ' + scoreHuyetMau, scoreHuyetMau === 17200);
+      log('Huyết Tu Bí tịch Huyết Hải (17200): ' + scoreHuyetHai, scoreHuyetHai === 17200);
+
+      var scoreVanKhuc = TB.dev.eval('LOOT_SPECIAL_SCORES["van_khuc_thu"]');
+      var scoreHuyetPhach = TB.dev.eval('LOOT_SPECIAL_SCORES["huyet_phach_chau"]');
+      var scoreMacTu = TB.dev.eval('LOOT_SPECIAL_SCORES["mac_tu"]');
+      var scoreHuyetHon = TB.dev.eval('LOOT_SPECIAL_SCORES["huyet_hon"]');
+      log('Trấn phái Văn Khúc Thư (17800): ' + scoreVanKhuc, scoreVanKhuc === 17800);
+      log('Trấn phái Huyết Phách Châu (17800): ' + scoreHuyetPhach, scoreHuyetPhach === 17800);
+      log('Nguyên liệu Mặc Tự (16500): ' + scoreMacTu, scoreMacTu === 16500);
+      log('Nguyên liệu Huyết Hồn (16500): ' + scoreHuyetHon, scoreHuyetHon === 16500);
+
+      var scoreThanhMinh = TB.dev.eval('LOOT_SPECIAL_SCORES["thanh_minh_kiem"]');
+      var scoreDanHon = TB.dev.eval('LOOT_SPECIAL_SCORES["dan_hon_dang"]');
+      var scoreHaoNhienTG = TB.dev.eval('LOOT_SPECIAL_SCORES["hao_nhien_truc_gian"]');
+      var scoreHuyetKich = TB.dev.eval('LOOT_SPECIAL_SCORES["huyet_kich"]');
+      var scoreHuyenThiet = TB.dev.eval('LOOT_SPECIAL_SCORES["huyen_thiet_phu"]');
+      log('Thanh Minh Kiếm (14200): ' + scoreThanhMinh, scoreThanhMinh === 14200);
+      log('Quỷ La Phiên / Đan Hồn Đăng (14200): ' + scoreDanHon, scoreDanHon === 14200);
+      log('Hạo Nhiên Trúc Giản (12500): ' + scoreHaoNhienTG, scoreHaoNhienTG === 12500);
+      log('Huyết Sát Kích (12500): ' + scoreHuyetKich, scoreHuyetKich === 12500);
+      log('Huyền Thiết Phủ (12000): ' + scoreHuyenThiet, scoreHuyenThiet === 12000);
+
+      log('--- 3. TEST GRADE SCORE CALCULATION ---', null);
+      var gsTamYeu = TB.dev.eval('gradeScore(PNTT, "tam_yeu_linh_boi")');
+      var gsRuong = TB.dev.eval('gradeScore(PNTT, "ruong_phi_hanh")');
+      var gsThanhAn = TB.dev.eval('gradeScore(PNTT, "bi_tich_thanh_an_ho_the")');
+      var gsHuyetTe = TB.dev.eval('gradeScore(PNTT, "bi_tich_huyet_te_ma_dong")');
+      log('gradeScore(tam_yeu_linh_boi) === 29000: ' + gsTamYeu, gsTamYeu === 29000);
+      log('Tam Yêu Linh Bội ưu tiên cao hơn Rương Phi Hành: ' + (gsTamYeu > gsRuong), gsTamYeu > gsRuong);
+      log('gradeScore(bi_tich_thanh_an_ho_the) === 18500: ' + gsThanhAn, gsThanhAn === 18500);
+      log('gradeScore(bi_tich_huyet_te_ma_dong) === 18000: ' + gsHuyetTe, gsHuyetTe === 18000);
+
+      log('--- 4. TEST CORE SAFETY & MECHANICS ---', null);
+      // Test Yêu thú xổng chuồng áp sát chạm d <= 2px ngay từ đầu
+      TB.dev.eval('st.xc = { id: 999, name: "Bạch Hổ Tuyết" };');
+      var isHugClose = TB.dev.eval('!!(st.xc || isLastHitOnly({}))');
+      log('Săn Yêu thú xổng chuồng kích hoạt chế độ hugClose d <= 2px: ' + isHugClose, isHugClose === true);
+      TB.dev.eval('st.xc = null;');
+
+      var isJailedNormal = TB.dev.eval('isJailed(game())');
+      log('Normal map is NOT jailed: ' + (isJailedNormal === false), isJailedNormal === false);
+
+      P.Progress.hacThi.giamDen = Date.now() + 600000;
+      var isJailedGiam = TB.dev.eval('isJailed(game())');
+      log('isJailed detects Progress.hacThi.giamDen: ' + (isJailedGiam === true), isJailedGiam === true);
+      P.Progress.hacThi.giamDen = 0;
+
+      // Test Thạch Quỷ biến dị advance warning handler
+      var bdEventsArr = TB.dev.eval('Array.isArray(bdEvents)');
+      log('bdEvents array exists: ' + bdEventsArr, bdEventsArr === true);
+
+      // Test Trận Bàn restriction to world boss & thương đội
+      TB.dev.eval('st.bh = true; st.td = false;');
+      var tbWorld = TB.dev.eval('isTranAllowed(game())');
+      TB.dev.eval('st.bh = false; st.td = true;');
+      var tbThuongDoi = TB.dev.eval('isTranAllowed(game())');
+      TB.dev.eval('st.bh = false; st.td = false;');
+      var tbFarm = TB.dev.eval('isTranAllowed(game())');
+      log('isTranAllowed cho phép khi săn boss world (st.bh): ' + tbWorld, tbWorld === true);
+      log('isTranAllowed cho phép khi săn thương đội (st.td): ' + tbThuongDoi, tbThuongDoi === true);
+      log('isTranAllowed chặn tuyệt đối khi farm thường / khác: ' + (tbFarm === false), tbFarm === false);
+
+      // Test Vết Nứt: Cấm thiền trong Vết Nứt
+      fakeMap.data.id = 'khong_gian_vet_nut';
+      fakeSw.mapId = 'khong_gian_vet_nut';
+      var isVnIn = TB.dev.eval('vnIn(game())');
+      log('vnIn nhận diện chính xác bản đồ Vết Nứt: ' + isVnIn, isVnIn === true);
+
+      TB.dev.eval('st.healing = true;');
+      TB.dev.eval('tickHeal(game());');
+      var healingAfterVn = TB.dev.eval('st.healing');
+      log('tickHeal lập tức hủy thiền (st.healing === false) khi ở trong Vết Nứt: ' + (healingAfterVn === false), healingAfterVn === false);
+
+      fakeMap.data.id = 'thon_da_do';
+      fakeSw.mapId = 'thon_da_do';
+
+      log('=== TOTAL: ' + window.testResults.passed + ' passed, ' + window.testResults.failed + ' failed. ===');
+    } catch (err) {
+      log('Test exception: ' + err.message, false);
+    }
+  </script>
+</body>
+</html>

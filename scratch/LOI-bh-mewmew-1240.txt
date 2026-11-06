@@ -1,0 +1,41 @@
+Boss · Thần Thú Xích Long · mewmew · trợ thủ v0.63.7 · bắt đầu 12:40:31 4/11/2026
+===== TÓM TẮT =====
+🚨 Boss · Thần Thú Xích Long · mewmew · 2:20 · gục 4 lần
+🎯 Công boss: Sát thương 417/1000 ngưỡng · trúng 0.0% · đang gục
+🎁 Thu được: Tu Sĩ Hồn ×3
+💸 Đã dùng: Linh Thạch ×24
+🔴 Gục · máu 10 giây trước: 86→86→87→93→67→55→60→49→50→21→11 · việc: - · quái quanh: Thần Thú 53% · người thù quanh: vanhuong 90%
+🔴 Gục · máu 10 giây trước: 67→55→60→49→50→21→11→0→35→35→20 · việc: - · quái quanh: Thần Thú 42% · người thù quanh: không
+🔴 Gục · máu 10 giây trước: 49→50→21→11→0→35→35→20→35→35→35 · việc: - · quái quanh: Thần Thú 18% · người thù quanh: không
+🔴 Gục · máu 10 giây trước: 21→11→0→35→35→20→35→35→35→0→35 · việc: - · quái quanh: không · người thù quanh: không
+📜 Diễn biến cuối:
+[1:17] ↺ hồi sinh
+[1:21] ⚠ Gục · máu 10 giây trước: 67→55→60→49→50→21→11→0→35→35→20 · việc: - · quái quanh: Thần Thú 42% · người thù quanh: không
+[1:22] ↺ hồi sinh
+[1:33] ⚠ Gục · máu 10 giây trước: 49→50→21→11→0→35→35→20→35→35→35 · việc: - · quái quanh: Thần Thú 18% · người thù quanh: không
+[1:34] ↺ hồi sinh
+[2:02] ⚠ Gục · máu 10 giây trước: 21→11→0→35→35→20→35→35→35→0→35 · việc: - · quái quanh: không · người thù quanh: không
+[2:04] ↺ hồi sinh
+[2:20] Kết thúc
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Boss · Thần Thú Xích Long · mewmew · trợ thủ đang bật · v0.63.7
+[0:00] máu 38% · LL 96% · Miếu Ông Trường Con (127,587) · quái <400px 3 · người thù 1 · Tự Động bật
+[0:10] máu 51% · LL 100% · Bãi Đá (805,568) · quái <400px 7 · người thù 1 · Tự Động tắt
+[0:20] máu 65% · LL 100% · Chân Núi Tản Viên (503,508) · quái <400px 0 · người thù 1 · Tự Động tắt
+[0:31] máu 77% · LL 100% · Long Uyên Cốc (80,479) · quái <400px 0 · người thù 0 · Tự Động tắt
+[0:41] máu 77% · LL 82% · Long Uyên Cốc (656,491) · quái <400px 0 · người thù 2 · Tự Động bật
+[0:51] máu 89% · LL 100% · Long Uyên Cốc (656,491) · quái <400px 0 · người thù 4 · Tự Động bật
+[1:01] máu 86% · LL 95% · Long Uyên Cốc (656,491) · quái <400px 1 · người thù 6 · Tự Động bật · boss Thần Thú · Xích Long 98% · chưa có số liệu công
+[1:12] máu 21% · LL 100% · Long Uyên Cốc (878,496) · quái <400px 1 · người thù 9 · Tự Động bật · boss Thần Thú · Xích Long 65% · Sát thương 117/1000 ngưỡng · trúng 0.0% · chưa đủ ngưỡng
+[1:16] ⚠ Gục · máu 10 giây trước: 86→86→87→93→67→55→60→49→50→21→11 · việc: - · quái quanh: Thần Thú 53% · người thù quanh: vanhuong 90%
+[1:17] ↺ hồi sinh
+[1:21] ⚠ Gục · máu 10 giây trước: 67→55→60→49→50→21→11→0→35→35→20 · việc: - · quái quanh: Thần Thú 42% · người thù quanh: không
+[1:22] ↺ hồi sinh
+[1:23] máu 35% · LL 100% · Long Uyên Cốc (878,496) · quái <400px 1 · người thù 4 · Tự Động bật · boss Thần Thú · Xích Long 37% · Sát thương 317/1000 ngưỡng · trúng 0.0% · chưa đủ ngưỡng
+[1:33] ⚠ Gục · máu 10 giây trước: 49→50→21→11→0→35→35→20→35→35→35 · việc: - · quái quanh: Thần Thú 18% · người thù quanh: không
+[1:33] máu 0% · LL 97% · Long Uyên Cốc (878,496) · quái <400px 1 · người thù 3 · Tự Động bật · boss Thần Thú · Xích Long 18% · Sát thương 417/1000 ngưỡng · trúng 0.0% · đang gục
+[1:34] ↺ hồi sinh
+[2:02] ⚠ Gục · máu 10 giây trước: 21→11→0→35→35→20→35→35→35→0→35 · việc: - · quái quanh: không · người thù quanh: không
+[2:02] máu 0% · LL 100% · Long Uyên Cốc (878,496) · quái <400px 0 · người thù 1 · Tự Động bật
+[2:04] ↺ hồi sinh
+[2:20] Kết thúc

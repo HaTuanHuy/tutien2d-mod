@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="utf-8">
+  <title>Security, Cache Cleanup &amp; Stale State Timeout Verification Test</title>
+</head>
+<body>
+  <div id="test-container"></div>
+  <pre id="output">Starting Security, Cache Cleanup &amp; Stale State Timeout tests...
+  [PASS] TTBot available
+  [PASS] TB.dev.cleanCaches function available
+  [PASS] TB.dev.checkStaleStates function available
+--- 1. Testing DOM XSS mitigation in refreshRadar ---
+  [PASS] refreshRadar escapes malicious HTML in boss name
+  [PASS] refreshRadar escapes malicious HTML in hostile player name
+  [PASS] refreshRadar outputs safe fallback when empty
+--- 2. Testing cleanCaches for lootSkip &amp; chatHint ---
+  [PASS] cleanCaches purges expired lootSkip entries
+  [PASS] cleanCaches retains active lootSkip entries
+  [PASS] cleanCaches purges chatHint older than 10 mins
+  [PASS] cleanCaches retains fresh chatHint
+--- 3. Testing checkStaleStates timeout watchdog ---
+[TTBot] Boss: Quá hạn 15 phút (tự hủy trạng thái treo boss Thần Thú Xích Long)
+  [PASS] checkStaleStates auto-destructs hung st.bh (&gt; 15 mins)
+  [PASS] checkStaleStates sets bhSkip after terminating hung boss hunt
+[TTBot] Boss: Quá hạn chờ bốc thăm quà boss → tự hủy trạng thái treo
+  [PASS] checkStaleStates auto-destructs hung st.bh stuck in loot phase (&gt; 35s)
+[TTBot] Biến dị: Quá hạn 12 phút (tự hủy trạng thái treo biến dị thach_quy_biendi)
+  [PASS] checkStaleStates auto-destructs hung st.bd (&gt; 12 mins)
+[TTBot] Xổng chuồng: Quá hạn 15 phút (tự hủy trạng thái treo xổng chuồng Xích Nhãn Ngưu)
+  [PASS] checkStaleStates auto-destructs hung st.xc (&gt; 15 mins)
+  [PASS] checkStaleStates marks event done when timing out st.xc
+[TTBot] Thương Đội: Quá hạn 12 phút (tự hủy trạng thái treo Thương Đội)
+  [PASS] checkStaleStates auto-destructs hung st.td (&gt; 12 mins)
+  [PASS] checkStaleStates marks event done when timing out st.td
+  [PASS] checkStaleStates preserves healthy active st.bh
+----------------------------------------
+ALL TESTS COMPLETED: 19 PASSED, 0 FAILED
+
+SUMMARY: 19 PASSED, 0 FAILED</pre>
+
+  <script>
+    window.testLogs = [];
+    var origLog = console.log, origErr = console.error;
+    console.log = function() {
+      window.testLogs.push(Array.from(arguments).join(' '));
+      origLog.apply(console, arguments);
+    };
+    console.error = function() {
+      window.testLogs.push('[ERR] ' + Array.from(arguments).join(' '));
+      origErr.apply(console, arguments);
+    };
+
+    // Mock minimal PNTT environment
+    window.PNTT = {
+      CONFIG: {
+        STORAGE_KEY: 'pntt_char',
+        PROGRESS_KEY: 'pntt_progress',
+        PLAYER: { HITBOX_W: 24, HITBOX_H: 32, SPEED: 160, RUN_MULT: 1.5 },
+        TILE: 32
+      },
+      Utils: { store: { get: function() { return {}; }, set: function() {}, del: function() {} } },
+      Game: { scene: null, time: 100 },
+      SceneWorld: {
+        player: { x: 100, y: 100, hp: 1000, hpMax: 1000, mp: 500, mpMax: 500, state: 'idle', downed: false, path: [], setPath: function(p){ this.path = p; } },
+        map: {
+          id: 'thung_lung',
+          data: { id: 'thung_lung', portals: [] },
+          props: [],
+          portals: [],
+          lineClear: function() { return true; },
+          isBlocked: function() { return false; }
+        },
+        enemies: [],
+        drops: [],
+        players: [],
+        showHitFx: function() {},
+        onServerLoot: function() {},
+        onServerLootGone: function() {}
+      },
+      Input: { run: false, setRun: function() {}, pressAutoToggle: function() {}, hasManualMove: function() { return false; } },
+      Skills: { autoRotation: function() { return []; }, pickAuto: function() { return null; } },
+      Player: { castSpell: function() { return true; }, attack: function() { return true; }, stand: function() {} },
+      Chat: { line: function() {}, pushWorldSay: function() {}, pushSay: function() {} },
+      Loot: { PICK_R: 40, OWNER_SECS: 45, canPick: function(r, self, age) { return true; } },
+      Inventory: { canFit: function() { return true; }, count: function() { return 0; } },
+      KhuUI: { khu: 1, soKhu: 5, onList: function() {}, setMap: function() {} },
+      ENEMY_DEFS: {
+        than_thu_xich_long: { name: 'Thần Thú Xích Long', isBoss: true },
+        song_duc_ma_bao: { name: 'Song Dực Ma Báo', isBoss: true }
+      },
+      Gateway: {
+        PROTOCOL: 20,
+        socket: null,
+        connected: false,
+        selfId: 'hero_123',
+        mapId: 'thung_lung',
+        cmdHistory: [],
+        cmd: function(cmd, args, cb) {
+          this.cmdHistory.push({ cmd: cmd, args: args });
+          if (cb) cb({ ok: true });
+        }
+      }
+    };
+    window.PNTT.Game.scene = window.PNTT.SceneWorld;
+  </script>
+
+  <!-- Load the userscript -->
+  <script src="file:///D:/Tutien2d/tutien2d.com/tutien2d-helper.user.js"></script>
+
+  <script>
+    function runSecurityTests() {
+      var passed = 0, failed = 0;
+      function test(name, cond, extra) {
+        if (cond) {
+          passed++;
+          console.log('  [PASS] ' + name);
+        } else {
+          failed++;
+          console.error('  [FAIL] ' + name + (extra ? ': ' + extra : ''));
+        }
+      }
+
+      console.log('Starting Security, Cache Cleanup & Stale State Timeout tests...');
+
+      try {
+        var TB = window.TTBot;
+        test('TTBot available', TB != null);
+        test('TB.dev.cleanCaches function available', typeof TB.dev.cleanCaches === 'function');
+        test('TB.dev.checkStaleStates function available', typeof TB.dev.checkStaleStates === 'function');
+
+        var P = window.PNTT;
+        var SW = P.SceneWorld;
+        var g = TB.game();
+
+        // ==========================================
+        // 1. DOM XSS VULNERABILITY FIX TESTS
+        // ==========================================
+        console.log('--- 1. Testing DOM XSS mitigation in refreshRadar ---');
+        var xssPayload = '<img src=x onerror=alert(1)>';
+        var mockBoss = {
+          id: 9999,
+          type: 'malicious_boss',
+          hp: 5000,
+          hpMax: 10000,
+          x: 120,
+          y: 120,
+          dead: false,
+          def: { name: 'Quái Độc ' + xssPayload, isBoss: true }
+        };
+        SW.enemies = [mockBoss];
+
+        // Evaluate refreshRadar in userscript scope
+        TB.dev.eval('refreshRadar(game())');
+        var radarHtml = TB.dev.eval('ui.radarInfo.innerHTML');
+
+        test('refreshRadar escapes malicious HTML in boss name',
+          radarHtml.indexOf('<img') === -1 && radarHtml.indexOf('&lt;img src=x onerror=alert(1)&gt;') >= 0,
+          'radarHtml was: ' + radarHtml);
+
+        // Test hostile player name XSS
+        SW.enemies = [];
+        var mockPlayer = {
+          id: 'bad_actor',
+          name: '<script>alert("hacked")<' + '/script>',
+          x: 150,
+          y: 150,
+          doSat: true
+        };
+        P.Gateway.remotes = { bad_actor: mockPlayer };
+        P.Targeting = { thuDich: function() { return true; } };
+        TB.dev.eval('refreshRadar(game())');
+        radarHtml = TB.dev.eval('ui.radarInfo.innerHTML');
+
+        test('refreshRadar escapes malicious HTML in hostile player name',
+          radarHtml.indexOf('<script>') === -1 && radarHtml.indexOf('&lt;script&gt;') >= 0,
+          'radarHtml was: ' + radarHtml);
+
+        // Test fallback when empty
+        SW.enemies = [];
+        SW.players = [];
+        P.Gateway.remotes = {};
+        TB.dev.eval('st.bossList = null; cfg.bossRadar = false;');
+        TB.dev.eval('refreshRadar(game())');
+        radarHtml = TB.dev.eval('ui.radarInfo.innerHTML');
+        test('refreshRadar outputs safe fallback when empty', radarHtml === 'Không có boss / kẻ thù gần');
+
+        // ==========================================
+        // 2. PERIODIC CACHE CLEANUP TESTS
+        // ==========================================
+        console.log('--- 2. Testing cleanCaches for lootSkip & chatHint ---');
+        var tNow = TB.dev.eval('now()');
+        TB.dev.eval('lootSkip["drop_expired_1"] = ' + (tNow - 5000) + ';');
+        TB.dev.eval('lootSkip["drop_expired_2"] = ' + (tNow - 100) + ';');
+        TB.dev.eval('lootSkip["drop_active_1"] = ' + (tNow + 15000) + ';');
+
+        TB.dev.eval('chatHint["than_thu_xich_long"] = { khu: 3, at: ' + (tNow - 11 * 60000) + ', dead: false };');
+        TB.dev.eval('chatHint["song_duc_ma_bao"] = { khu: 1, at: ' + (tNow - 2 * 60000) + ', dead: false };');
+
+        // Execute cache cleanup
+        TB.dev.cleanCaches(true);
+
+        var hasExp1 = TB.dev.eval('lootSkip.hasOwnProperty("drop_expired_1")');
+        var hasExp2 = TB.dev.eval('lootSkip.hasOwnProperty("drop_expired_2")');
+        var hasAct1 = TB.dev.eval('lootSkip.hasOwnProperty("drop_active_1")');
+        test('cleanCaches purges expired lootSkip entries', !hasExp1 && !hasExp2);
+        test('cleanCaches retains active lootSkip entries', hasAct1);
+
+        var hasOldHint = TB.dev.eval('chatHint.hasOwnProperty("than_thu_xich_long")');
+        var hasFreshHint = TB.dev.eval('chatHint.hasOwnProperty("song_duc_ma_bao")');
+        test('cleanCaches purges chatHint older than 10 mins', !hasOldHint);
+        test('cleanCaches retains fresh chatHint', hasFreshHint);
+
+        // ==========================================
+        // 3. STALE STATE TIMEOUT WATCHDOG TESTS
+        // ==========================================
+        console.log('--- 3. Testing checkStaleStates timeout watchdog ---');
+
+        // Test st.bh stale timeout (exceeding 15 mins)
+        TB.st.bh = {
+          b: { type: 'than_thu_xich_long', spawn: 'boss_xl', map: 'thung_lung' },
+          at: tNow - (16 * 60000),
+          phase: 'hunt'
+        };
+        TB.dev.checkStaleStates(g, true);
+        test('checkStaleStates auto-destructs hung st.bh (> 15 mins)', TB.st.bh == null);
+        var skipXl = TB.dev.eval('bhSkip["than_thu_xich_long"]');
+        test('checkStaleStates sets bhSkip after terminating hung boss hunt', skipXl > tNow);
+
+        // Test st.bh loot phase stuck timeout (exceeding BH_LOOT_MS + 10s = 35s)
+        TB.st.bh = {
+          b: { type: 'song_duc_ma_bao', spawn: 'boss_mb', map: 'hoang_sa' },
+          at: tNow - (2 * 60000),
+          phase: 'loot',
+          killAt: tNow - 40000
+        };
+        TB.dev.checkStaleStates(g, true);
+        test('checkStaleStates auto-destructs hung st.bh stuck in loot phase (> 35s)', TB.st.bh == null);
+
+        // Test st.bd stale timeout (exceeding 12 mins)
+        TB.st.bd = {
+          type: 'thach_quy_biendi',
+          map: 'thung_lung',
+          at: tNow - (13 * 60000)
+        };
+        TB.dev.checkStaleStates(g, true);
+        test('checkStaleStates auto-destructs hung st.bd (> 12 mins)', TB.st.bd == null);
+
+        // Test st.xc stale timeout (exceeding 15 mins)
+        var xcEv = { map: 'thung_lung', khu: 1, what: 'Xích Nhãn Ngưu', type: 'xich_nhan_nguu', done: false };
+        TB.st.xc = {
+          ev: xcEv,
+          map: 'thung_lung',
+          at: tNow - (16 * 60000)
+        };
+        TB.dev.checkStaleStates(g, true);
+        test('checkStaleStates auto-destructs hung st.xc (> 15 mins)', TB.st.xc == null);
+        test('checkStaleStates marks event done when timing out st.xc', xcEv.done === true);
+
+        // Test st.td stale timeout (exceeding 12 mins)
+        var tdEv = { map: 'lang_tuy_tuyet', done: false };
+        TB.st.td = {
+          ev: tdEv,
+          map: 'lang_tuy_tuyet',
+          at: tNow - (13 * 60000)
+        };
+        TB.dev.checkStaleStates(g, true);
+        test('checkStaleStates auto-destructs hung st.td (> 12 mins)', TB.st.td == null);
+        test('checkStaleStates marks event done when timing out st.td', tdEv.done === true);
+
+        // Test active non-stale state is NOT destroyed
+        TB.st.bh = {
+          b: { type: 'than_thu_xich_long', spawn: 'boss_xl', map: 'thung_lung' },
+          at: tNow - (2 * 60000), // only 2 mins
+          phase: 'hunt'
+        };
+        TB.dev.checkStaleStates(g, true);
+        test('checkStaleStates preserves healthy active st.bh', TB.st.bh != null);
+        TB.st.bh = null;
+
+      } catch (err) {
+        test('Unexpected exception during tests', false, err.stack || err.message);
+      }
+
+      console.log('----------------------------------------');
+      console.log('ALL TESTS COMPLETED: ' + passed + ' PASSED, ' + failed + ' FAILED');
+      document.getElementById('output').textContent = window.testLogs.join('\n') + '\n\nSUMMARY: ' + passed + ' PASSED, ' + failed + ' FAILED';
+    }
+
+    function start() {
+      setTimeout(runSecurityTests, 500);
+    }
+    if (document.readyState === 'complete') {
+      start();
+    } else {
+      window.addEventListener('load', start);
+    }
+  </script>
+
+
+<div id="ttbot-host" style="position: fixed; z-index: 99999; top: 8px; right: 8px;"></div></body></html>

@@ -1,0 +1,103 @@
+Cướp tiêu · memooo · trợ thủ v0.63.7 · bắt đầu 13:16:33 4/11/2026
+===== TÓM TẮT =====
+🚨 Cướp tiêu · memooo · 8:15 · gục 4 lần
+🎁 Thu được: Linh Thạch ×19
+🔴 Gục · máu 10 giây trước: 100→100→100→100→100→100→100→70→61→42→12 · việc: cướp Tiêu Kỳ Đỏ · 1715/2016 · còn 2 lượt cướp · quái quanh: không · người thù quanh: enlzo 100%, vuongli 50%, hanglap3 100%, nammini 100%, caclon 80%, buinam0510 100%
+🔴 Gục · máu 10 giây trước: 52→47→49→51→52→54→25→26→5→6→7 · việc: cướp Tiêu Kỳ Đỏ · 918/2016 · còn 2 lượt cướp · quái quanh: không · người thù quanh: laphong15 80%, nguyetda 100%
+🔴 Gục · máu 10 giây trước: 6→7→0→0→35→36→37→41→42→40→10 · việc: cướp Tiêu Kỳ Đỏ · 665/2016 · còn 2 lượt cướp · quái quanh: Thạch Ma 99% · người thù quanh: enlzo 50%, lytiende 85%, dieptrithu04 100%
+🔴 Gục · máu 10 giây trước: 66→67→69→70→72→73→75→35→34→33→34 · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016 · quái quanh: không · người thù quanh: thuytruc 65%
+🟡 Máu 28% mà vẫn tiến về phía địch / trụ địch (còn 283px) · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+📜 Diễn biến cuối:
+[2:03] → xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[3:32] ⚠ Gục · máu 10 giây trước: 66→67→69→70→72→73→75→35→34→33→34 · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016 · quái quanh: không · người thù quanh: thuytruc 65%
+[3:36] ↺ hồi sinh
+[3:45] ⚠ Máu 28% mà vẫn tiến về phía địch / trụ địch (còn 283px) · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[8:09] → ra Bãi Đá camp
+[8:11] → đứng chờ 50% đường xe ở Bãi Đá (chỗ đã chọn · còn ~70s đường xe, 1 người cần ~219s → có thể không kịp) · 1 người cùng đánh · Bãi Đá khu 1 · còn 2 lượt cướp
+[8:13] → ra Bãi Đá camp
+[8:15] Kết thúc (chuyển sang Thương Đội (săn & tin Thiên Đạo))
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Cướp tiêu · memooo · trợ thủ đang bật · v0.63.7
+[0:00] → bám theo nhóm trưởng mewmew tuần đường xe · 2 người cùng đánh · Bãi Đá khu 1 · còn 2 lượt cướp · Phải cắm cờ khác đỏ mới cướp được tiêu.
+[0:00] máu 100% · LL 100% · Bãi Đá (112,752) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: bám theo nhóm trưởng mewmew tuần đường xe · 2 người cùng đánh · Bãi Đá khu 1 · còn 2 lượt cướp · Phải cắm cờ khác đỏ mới cướp được tiêu.
+[0:00] → bám theo nhóm trưởng mewmew tuần đường xe · 2 người cùng đánh · Bãi Đá khu 1 · còn 2 lượt cướp
+[0:10] máu 100% · LL 100% · Bãi Đá (160,838) · quái <400px 0 · người thù 7 · Tự Động tắt · việc: bám theo nhóm trưởng mewmew tuần đường xe · 2 người cùng đánh · Bãi Đá khu 1 · còn 2 lượt cướp
+[0:17] → cướp Tiêu Kỳ Đỏ · 2016/2016 · còn 2 lượt cướp
+[0:20] máu 100% · LL 83% · Bãi Đá (138,859) · quái <400px 0 · người thù 6 · Tự Động tắt · việc: cướp Tiêu Kỳ Đỏ · 1950/2016 · còn 2 lượt cướp
+[0:30] máu 100% · LL 71% · Bãi Đá (533,613) · quái <400px 1 · người thù 8 · Tự Động tắt · việc: cướp Tiêu Kỳ Đỏ · 1641/2016 · còn 2 lượt cướp
+[0:37] → xe đang bảo hộ → hạ người kéo enlzo cho xe đứng yên · 2016/2016
+[0:38] → xe đang bảo hộ → hạ người kéo laotobode cho xe đứng yên · 2016/2016
+[0:39] → xe đang bảo hộ → hạ người kéo delac cho xe đứng yên · 1985/2016
+[0:40] máu 100% · LL 61% · Bãi Đá (470,715) · quái <400px 0 · người thù 7 · Tự Động bật · đánh Tiêu Xa Đỏ 97% · việc: xe đang bảo hộ → hạ người kéo delac cho xe đứng yên · 1954/2016
+[0:41] → xe đang bảo hộ → hạ người kéo enlzo cho xe đứng yên · 1954/2016
+[0:42] → xe đang bảo hộ → hạ người kéo delac cho xe đứng yên · 1894/2016
+[0:43] → xe đang bảo hộ → hạ người kéo vuongli cho xe đứng yên · 1844/2016
+[0:44] → xe đang bảo hộ → hạ người kéo enlzo cho xe đứng yên · 1807/2016
+[0:45] → xe đang bảo hộ → hạ người kéo hanglap3 cho xe đứng yên · 1807/2016
+[0:46] → xe đang bảo hộ → hạ người kéo enlzo cho xe đứng yên · 1794/2016
+[0:47] → cướp Tiêu Kỳ Đỏ · 1746/2016 · còn 2 lượt cướp
+[0:48] ⚠ Gục · máu 10 giây trước: 100→100→100→100→100→100→100→70→61→42→12 · việc: cướp Tiêu Kỳ Đỏ · 1715/2016 · còn 2 lượt cướp · quái quanh: không · người thù quanh: enlzo 100%, vuongli 50%, hanglap3 100%, nammini 100%, caclon 80%, buinam0510 100%
+[0:50] máu 0% · LL 53% · Bãi Đá (527,608) · quái <400px 0 · người thù 8 · Tự Động tắt · việc: cướp Tiêu Kỳ Đỏ · 1715/2016 · còn 2 lượt cướp
+[0:52] ↺ hồi sinh
+[0:52] → Tiêu Kỳ Đỏ qua cổng sang Mỏ Linh Thạch → đuổi theo
+[0:56] → cướp Tiêu Kỳ Đỏ · 1641/2016 · còn 2 lượt cướp
+[1:00] máu 45% · LL 41% · Mỏ Linh Thạch (172,402) · quái <400px 1 · người thù 9 · Tự Động tắt · việc: cướp Tiêu Kỳ Đỏ · 1579/2016 · còn 2 lượt cướp
+[1:10] máu 47% · LL 27% · Mỏ Linh Thạch (407,212) · quái <400px 0 · người thù 9 · Tự Động tắt · việc: cướp Tiêu Kỳ Đỏ · 1233/2016 · còn 2 lượt cướp
+[1:20] máu 7% · LL 8% · Mỏ Linh Thạch (543,304) · quái <400px 2 · người thù 7 · Tự Động tắt · việc: cướp Tiêu Kỳ Đỏ · 918/2016 · còn 2 lượt cướp
+[1:21] ⚠ Gục · máu 10 giây trước: 52→47→49→51→52→54→25→26→5→6→7 · việc: cướp Tiêu Kỳ Đỏ · 918/2016 · còn 2 lượt cướp · quái quanh: không · người thù quanh: laphong15 80%, nguyetda 100%
+[1:23] ↺ hồi sinh
+[1:30] ⚠ Gục · máu 10 giây trước: 6→7→0→0→35→36→37→41→42→40→10 · việc: cướp Tiêu Kỳ Đỏ · 665/2016 · còn 2 lượt cướp · quái quanh: Thạch Ma 99% · người thù quanh: enlzo 50%, lytiende 85%, dieptrithu04 100%
+[1:30] máu 0% · LL 2% · Mỏ Linh Thạch (656,304) · quái <400px 2 · người thù 5 · Tự Động tắt · đánh Tiêu Xa Đỏ 31% · việc: cướp Tiêu Kỳ Đỏ · 665/2016 · còn 2 lượt cướp
+[1:34] ↺ hồi sinh
+[1:41] máu 43% · LL 2% · Mỏ Linh Thạch (1037,461) · quái <400px 4 · người thù 2 · Tự Động tắt · đánh Tiêu Xa Đỏ 18% · việc: cướp Tiêu Kỳ Đỏ · 358/2016 · còn 2 lượt cướp
+[1:41] → Tiêu Kỳ Đỏ qua cổng sang Thung Lũng → đuổi theo
+[1:45] → cướp Tiêu Kỳ Đỏ · 339/2016 · còn 2 lượt cướp
+[1:51] máu 55% · LL 5% · Thung Lũng (112,895) · quái <400px 0 · người thù 4 · Tự Động tắt · đánh Tiêu Xa Đỏ 6% · việc: cướp Tiêu Kỳ Đỏ · 124/2016 · còn 2 lượt cướp
+[1:55] → hộ tống mewmew kéo xe
+[1:59] → xe đang bảo hộ → hạ người kéo mewmew cho xe đứng yên · 2016/2016
+[2:01] máu 72% · LL 3% · Thung Lũng (378,804) · quái <400px 0 · người thù 6 · Tự Động bật · đánh Tiêu Xa Đỏ 100% · việc: xe đang bảo hộ → hạ người kéo mewmew cho xe đứng yên · 2016/2016
+[2:03] → xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[2:11] máu 76% · LL 14% · Thung Lũng (114,907) · quái <400px 0 · người thù 4 · Tự Động tắt · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[2:21] máu 88% · LL 34% · Mỏ Linh Thạch (300,378) · quái <400px 0 · người thù 6 · Tự Động tắt · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[2:31] máu 100% · LL 53% · Bãi Đá (152,817) · quái <400px 1 · người thù 10 · Tự Động tắt · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[2:41] máu 100% · LL 71% · Bãi Đá (152,817) · quái <400px 0 · người thù 6 · Tự Động tắt · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[2:51] máu 100% · LL 90% · Bãi Đá (152,817) · quái <400px 0 · người thù 7 · Tự Động tắt · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[3:01] máu 100% · LL 100% · Bãi Đá (152,817) · quái <400px 0 · người thù 4 · Tự Động tắt · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[3:11] máu 89% · LL 100% · Bãi Đá (152,817) · quái <400px 4 · người thù 6 · Tự Động tắt · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[3:21] máu 67% · LL 82% · Bãi Đá (152,817) · quái <400px 0 · người thù 6 · Tự Động bật · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[3:31] máu 14% · LL 48% · Bãi Đá (118,817) · quái <400px 0 · người thù 2 · Tự Động bật · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[3:32] ⚠ Gục · máu 10 giây trước: 66→67→69→70→72→73→75→35→34→33→34 · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016 · quái quanh: không · người thù quanh: thuytruc 65%
+[3:36] ↺ hồi sinh
+[3:41] máu 46% · LL 36% · Bãi Đá (149,709) · quái <400px 0 · người thù 6 · Tự Động bật · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[3:45] ⚠ Máu 28% mà vẫn tiến về phía địch / trụ địch (còn 283px) · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[3:52] máu 35% · LL 49% · Miếu Ông Trường Con (496,735) · quái <400px 2 · người thù 0 · Tự Động bật · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[4:02] máu 48% · LL 52% · Miếu Ông Trường Con (280,714) · quái <400px 2 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 91% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[4:12] máu 60% · LL 72% · Miếu Ông Trường Con (449,765) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 20% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[4:22] máu 72% · LL 70% · Miếu Ông Trường Con (737,766) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 3% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[4:32] máu 78% · LL 55% · Miếu Ông Trường Con (838,593) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 100% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[4:42] máu 90% · LL 68% · Miếu Ông Trường Con (838,593) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 25% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[4:52] máu 100% · LL 59% · Miếu Ông Trường Con (899,509) · quái <400px 2 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 10% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[5:02] máu 100% · LL 53% · Miếu Ông Trường Con (355,720) · quái <400px 2 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 16% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[5:12] máu 100% · LL 61% · Miếu Ông Trường Con (251,689) · quái <400px 2 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 24% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[5:22] máu 100% · LL 59% · Miếu Ông Trường Con (81,515) · quái <400px 3 · người thù 0 · Tự Động bật · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[5:32] máu 74% · LL 56% · Miếu Ông Trường Con (81,500) · quái <400px 4 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 2% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[5:42] máu 86% · LL 62% · Miếu Ông Trường Con (716,700) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 45% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[5:52] máu 79% · LL 57% · Miếu Ông Trường Con (777,662) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 25% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[6:02] máu 62% · LL 53% · Miếu Ông Trường Con (845,578) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 35% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[6:12] máu 75% · LL 58% · Miếu Ông Trường Con (904,490) · quái <400px 2 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 31% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[6:23] máu 86% · LL 57% · Miếu Ông Trường Con (356,723) · quái <400px 2 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 42% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[6:33] máu 99% · LL 57% · Miếu Ông Trường Con (262,693) · quái <400px 2 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 39% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[6:43] máu 100% · LL 56% · Miếu Ông Trường Con (145,593) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 7% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[6:53] máu 94% · LL 59% · Miếu Ông Trường Con (258,688) · quái <400px 0 · người thù 0 · Tự Động bật · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[7:03] máu 85% · LL 48% · Miếu Ông Trường Con (715,700) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 0% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[7:13] máu 97% · LL 43% · Miếu Ông Trường Con (845,577) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 70% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[7:23] máu 100% · LL 49% · Miếu Ông Trường Con (845,577) · quái <400px 2 · người thù 0 · Tự Động bật · đánh Thạch Quy Đội Bia 10% · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[7:33] máu 100% · LL 63% · Bãi Đá (699,143) · quái <400px 0 · người thù 4 · Tự Động bật · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[7:43] máu 100% · LL 82% · Bãi Đá (303,161) · quái <400px 0 · người thù 0 · Tự Động bật · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[7:53] máu 100% · LL 100% · Bãi Đá (428,139) · quái <400px 0 · người thù 0 · Tự Động bật · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[8:03] máu 100% · LL 100% · Miếu Ông Trường Con (496,720) · quái <400px 1 · người thù 0 · Tự Động bật · việc: xe đang bảo hộ → hạ người kéo anpali18 cho xe đứng yên · 2016/2016
+[8:09] → ra Bãi Đá camp
+[8:11] → đứng chờ 50% đường xe ở Bãi Đá (chỗ đã chọn · còn ~70s đường xe, 1 người cần ~219s → có thể không kịp) · 1 người cùng đánh · Bãi Đá khu 1 · còn 2 lượt cướp
+[8:13] → ra Bãi Đá camp
+[8:13] máu 100% · LL 93% · Miếu Ông Trường Con (441,587) · quái <400px 3 · người thù 0 · Tự Động tắt · việc: ra Bãi Đá camp
+[8:15] Kết thúc (chuyển sang Thương Đội (săn & tin Thiên Đạo))

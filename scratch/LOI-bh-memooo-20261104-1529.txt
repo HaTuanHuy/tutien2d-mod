@@ -1,0 +1,42 @@
+Boss · Linh Hổ Trấn Sơn · memooo · trợ thủ v0.63.8 · bắt đầu 15:29:52 4/11/2026
+===== TÓM TẮT =====
+🚨 Boss · Linh Hổ Trấn Sơn · memooo · 2:53 · gục 3 lần
+🎯 Công boss: Sát thương 7521/2000 ngưỡng · trúng 0.0% · đang gục
+🎁 Thu được: không có gì
+🔴 Gục · máu 10 giây trước: 100→100→100→100→100→100→100→100→100→100→5 · việc: - · quái quanh: Linh Hổ Trấn Sơn 100% · người thù quanh: không
+🔴 Gục · máu 10 giây trước: 100→100→100→100→100→100→100→100→100→100→8 · việc: - · quái quanh: Linh Hổ Trấn Sơn 17% · người thù quanh: không
+🔴 Gục · máu 10 giây trước: 36→37→39→40→41→43→44→45→46→48→49 · việc: - · quái quanh: Linh Hổ Trấn Sơn 6% · người thù quanh: không
+📜 Diễn biến cuối:
+[0:00] Bắt đầu Boss · Linh Hổ Trấn Sơn · memooo · trợ thủ đang bật · v0.63.8
+[0:55] ⚠ Gục · máu 10 giây trước: 100→100→100→100→100→100→100→100→100→100→5 · việc: - · quái quanh: Linh Hổ Trấn Sơn 100% · người thù quanh: không
+[0:56] ↺ hồi sinh
+[1:59] ⚠ Gục · máu 10 giây trước: 100→100→100→100→100→100→100→100→100→100→8 · việc: - · quái quanh: Linh Hổ Trấn Sơn 17% · người thù quanh: không
+[1:59] ↺ hồi sinh
+[2:11] ⚠ Gục · máu 10 giây trước: 36→37→39→40→41→43→44→45→46→48→49 · việc: - · quái quanh: Linh Hổ Trấn Sơn 6% · người thù quanh: không
+[2:11] ↺ hồi sinh
+[2:53] Kết thúc
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Boss · Linh Hổ Trấn Sơn · memooo · trợ thủ đang bật · v0.63.8
+[0:00] máu 90% · LL 100% · Miếu Ông Trường Con (301,688) · quái <400px 0 · người thù 0 · Tự Động tắt
+[0:10] máu 100% · LL 100% · Mỏ Linh Thạch (844,332) · quái <400px 6 · người thù 0 · Tự Động tắt
+[0:20] máu 100% · LL 100% · Thung Lũng (973,304) · quái <400px 0 · người thù 0 · Tự Động bật
+[0:30] máu 100% · LL 100% · Thung Lũng (973,304) · quái <400px 0 · người thù 0 · Tự Động bật
+[0:40] máu 100% · LL 100% · Thung Lũng (973,304) · quái <400px 0 · người thù 0 · Tự Động bật
+[0:50] máu 100% · LL 100% · Thung Lũng (973,304) · quái <400px 0 · người thù 0 · Tự Động bật
+[0:55] ⚠ Gục · máu 10 giây trước: 100→100→100→100→100→100→100→100→100→100→5 · việc: - · quái quanh: Linh Hổ Trấn Sơn 100% · người thù quanh: không
+[0:56] ↺ hồi sinh
+[1:00] máu 42% · LL 95% · Thung Lũng (950,454) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Linh Hổ Trấn Sơn 86% · boss Linh Hổ Trấn Sơn · Yêu Thú Cấp 4 86% · chưa có số liệu công
+[1:10] máu 56% · LL 76% · Thung Lũng (952,439) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Linh Hổ Trấn Sơn 72% · boss Linh Hổ Trấn Sơn · Yêu Thú Cấp 4 72% · Sát thương 1147/2000 ngưỡng · trúng 0.0% · chưa đủ ngưỡng
+[1:20] máu 70% · LL 68% · Thung Lũng (952,439) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Linh Hổ Trấn Sơn 55% · boss Linh Hổ Trấn Sơn · Yêu Thú Cấp 4 55% · Sát thương 2123/2000 ngưỡng · trúng 1.0% · ĐỦ điều kiện nhận đồ
+[1:30] máu 81% · LL 69% · Thung Lũng (952,439) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Linh Hổ Trấn Sơn 45% · boss Linh Hổ Trấn Sơn · Yêu Thú Cấp 4 45% · Sát thương 3175/2000 ngưỡng · trúng 1.0% · ĐỦ điều kiện nhận đồ
+[1:41] máu 94% · LL 49% · Thung Lũng (952,439) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Linh Hổ Trấn Sơn 34% · boss Linh Hổ Trấn Sơn · Yêu Thú Cấp 4 34% · Sát thương 4175/2000 ngưỡng · trúng 0.9% · ĐỦ điều kiện nhận đồ
+[1:51] máu 100% · LL 44% · Thung Lũng (947,321) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Linh Hổ Trấn Sơn 25% · boss Linh Hổ Trấn Sơn · Yêu Thú Cấp 4 25% · Sát thương 5187/2000 ngưỡng · trúng 0.9% · ĐỦ điều kiện nhận đồ
+[1:59] ⚠ Gục · máu 10 giây trước: 100→100→100→100→100→100→100→100→100→100→8 · việc: - · quái quanh: Linh Hổ Trấn Sơn 17% · người thù quanh: không
+[1:59] ↺ hồi sinh
+[2:01] máu 37% · LL 24% · Thung Lũng (944,389) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Linh Hổ Trấn Sơn 16% · boss Linh Hổ Trấn Sơn · Yêu Thú Cấp 4 16% · Sát thương 6389/2000 ngưỡng · trúng 1.1% · ĐỦ điều kiện nhận đồ
+[2:11] máu 49% · LL 13% · Thung Lũng (976,304) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Linh Hổ Trấn Sơn 3% · boss Linh Hổ Trấn Sơn · Yêu Thú Cấp 4 3% · Sát thương 7521/2000 ngưỡng · trúng 0.0% · đang gục
+[2:11] ⚠ Gục · máu 10 giây trước: 36→37→39→40→41→43→44→45→46→48→49 · việc: - · quái quanh: Linh Hổ Trấn Sơn 6% · người thù quanh: không
+[2:11] ↺ hồi sinh
+[2:21] máu 47% · LL 24% · Thung Lũng (976,304) · quái <400px 0 · người thù 0 · Tự Động bật
+[2:31] máu 59% · LL 47% · Thung Lũng (976,304) · quái <400px 0 · người thù 0 · Tự Động bật
+[2:53] Kết thúc

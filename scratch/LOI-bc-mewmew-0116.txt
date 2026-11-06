@@ -1,0 +1,292 @@
+Bí cảnh (Huyết Xích / Yên Lãng) · mewmew · trợ thủ v0.63.3 · bắt đầu 01:16:14 4/11/2026
+===== TÓM TẮT =====
+🚨 Bí cảnh (Huyết Xích / Yên Lãng) · mewmew · 25:25 · gục 5 lần
+🎁 Thu được: Linh Thạch ×132, Cổ Bích Mộc ×17, Trấn Thần Thạch ×14, Huyền Thiết Khoáng ×11, Địa Linh Hóa Quả ×9, Yêu Đan Cấp 2 ×7, Trúc Cơ Thảo ×2, Yêu Cốt Vụn ×2, Hàn Băng Phù ×1, Hư Không Lệnh ×1, Tử Tinh Dưỡng Thần Bội ×1
+🔴 Gục · máu 10 giây trước: 81→65→65→65→69→57→53→30→29→19→10 · việc: đánh Thạch Mạch Vương 32% · còn 12p23s · quái quanh: Thạch Mạch Vương 32% · người thù quanh: không
+🔴 Gục · máu 10 giây trước: 75→75→66→57→47→43→43→46→35→16→8 · việc: đánh U Minh Cự Mãng 62% · còn 10p30s · quái quanh: U Minh Cự Mãng 62% · người thù quanh: không
+🔴 Gục · máu 10 giây trước: 30→20→17→17→17→19→20→11→11→14→11 · việc: đánh U Minh Cự Mãng 21% · còn 9p29s · quái quanh: U Minh Cự Mãng 21%, Xích Tinh Mãng 100%, Xích Tinh Mãng 100%, Xích Tinh Mãng 100% · người thù quanh: không
+🔴 Gục · máu 10 giây trước: 47→47→29→29→22→23→25→25→29→15→6 · việc: đánh U Minh Cự Mãng 53% · còn 10p31s · quái quanh: U Minh Cự Mãng 53% · người thù quanh: không
+🔴 Gục · máu 10 giây trước: 12→11→15→15→15→18→10→2→2→5→5 · việc: đánh U Minh Cự Mãng 12% · còn 10p02s · quái quanh: U Minh Cự Mãng 11% · người thù quanh: không
+📜 Diễn biến cuối:
+[24:12] ↺ hồi sinh
+[24:40] ⚠ Gục · máu 10 giây trước: 12→11→15→15→15→18→10→2→2→5→5 · việc: đánh U Minh Cự Mãng 12% · còn 10p02s · quái quanh: U Minh Cự Mãng 11% · người thù quanh: không
+[24:41] ↺ hồi sinh
+[24:51] → đánh Xích Tinh Mãng 100% · còn 2p00s
+[24:55] → nhặt đồ rơi · còn 1p55s
+[25:01] → dò quái Huyết Xích Cấm Địa · Đầm Lầy (0/4) · còn 1p50s
+[25:09] → hái tài nguyên Huyết Xích Cấm Địa · Đầm Lầy (còn 1 chỗ) · còn 1p41s
+[25:25] Kết thúc
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Bí cảnh (Huyết Xích / Yên Lãng) · mewmew · trợ thủ đang bật · v0.63.3
+[0:00] → mở Huyết Xích (lần 1)
+[0:00] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (592,864) · quái <400px 6 · người thù 0 · Tự Động tắt · việc: mở Huyết Xích (lần 1)
+[0:00] → đánh Xích Tinh Mãng 100% · còn 14p58s
+[0:10] máu 100% · LL 95% · Huyết Xích Cấm Địa · Rừng Mãng Xà (520,696) · quái <400px 5 · người thù 0 · Tự Động bật · việc: đánh Xích Tinh Mãng 100% · còn 14p48s
+[0:20] máu 100% · LL 92% · Huyết Xích Cấm Địa · Rừng Mãng Xà (741,592) · quái <400px 5 · người thù 0 · Tự Động bật · đánh Xích Tinh Mãng 92% · việc: đánh Xích Tinh Mãng 92% · còn 14p38s
+[0:30] máu 100% · LL 90% · Huyết Xích Cấm Địa · Rừng Mãng Xà (864,324) · quái <400px 0 · người thù 0 · Tự Động bật · việc: đánh Xích Tinh Mãng 30% · còn 14p28s
+[0:30] → nhặt đồ rơi · còn 14p28s
+[0:31] → đánh Xích Tinh Mãng 100% · còn 14p27s
+[0:37] → đánh Xích Mãng Vương 88% · còn 14p22s
+[0:40] máu 100% · LL 92% · Huyết Xích Cấm Địa · Rừng Mãng Xà (340,247) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Xích Mãng Vương 84% · việc: đánh Xích Mãng Vương 84% · còn 14p18s
+[0:50] máu 100% · LL 95% · Huyết Xích Cấm Địa · Rừng Mãng Xà (304,304) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Xích Mãng Vương 68% · việc: đánh Xích Mãng Vương 71% · còn 14p09s
+[1:01] máu 95% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (304,368) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Xích Mãng Vương 53% · việc: đánh Xích Mãng Vương 54% · còn 13p58s
+[1:11] máu 78% · LL 94% · Huyết Xích Cấm Địa · Rừng Mãng Xà (304,368) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Xích Mãng Vương 34% · việc: đánh Xích Mãng Vương 35% · còn 13p48s
+[1:22] máu 82% · LL 91% · Huyết Xích Cấm Địa · Rừng Mãng Xà (304,399) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Xích Mãng Vương 15% · việc: đánh Xích Mãng Vương 15% · còn 13p37s
+[1:28] → nhặt đồ rơi · còn 13p30s
+[1:32] máu 94% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (525,329) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: nhặt đồ rơi · còn 13p26s
+[1:37] → dò quái Huyết Xích Cấm Địa · Rừng Mãng Xà (0/9) · còn 13p21s
+[1:42] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (361,545) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: dò quái Huyết Xích Cấm Địa · Rừng Mãng Xà (5/9) · còn 13p16s
+[1:47] → hái tài nguyên Huyết Xích Cấm Địa · Rừng Mãng Xà (còn 4 chỗ) · còn 13p11s
+[1:52] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (980,173) · quái <400px 0 · người thù 0 · Tự Động bật · việc: hái tài nguyên Huyết Xích Cấm Địa · Rừng Mãng Xà (còn 1 chỗ) · còn 13p06s
+[2:02] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (269,113) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Rừng Mãng Xà (còn 1 chỗ) · còn 12p56s
+[2:03] → sang Huyết Xích Cấm Địa · Lòng Đất · còn 12p55s
+[2:07] → đánh Thạch Yêu 100% · còn 12p51s
+[2:13] máu 100% · LL 96% · Huyết Xích Cấm Địa · Lòng Đất (619,629) · quái <400px 2 · người thù 0 · Tự Động bật · việc: đánh Thạch Yêu 100% · còn 12p46s
+[2:14] → đánh Thạch Mạch Vương 100% · còn 12p45s
+[2:23] máu 37% · LL 94% · Huyết Xích Cấm Địa · Lòng Đất (619,629) · quái <400px 1 · người thù 0 · Tự Động bật · việc: đánh Thạch Mạch Vương 91% · còn 12p36s
+[2:27] → đánh Thạch Mạch Vương 84% · còn 12p31s · chờ vòng chiêu nổ
+[2:28] → đánh Thạch Mạch Vương 84% · còn 12p30s
+[2:33] máu 48% · LL 95% · Huyết Xích Cấm Địa · Lòng Đất (652,541) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 75% · việc: đánh Thạch Mạch Vương 75% · còn 12p25s
+[2:44] máu 70% · LL 92% · Huyết Xích Cấm Địa · Lòng Đất (656,655) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 55% · việc: đánh Thạch Mạch Vương 55% · còn 12p15s
+[2:54] máu 91% · LL 90% · Huyết Xích Cấm Địa · Lòng Đất (656,688) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 42% · việc: đánh Thạch Mạch Vương 42% · còn 12p05s
+[3:04] máu 52% · LL 98% · Huyết Xích Cấm Địa · Lòng Đất (656,750) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 24% · việc: đánh Thạch Mạch Vương 26% · còn 11p54s
+[3:15] máu 56% · LL 94% · Huyết Xích Cấm Địa · Lòng Đất (656,767) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 10% · việc: đánh Thạch Mạch Vương 13% · còn 11p44s
+[3:24] → nhặt đồ rơi · còn 11p35s
+[3:24] → dò quái Huyết Xích Cấm Địa · Lòng Đất (0/6) · còn 11p35s
+[3:24] → đánh Thạch Yêu 100% · còn 11p34s
+[3:25] máu 38% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (492,585) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Thạch Yêu 100% · việc: đánh Thạch Yêu 100% · còn 11p34s
+[3:26] → nhặt đồ rơi · còn 11p32s
+[3:29] → dò quái Huyết Xích Cấm Địa · Lòng Đất (2/6) · còn 11p30s
+[3:34] → hái tài nguyên Huyết Xích Cấm Địa · Lòng Đất (còn 11 chỗ) · còn 11p24s
+[3:35] máu 53% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (925,327) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Lòng Đất (còn 1 chỗ) · còn 11p24s
+[3:45] máu 63% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (1100,140) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Lòng Đất (còn 1 chỗ) · còn 11p14s
+[3:55] máu 64% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (899,120) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Lòng Đất (còn 1 chỗ) · còn 11p04s
+[4:05] máu 89% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (361,359) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Lòng Đất (còn 1 chỗ) · còn 10p54s
+[4:15] máu 100% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (160,80) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Lòng Đất (còn 1 chỗ) · còn 10p44s
+[4:20] → sang Huyết Xích Cấm Địa · Đầm Lầy · còn 10p39s
+[4:26] máu 100% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (144,479) · quái <400px 3 · người thù 0 · Tự Động tắt · việc: sang Huyết Xích Cấm Địa · Đầm Lầy · còn 10p34s
+[4:26] → đánh Xích Tinh Mãng 100% · còn 10p32s
+[4:28] → đánh U Minh Cự Mãng 100% · còn 10p31s
+[4:36] máu 85% · LL 98% · Huyết Xích Cấm Địa · Đầm Lầy (592,593) · quái <400px 6 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 97% · việc: đánh U Minh Cự Mãng 97% · còn 10p23s
+[4:47] máu 14% · LL 94% · Huyết Xích Cấm Địa · Đầm Lầy (592,606) · quái <400px 3 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 92% · việc: đánh U Minh Cự Mãng 93% · còn 10p12s
+[4:57] máu 28% · LL 91% · Huyết Xích Cấm Địa · Đầm Lầy (592,593) · quái <400px 2 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 82% · việc: đánh U Minh Cự Mãng 83% · còn 10p02s
+[5:07] máu 35% · LL 95% · Huyết Xích Cấm Địa · Đầm Lầy (545,662) · quái <400px 1 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 69% · việc: đánh U Minh Cự Mãng 70% · còn 9p52s
+[5:17] máu 55% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (530,711) · quái <400px 1 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 59% · việc: đánh U Minh Cự Mãng 60% · còn 9p42s
+[5:28] máu 53% · LL 96% · Huyết Xích Cấm Địa · Đầm Lầy (536,741) · quái <400px 1 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 48% · việc: đánh U Minh Cự Mãng 48% · còn 9p31s
+[5:38] máu 55% · LL 96% · Huyết Xích Cấm Địa · Đầm Lầy (536,741) · quái <400px 1 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 35% · việc: đánh U Minh Cự Mãng 36% · còn 9p20s
+[5:49] máu 54% · LL 95% · Huyết Xích Cấm Địa · Đầm Lầy (530,763) · quái <400px 1 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 27% · việc: đánh U Minh Cự Mãng 27% · còn 9p10s
+[5:59] máu 69% · LL 98% · Huyết Xích Cấm Địa · Đầm Lầy (496,720) · quái <400px 1 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 12% · việc: đánh U Minh Cự Mãng 13% · còn 8p59s
+[6:09] máu 71% · LL 97% · Huyết Xích Cấm Địa · Đầm Lầy (496,720) · quái <400px 1 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 2% · việc: đánh U Minh Cự Mãng 5% · còn 8p49s
+[6:12] → nhặt đồ rơi · còn 2p00s
+[6:12] → dò quái Huyết Xích Cấm Địa · Đầm Lầy (0/4) · còn 2p00s
+[6:13] → đánh Xích Tinh Mãng 100% · còn 1p58s
+[6:16] → nhặt đồ rơi · còn 1p55s
+[6:19] máu 84% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (529,295) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: nhặt đồ rơi · còn 1p52s
+[6:22] → dò quái Huyết Xích Cấm Địa · Đầm Lầy (1/4) · còn 1p50s
+[6:30] → chờ vào Huyết Xích
+[6:30] máu 96% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (592,864) · quái <400px 5 · người thù 0 · Tự Động tắt · việc: chờ vào Huyết Xích
+[6:31] → đánh Xích Tinh Mãng 100% · còn 14p59s
+[6:41] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (479,667) · quái <400px 7 · người thù 0 · Tự Động bật · đánh Xích Tinh Mãng 52% · việc: đánh Xích Tinh Mãng 52% · còn 14p49s
+[6:47] → đánh Xích Mãng Vương 93% · còn 14p42s
+[6:51] máu 100% · LL 99% · Huyết Xích Cấm Địa · Rừng Mãng Xà (668,574) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Xích Mãng Vương 76% · việc: đánh Xích Mãng Vương 77% · còn 14p39s
+[7:01] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (656,656) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Xích Mãng Vương 43% · việc: đánh Xích Mãng Vương 47% · còn 14p28s
+[7:11] máu 100% · LL 81% · Huyết Xích Cấm Địa · Rừng Mãng Xà (656,656) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Xích Mãng Vương 4% · việc: đánh Xích Mãng Vương 4% · còn 14p18s
+[7:12] → nhặt đồ rơi · còn 14p17s
+[7:12] → đánh Xích Tinh Mãng 100% · còn 14p17s
+[7:19] → nhặt đồ rơi · còn 14p10s
+[7:21] → đánh Xích Tinh Mãng 100% · còn 14p09s
+[7:21] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (730,165) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Xích Tinh Mãng 100% · việc: đánh Xích Tinh Mãng 100% · còn 14p08s
+[7:30] → nhặt đồ rơi · còn 14p00s
+[7:31] máu 100% · LL 98% · Huyết Xích Cấm Địa · Rừng Mãng Xà (254,132) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: nhặt đồ rơi · còn 13p58s
+[7:39] → dò quái Huyết Xích Cấm Địa · Rừng Mãng Xà (0/9) · còn 13p51s
+[7:41] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (290,403) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: dò quái Huyết Xích Cấm Địa · Rừng Mãng Xà (3/9) · còn 13p48s
+[7:48] → hái tài nguyên Huyết Xích Cấm Địa · Rừng Mãng Xà (còn 2 chỗ) · còn 13p41s
+[7:51] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (1006,601) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Rừng Mãng Xà (còn 1 chỗ) · còn 13p38s
+[7:58] → sang Huyết Xích Cấm Địa · Lòng Đất · còn 13p31s
+[8:03] máu 100% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (656,831) · quái <400px 6 · người thù 0 · Tự Động tắt · việc: sang Huyết Xích Cấm Địa · Lòng Đất · còn 13p28s
+[8:03] → đánh Thạch Yêu 100% · còn 13p27s
+[8:08] → đánh Thạch Giáp Yêu 100% · còn 13p22s
+[8:10] → đánh Thạch Yêu 100% · còn 13p19s
+[8:12] → đánh Thạch Mạch Vương 100% · còn 13p17s
+[8:13] máu 100% · LL 93% · Huyết Xích Cấm Địa · Lòng Đất (681,574) · quái <400px 2 · người thù 0 · Tự Động tắt · việc: đánh Thạch Mạch Vương 100% · còn 13p17s
+[8:23] máu 100% · LL 92% · Huyết Xích Cấm Địa · Lòng Đất (832,497) · quái <400px 4 · người thù 0 · Tự Động tắt · đánh Thạch Mạch Vương 100% · việc: đánh Thạch Mạch Vương 100% · còn 13p07s
+[8:29] → đánh Thạch Mạch Vương 81% · còn 13p00s · chờ vòng chiêu nổ
+[8:31] → đánh Thạch Mạch Vương 79% · còn 12p58s
+[8:33] máu 100% · LL 93% · Huyết Xích Cấm Địa · Lòng Đất (743,473) · quái <400px 4 · người thù 0 · Tự Động tắt · đánh Thạch Mạch Vương 75% · việc: đánh Thạch Mạch Vương 78% · còn 12p56s
+[8:44] máu 69% · LL 93% · Huyết Xích Cấm Địa · Lòng Đất (688,592) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 66% · việc: đánh Thạch Mạch Vương 70% · còn 12p48s
+[8:54] máu 77% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (688,592) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 48% · việc: đánh Thạch Mạch Vương 48% · còn 12p36s
+[9:04] máu 30% · LL 97% · Huyết Xích Cấm Địa · Lòng Đất (688,592) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 34% · việc: đánh Thạch Mạch Vương 34% · còn 12p26s
+[9:06] ⚠ Gục · máu 10 giây trước: 81→65→65→65→69→57→53→30→29→19→10 · việc: đánh Thạch Mạch Vương 32% · còn 12p23s · quái quanh: Thạch Mạch Vương 32% · người thù quanh: không
+[9:07] ↺ hồi sinh
+[9:14] máu 39% · LL 96% · Huyết Xích Cấm Địa · Lòng Đất (686,601) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 20% · việc: đánh Thạch Mạch Vương 21% · còn 12p15s
+[9:25] máu 59% · LL 94% · Huyết Xích Cấm Địa · Lòng Đất (686,601) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 5% · việc: đánh Thạch Mạch Vương 6% · còn 12p05s
+[9:27] → nhặt đồ rơi · còn 12p02s
+[9:29] → đánh Thạch Yêu 100% · còn 12p00s
+[9:31] → nhặt đồ rơi · còn 11p59s
+[9:35] máu 82% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (914,358) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: nhặt đồ rơi · còn 11p54s
+[9:42] → dò quái Huyết Xích Cấm Địa · Lòng Đất (2/6) · còn 11p47s
+[9:45] máu 94% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (476,396) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: dò quái Huyết Xích Cấm Địa · Lòng Đất (5/6) · còn 11p44s
+[9:46] → hái tài nguyên Huyết Xích Cấm Địa · Lòng Đất (còn 7 chỗ) · còn 11p44s
+[9:55] máu 100% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (392,248) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Lòng Đất (còn 1 chỗ) · còn 11p34s
+[10:05] máu 100% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (165,80) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Lòng Đất (còn 1 chỗ) · còn 11p24s
+[10:15] máu 100% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (1032,91) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Lòng Đất (còn 1 chỗ) · còn 11p14s
+[10:21] → sang Huyết Xích Cấm Địa · Đầm Lầy · còn 11p08s
+[10:25] → đánh Xích Tinh Mãng 100% · còn 11p04s
+[10:25] máu 100% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (333,486) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Xích Tinh Mãng 100% · việc: đánh Xích Tinh Mãng 8% · còn 11p04s
+[10:27] → đánh U Minh Cự Mãng 96% · còn 11p03s
+[10:35] → đánh U Minh Cự Mãng 89% · còn 10p55s · chờ vòng chiêu nổ
+[10:35] → đánh U Minh Cự Mãng 89% · còn 10p54s
+[10:36] máu 100% · LL 97% · Huyết Xích Cấm Địa · Đầm Lầy (592,581) · quái <400px 2 · người thù 0 · Tự Động tắt · đánh U Minh Cự Mãng 89% · việc: đánh U Minh Cự Mãng 89% · còn 10p54s
+[10:46] máu 75% · LL 92% · Huyết Xích Cấm Địa · Đầm Lầy (464,720) · quái <400px 1 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 81% · việc: đánh U Minh Cự Mãng 81% · còn 10p44s
+[10:57] máu 24% · LL 94% · Huyết Xích Cấm Địa · Đầm Lầy (464,720) · quái <400px 1 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 65% · việc: đánh U Minh Cự Mãng 65% · còn 10p33s
+[10:59] ⚠ Gục · máu 10 giây trước: 75→75→66→57→47→43→43→46→35→16→8 · việc: đánh U Minh Cự Mãng 62% · còn 10p30s · quái quanh: U Minh Cự Mãng 62% · người thù quanh: không
+[11:00] ↺ hồi sinh
+[11:07] máu 46% · LL 98% · Huyết Xích Cấm Địa · Đầm Lầy (464,752) · quái <400px 1 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 54% · việc: đánh U Minh Cự Mãng 54% · còn 10p23s
+[11:17] máu 29% · LL 95% · Huyết Xích Cấm Địa · Đầm Lầy (484,791) · quái <400px 1 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 47% · việc: đánh U Minh Cự Mãng 48% · còn 10p13s
+[11:28] máu 45% · LL 94% · Huyết Xích Cấm Địa · Đầm Lầy (464,752) · quái <400px 1 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 33% · việc: đánh U Minh Cự Mãng 33% · còn 10p02s
+[11:38] máu 37% · LL 96% · Huyết Xích Cấm Địa · Đầm Lầy (464,752) · quái <400px 1 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 21% · việc: đánh U Minh Cự Mãng 21% · còn 9p52s
+[11:49] máu 33% · LL 95% · Huyết Xích Cấm Địa · Đầm Lầy (466,757) · quái <400px 1 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 14% · việc: đánh U Minh Cự Mãng 14% · còn 9p41s
+[11:59] máu 34% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (466,757) · quái <400px 1 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 1% · việc: đánh U Minh Cự Mãng 1% · còn 9p31s
+[12:09] máu 34% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (466,757) · quái <400px 1 · người thù 0 · Tự Động tắt · việc: đánh U Minh Cự Mãng 1% · còn 9p28s
+[12:19] máu 53% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (466,757) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: đánh U Minh Cự Mãng 1% · còn 9p28s
+[12:29] máu 72% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (466,757) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: đánh U Minh Cự Mãng 1% · còn 9p28s
+[12:39] máu 91% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (411,728) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: đánh U Minh Cự Mãng 1% · còn 9p28s
+[12:49] máu 100% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (329,693) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: đánh U Minh Cự Mãng 1% · còn 9p28s
+[12:54] → dò quái Huyết Xích Cấm Địa · Đầm Lầy (1/4) · còn 1p07s
+[12:59] → hái tài nguyên Huyết Xích Cấm Địa · Đầm Lầy (còn 1 chỗ) · còn 1p02s
+[13:00] máu 100% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (782,482) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Đầm Lầy (còn 1 chỗ) · còn 1p02s
+[13:02] → hái tài nguyên Huyết Xích Cấm Địa · Đầm Lầy (còn 1 chỗ) · còn 59s
+[13:02] → xong lượt · đang rời · còn 59s
+[13:08] → mở Huyết Xích (lần 1)
+[13:09] → hái tài nguyên Huyết Xích Cấm Địa · Rừng Mãng Xà (còn 6 chỗ) · còn 53s
+[13:09] → xong lượt · đang rời · còn 52s
+[13:17] → mở Huyết Xích (lần 1)
+[13:17] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (592,864) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: mở Huyết Xích (lần 1)
+[13:17] → hái tài nguyên Huyết Xích Cấm Địa · Rừng Mãng Xà (còn 6 chỗ) · còn 44s
+[13:18] → xong lượt · đang rời · còn 43s
+[13:25] → mở Huyết Xích (lần 1)
+[13:25] → đánh Xích Tinh Mãng 100% · còn 14p59s
+[13:27] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (592,864) · quái <400px 7 · người thù 0 · Tự Động tắt · đánh Xích Tinh Mãng 100% · việc: đánh Xích Tinh Mãng 100% · còn 14p57s
+[13:37] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (541,622) · quái <400px 9 · người thù 0 · Tự Động bật · đánh Xích Tinh Mãng 100% · việc: đánh Xích Tinh Mãng 100% · còn 14p47s
+[13:45] → đánh Xích Mãng Vương 95% · còn 14p39s
+[13:47] → đánh Xích Mãng Vương 94% · còn 14p37s · chờ vòng chiêu nổ
+[13:47] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (646,536) · quái <400px 5 · người thù 0 · Tự Động tắt · việc: đánh Xích Mãng Vương 91% · còn 14p37s · chờ vòng chiêu nổ
+[13:49] → đánh Xích Mãng Vương 84% · còn 14p36s
+[13:58] máu 96% · LL 93% · Huyết Xích Cấm Địa · Rừng Mãng Xà (623,463) · quái <400px 12 · người thù 0 · Tự Động bật · đánh Xích Mãng Vương 74% · việc: đánh Xích Mãng Vương 76% · còn 14p27s
+[14:08] máu 100% · LL 88% · Huyết Xích Cấm Địa · Rừng Mãng Xà (624,464) · quái <400px 12 · người thù 0 · Tự Động bật · đánh Xích Mãng Vương 55% · việc: đánh Xích Mãng Vương 59% · còn 14p17s
+[14:19] máu 79% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (624,464) · quái <400px 11 · người thù 0 · Tự Động bật · đánh Xích Mãng Vương 34% · việc: đánh Xích Mãng Vương 36% · còn 14p06s
+[14:29] máu 76% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (624,464) · quái <400px 12 · người thù 0 · Tự Động bật · đánh Xích Mãng Vương 17% · việc: đánh Xích Mãng Vương 17% · còn 13p56s
+[14:37] → đánh Xích Tinh Mãng 100% · còn 13p47s
+[14:39] máu 91% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (586,279) · quái <400px 10 · người thù 0 · Tự Động bật · đánh Xích Tinh Mãng 93% · việc: đánh Xích Tinh Mãng 93% · còn 13p45s
+[14:49] máu 100% · LL 94% · Huyết Xích Cấm Địa · Rừng Mãng Xà (906,225) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Xích Tinh Mãng 92% · việc: đánh Xích Tinh Mãng 92% · còn 13p35s
+[14:53] → nhặt đồ rơi · còn 13p31s
+[14:55] → dò quái Huyết Xích Cấm Địa · Rừng Mãng Xà (1/9) · còn 13p30s
+[14:59] → đánh Xích Tinh Mãng 83% · còn 13p25s
+[15:00] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (590,391) · quái <400px 2 · người thù 0 · Tự Động bật · việc: đánh Xích Tinh Mãng 100% · còn 13p25s
+[15:02] → nhặt đồ rơi · còn 13p22s
+[15:10] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (243,116) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: nhặt đồ rơi · còn 13p15s
+[15:12] → dò quái Huyết Xích Cấm Địa · Rừng Mãng Xà (5/9) · còn 13p12s
+[15:16] → hái tài nguyên Huyết Xích Cấm Địa · Rừng Mãng Xà (còn 3 chỗ) · còn 13p09s
+[15:20] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (764,343) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Rừng Mãng Xà (còn 1 chỗ) · còn 13p05s
+[15:30] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (969,135) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Rừng Mãng Xà (còn 1 chỗ) · còn 12p54s
+[15:40] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (975,611) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Rừng Mãng Xà (còn 1 chỗ) · còn 12p44s
+[15:41] → sang Huyết Xích Cấm Địa · Lòng Đất · còn 12p44s
+[15:45] → dò quái Huyết Xích Cấm Địa · Lòng Đất (0/6) · còn 12p39s
+[15:45] → đánh Thạch Mạch Vương 89% · còn 12p39s
+[15:50] máu 100% · LL 97% · Huyết Xích Cấm Địa · Lòng Đất (814,437) · quái <400px 1 · người thù 0 · Tự Động tắt · đánh Thạch Mạch Vương 84% · việc: đánh Thạch Mạch Vương 84% · còn 12p35s
+[16:00] máu 93% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (885,376) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 76% · việc: đánh Thạch Mạch Vương 78% · còn 12p25s
+[16:11] máu 95% · LL 97% · Huyết Xích Cấm Địa · Lòng Đất (918,334) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 64% · việc: đánh Thạch Mạch Vương 64% · còn 12p14s
+[16:22] máu 100% · LL 96% · Huyết Xích Cấm Địa · Lòng Đất (944,304) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 46% · việc: đánh Thạch Mạch Vương 48% · còn 12p03s
+[16:32] máu 93% · LL 87% · Huyết Xích Cấm Địa · Lòng Đất (944,304) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 30% · việc: đánh Thạch Mạch Vương 30% · còn 11p53s
+[16:42] máu 100% · LL 96% · Huyết Xích Cấm Địa · Lòng Đất (944,304) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 16% · việc: đánh Thạch Mạch Vương 16% · còn 11p42s
+[16:51] → dò quái Huyết Xích Cấm Địa · Lòng Đất (2/6) · còn 11p33s
+[16:52] máu 100% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (790,427) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: dò quái Huyết Xích Cấm Địa · Lòng Đất (3/6) · còn 11p32s
+[16:56] → hái tài nguyên Huyết Xích Cấm Địa · Lòng Đất (còn 11 chỗ) · còn 11p29s
+[17:02] máu 100% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (244,368) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Lòng Đất (còn 1 chỗ) · còn 11p22s
+[17:12] máu 100% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (232,130) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Lòng Đất (còn 1 chỗ) · còn 11p12s
+[17:22] máu 100% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (551,100) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Lòng Đất (còn 1 chỗ) · còn 11p02s
+[17:33] máu 100% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (935,297) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Lòng Đất (còn 1 chỗ) · còn 10p52s
+[17:43] máu 100% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (1104,170) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Lòng Đất (còn 1 chỗ) · còn 10p42s
+[17:48] → sang Huyết Xích Cấm Địa · Đầm Lầy · còn 10p36s
+[17:51] → đánh Xích Tinh Mãng 100% · còn 10p33s
+[17:52] → đánh U Minh Cự Mãng 81% · còn 10p32s
+[17:53] máu 100% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (592,515) · quái <400px 4 · người thù 0 · Tự Động tắt · đánh Xích Tinh Mãng 100% · việc: đánh U Minh Cự Mãng 81% · còn 10p32s
+[18:03] máu 100% · LL 91% · Huyết Xích Cấm Địa · Đầm Lầy (624,744) · quái <400px 7 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 75% · việc: đánh U Minh Cự Mãng 75% · còn 10p21s
+[18:14] máu 100% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (627,777) · quái <400px 7 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 65% · việc: đánh U Minh Cự Mãng 65% · còn 10p11s
+[18:24] máu 78% · LL 92% · Huyết Xích Cấm Địa · Đầm Lầy (627,777) · quái <400px 7 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 53% · việc: đánh U Minh Cự Mãng 53% · còn 10p00s
+[18:35] máu 41% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (627,777) · quái <400px 7 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 41% · việc: đánh U Minh Cự Mãng 41% · còn 9p50s
+[18:45] máu 21% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (650,834) · quái <400px 7 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 33% · việc: đánh U Minh Cự Mãng 34% · còn 9p40s
+[18:55] máu 0% · LL 94% · Huyết Xích Cấm Địa · Đầm Lầy (624,784) · quái <400px 7 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 21% · việc: đánh U Minh Cự Mãng 21% · còn 9p29s
+[18:56] ⚠ Gục · máu 10 giây trước: 30→20→17→17→17→19→20→11→11→14→11 · việc: đánh U Minh Cự Mãng 21% · còn 9p29s · quái quanh: U Minh Cự Mãng 21%, Xích Tinh Mãng 100%, Xích Tinh Mãng 100%, Xích Tinh Mãng 100% · người thù quanh: không
+[18:56] ↺ hồi sinh
+[19:05] máu 50% · LL 95% · Huyết Xích Cấm Địa · Đầm Lầy (624,784) · quái <400px 7 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 6% · việc: đánh U Minh Cự Mãng 8% · còn 9p19s
+[19:16] máu 59% · LL 97% · Huyết Xích Cấm Địa · Đầm Lầy (656,879) · quái <400px 7 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 0% · việc: đánh U Minh Cự Mãng 0% · còn 9p09s
+[19:16] → đánh Xích Tinh Mãng 100% · còn 2p00s
+[19:25] → nhặt đồ rơi · còn 1p52s
+[19:26] máu 91% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (502,764) · quái <400px 0 · người thù 0 · Tự Động bật · việc: nhặt đồ rơi · còn 1p51s
+[19:28] → đánh Xích Tinh Mãng 100% · còn 1p48s
+[19:34] → nhặt đồ rơi · còn 1p42s
+[19:35] → dò quái Huyết Xích Cấm Địa · Đầm Lầy (1/4) · còn 1p41s
+[19:36] máu 100% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (958,720) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: dò quái Huyết Xích Cấm Địa · Đầm Lầy (2/4) · còn 1p41s
+[19:43] → mở Huyết Xích (lần 1)
+[19:43] → đánh Xích Tinh Mãng 100% · còn 14p59s
+[19:46] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (592,864) · quái <400px 6 · người thù 0 · Tự Động tắt · đánh Xích Tinh Mãng 100% · việc: đánh Xích Tinh Mãng 100% · còn 14p56s
+[19:56] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (569,602) · quái <400px 7 · người thù 0 · Tự Động bật · đánh Xích Tinh Mãng 100% · việc: đánh Xích Tinh Mãng 100% · còn 14p46s
+[20:02] → đánh Xích Mãng Vương 100% · còn 14p39s
+[20:06] máu 100% · LL 96% · Huyết Xích Cấm Địa · Rừng Mãng Xà (684,557) · quái <400px 4 · người thù 0 · Tự Động bật · đánh Xích Mãng Vương 92% · việc: đánh Xích Mãng Vương 92% · còn 14p36s
+[20:16] máu 100% · LL 84% · Huyết Xích Cấm Địa · Rừng Mãng Xà (657,529) · quái <400px 7 · người thù 0 · Tự Động bật · đánh Xích Mãng Vương 53% · việc: đánh Xích Mãng Vương 53% · còn 14p26s
+[20:26] máu 84% · LL 96% · Huyết Xích Cấm Địa · Rừng Mãng Xà (657,529) · quái <400px 5 · người thù 0 · Tự Động bật · đánh Xích Mãng Vương 23% · việc: đánh Xích Mãng Vương 23% · còn 14p16s
+[20:31] → đánh Xích Tinh Mãng 100% · còn 14p11s
+[20:36] máu 98% · LL 99% · Huyết Xích Cấm Địa · Rừng Mãng Xà (353,299) · quái <400px 3 · người thù 0 · Tự Động bật · việc: đánh Xích Tinh Mãng 100% · còn 14p06s
+[20:39] → nhặt đồ rơi · còn 14p03s
+[20:43] → đánh Xích Tinh Mãng 100% · còn 13p59s
+[20:46] máu 100% · LL 88% · Huyết Xích Cấm Địa · Rừng Mãng Xà (752,176) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Xích Tinh Mãng 92% · việc: đánh Xích Tinh Mãng 92% · còn 13p56s
+[20:48] → nhặt đồ rơi · còn 13p54s
+[20:52] → dò quái Huyết Xích Cấm Địa · Rừng Mãng Xà (1/9) · còn 13p50s
+[20:57] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (653,320) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: dò quái Huyết Xích Cấm Địa · Rừng Mãng Xà (5/9) · còn 13p45s
+[21:00] → hái tài nguyên Huyết Xích Cấm Địa · Rừng Mãng Xà (còn 4 chỗ) · còn 13p42s
+[21:07] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (530,324) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: hái tài nguyên Huyết Xích Cấm Địa · Rừng Mãng Xà (còn 1 chỗ) · còn 13p35s
+[21:17] máu 100% · LL 100% · Huyết Xích Cấm Địa · Rừng Mãng Xà (696,477) · quái <400px 0 · người thù 0 · Tự Động bật · việc: hái tài nguyên Huyết Xích Cấm Địa · Rừng Mãng Xà (còn 1 chỗ) · còn 13p25s
+[21:22] → sang Huyết Xích Cấm Địa · Lòng Đất · còn 13p20s
+[21:26] → dò quái Huyết Xích Cấm Địa · Lòng Đất (0/6) · còn 13p15s
+[21:26] → đánh Thạch Mạch Vương 100% · còn 13p15s
+[21:27] máu 100% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (688,659) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 100% · việc: đánh Thạch Mạch Vương 100% · còn 13p15s
+[21:31] → đánh Thạch Mạch Vương 94% · còn 13p11s · chờ vòng chiêu nổ
+[21:33] → đánh Thạch Mạch Vương 93% · còn 13p09s
+[21:35] → đánh Thạch Yêu 100% · còn 13p07s
+[21:37] máu 100% · LL 98% · Huyết Xích Cấm Địa · Lòng Đất (857,406) · quái <400px 4 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 87% · việc: đánh Thạch Yêu 100% · còn 13p05s
+[21:40] → đánh Thạch Mạch Vương 85% · còn 13p02s
+[21:47] máu 100% · LL 91% · Huyết Xích Cấm Địa · Lòng Đất (912,411) · quái <400px 4 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 74% · việc: đánh Thạch Mạch Vương 75% · còn 12p55s
+[21:57] máu 81% · LL 85% · Huyết Xích Cấm Địa · Lòng Đất (912,411) · quái <400px 4 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 55% · việc: đánh Thạch Mạch Vương 56% · còn 12p45s
+[22:07] máu 54% · LL 96% · Huyết Xích Cấm Địa · Lòng Đất (912,411) · quái <400px 4 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 40% · việc: đánh Thạch Mạch Vương 40% · còn 12p34s
+[22:18] máu 59% · LL 93% · Huyết Xích Cấm Địa · Lòng Đất (912,411) · quái <400px 4 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 22% · việc: đánh Thạch Mạch Vương 22% · còn 12p24s
+[22:28] máu 75% · LL 98% · Huyết Xích Cấm Địa · Lòng Đất (944,342) · quái <400px 4 · người thù 0 · Tự Động bật · đánh Thạch Mạch Vương 9% · việc: đánh Thạch Mạch Vương 10% · còn 12p14s
+[22:31] → đánh Thạch Yêu 100% · còn 12p10s
+[22:33] → đánh Thạch Mạch Vương 4% · còn 12p09s
+[22:34] → đánh Thạch Yêu 100% · còn 12p08s
+[22:38] máu 96% · LL 94% · Huyết Xích Cấm Địa · Lòng Đất (1007,301) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Thạch Yêu 100% · việc: đánh Thạch Yêu 100% · còn 12p04s
+[22:48] máu 100% · LL 100% · Huyết Xích Cấm Địa · Lòng Đất (1007,301) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Thạch Yêu 100% · việc: đánh Thạch Yêu 100% · còn 11p54s
+[22:58] máu 100% · LL 94% · Huyết Xích Cấm Địa · Lòng Đất (1007,301) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Thạch Yêu 100% · việc: đánh Thạch Yêu 100% · còn 11p44s
+[23:08] máu 100% · LL 89% · Huyết Xích Cấm Địa · Lòng Đất (1007,301) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Thạch Yêu 100% · việc: đánh Thạch Yêu 100% · còn 11p34s
+[23:18] máu 100% · LL 99% · Huyết Xích Cấm Địa · Lòng Đất (971,494) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Thạch Yêu 100% · việc: đánh Thạch Yêu 100% · còn 11p24s
+[23:21] → đánh Xích Tinh Mãng 100% · còn 11p20s
+[23:23] → đánh U Minh Cự Mãng 100% · còn 11p19s
+[23:28] máu 100% · LL 93% · Huyết Xích Cấm Địa · Đầm Lầy (601,562) · quái <400px 1 · người thù 0 · Tự Động bật · việc: đánh U Minh Cự Mãng 97% · còn 11p14s
+[23:39] máu 100% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (593,637) · quái <400px 3 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 89% · việc: đánh U Minh Cự Mãng 90% · còn 11p03s
+[23:49] máu 85% · LL 91% · Huyết Xích Cấm Địa · Đầm Lầy (592,656) · quái <400px 3 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 77% · việc: đánh U Minh Cự Mãng 79% · còn 10p54s
+[23:59] máu 47% · LL 88% · Huyết Xích Cấm Địa · Đầm Lầy (592,656) · quái <400px 3 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 64% · việc: đánh U Minh Cự Mãng 66% · còn 10p43s
+[24:09] máu 26% · LL 96% · Huyết Xích Cấm Địa · Đầm Lầy (592,656) · quái <400px 2 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 56% · việc: đánh U Minh Cự Mãng 56% · còn 10p33s
+[24:11] ⚠ Gục · máu 10 giây trước: 47→47→29→29→22→23→25→25→29→15→6 · việc: đánh U Minh Cự Mãng 53% · còn 10p31s · quái quanh: U Minh Cự Mãng 53% · người thù quanh: không
+[24:12] ↺ hồi sinh
+[24:20] máu 39% · LL 92% · Huyết Xích Cấm Địa · Đầm Lầy (592,718) · quái <400px 3 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 38% · việc: đánh U Minh Cự Mãng 38% · còn 10p22s
+[24:30] máu 15% · LL 96% · Huyết Xích Cấm Địa · Đầm Lầy (592,718) · quái <400px 3 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 21% · việc: đánh U Minh Cự Mãng 27% · còn 10p12s
+[24:40] ⚠ Gục · máu 10 giây trước: 12→11→15→15→15→18→10→2→2→5→5 · việc: đánh U Minh Cự Mãng 12% · còn 10p02s · quái quanh: U Minh Cự Mãng 11% · người thù quanh: không
+[24:40] máu 0% · LL 96% · Huyết Xích Cấm Địa · Đầm Lầy (592,718) · quái <400px 3 · người thù 0 · Tự Động bật · đánh U Minh Cự Mãng 11% · việc: đánh U Minh Cự Mãng 12% · còn 10p02s
+[24:41] ↺ hồi sinh
+[24:50] máu 42% · LL 95% · Huyết Xích Cấm Địa · Đầm Lầy (624,720) · quái <400px 3 · người thù 0 · Tự Động bật · việc: đánh U Minh Cự Mãng 0% · còn 9p51s
+[24:51] → đánh Xích Tinh Mãng 100% · còn 2p00s
+[24:55] → nhặt đồ rơi · còn 1p55s
+[25:01] máu 74% · LL 100% · Huyết Xích Cấm Địa · Đầm Lầy (845,264) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: nhặt đồ rơi · còn 1p50s
+[25:01] → dò quái Huyết Xích Cấm Địa · Đầm Lầy (0/4) · còn 1p50s
+[25:09] → hái tài nguyên Huyết Xích Cấm Địa · Đầm Lầy (còn 1 chỗ) · còn 1p41s
+[25:25] Kết thúc

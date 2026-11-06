@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test Boss Return Map + Khu (v0.63.1)</title>
+  <style>
+    body { font-family: monospace; background: #1e1e1e; color: #d4d4d4; padding: 20px; }
+    .pass { color: #4ec9b0; }
+    .fail { color: #f14c4c; font-weight: bold; }
+    .log { margin-bottom: 4px; }
+    h2 { color: #569cd6; }
+  </style>
+</head>
+<body>
+  <h2>=== TEST SUITE: BOSS RETURN MAP + KHU (v0.63.1) ===</h2>
+  <div id="logs"></div>
+
+  <script>
+    window.testResults = { passed: 0, failed: 0, tests: [] };
+    function log(msg, pass) {
+      var d = document.createElement('div');
+      d.className = 'log ' + (pass === true ? 'pass' : pass === false ? 'fail' : '');
+      d.textContent = (pass === true ? '  [PASS] ' : pass === false ? '  [FAIL] ' : '') + msg;
+      document.getElementById('logs').appendChild(d);
+      if (pass === true) window.testResults.passed++;
+      if (pass === false) { window.testResults.failed++; window.testResults.tests.push(msg); }
+      console.log(d.textContent);
+    }
+
+    // Mock minimal game environment
+    var swMock = {
+      player: {
+        id: 'player_1',
+        x: 100,
+        y: 200,
+        hp: 1000,
+        hpMax: 1000,
+        mp: 500,
+        mpMax: 500,
+        speed: 160,
+        state: 'idle',
+        downed: false,
+        path: [],
+        setPath: function(p) { this.path = p; }
+      },
+      map: {
+        id: 'map_farm',
+        data: {
+          id: 'map_farm',
+          portals: [{ toMap: 'map_boss', x: 50, y: 50 }],
+          props: [
+            { id: 'board_1', type: 'khu_board', x: 40, y: 40, r: 40 }
+          ]
+        },
+        props: [
+          { id: 'board_1', type: 'khu_board', x: 40, y: 40, r: 40 }
+        ],
+        portals: []
+      },
+      enemies: [],
+      drops: [],
+      players: [],
+      autoOn: false
+    };
+
+    window.PNTT = {
+      CONFIG: { TILE: 32 },
+      Gateway: {
+        connected: true,
+        selfId: 'player_1',
+        cmd: function(op, data, cb) { if (cb) cb({ ok: true }); },
+        send: function(msg) {
+          if (msg && msg.op === 'khu' && msg.act === 'chon') {
+            window.PNTT.KhuUI.khu = msg.khu;
+            return true;
+          }
+          return true;
+        }
+      },
+      KhuUI: {
+        khu: 3,
+        soKhu: 5,
+        isOpen: function() { return this._open; },
+        close: function() { this._open = false; }
+      },
+      Game: { scene: swMock, time: 100 },
+      SceneWorld: swMock,
+      Player: {
+        stand: function() {},
+        reach: function() { return 26; }
+      },
+      MapData: {
+        map_farm: { id: 'map_farm', name: 'Đầm Lầy U Ám', portals: [{ toMap: 'map_boss', x: 50, y: 50 }] },
+        map_boss: { id: 'map_boss', name: 'Băng Phong Cốc', portals: [{ toMap: 'map_farm', x: 20, y: 20 }] }
+      },
+      Input: {
+        hasManualMove: function() { return false; },
+        pressAutoToggle: function() {
+          swMock.autoOn = !swMock.autoOn;
+          window.autoToggledCount = (window.autoToggledCount || 0) + 1;
+        }
+      }
+    };
+  </script>
+
+  <!-- Load tutien2d-helper.user.js -->
+  <script src="../tutien2d-helper.user.js"></script>
+
+  <script>
+    (function () {
+      try {
+        var TB = window.TTBot;
+        if (!TB) { log('TTBot not loaded', false); return; }
+        log('TTBot loaded successfully (v' + (TB.cfg.version || '0.63.1') + ')', true);
+
+        var dev = TB.dev;
+        var g = TB.game();
+        log('TB.game() initialized: mapId = ' + (g && g.mapId), g && g.mapId === 'map_farm');
+
+        // 1. Test takeBack records current khu
+        window.PNTT.KhuUI.khu = 3;
+        var b1 = dev.takeBack(g);
+        log('takeBack records map: ' + b1.map, b1.map === 'map_farm');
+        log('takeBack records x, y: (' + b1.x + ', ' + b1.y + ')', b1.x === 100 && b1.y === 200);
+        log('takeBack records current khu: ' + b1.khu, b1.khu === 3);
+
+        // 2. Test takeBack prioritizes cfg.farm.khu when on same map
+        TB.cfg.farm = { map: 'map_farm', x: 120, y: 220, khu: 4 };
+        var b2 = dev.takeBack(g);
+        log('takeBack uses cfg.farm.khu (4) instead of current khu (3)', b2.khu === 4);
+        TB.cfg.farm = null; // cleanup
+
+        // 3. Test goBack initializes targetKhu
+        dev.goBack('map_farm', 100, 200, 'Test goBack', 'test', 3);
+        var stB = TB.st.back;
+        log('goBack initializes st.back.khu = 3', stB && stB.khu === 3);
+        log('goBack initializes st.back.map = map_farm', stB && stB.map === 'map_farm');
+        log('goBack initializes st.back.khuDone = false', stB && stB.khuDone === false);
+
+        // 4. Test goBack with object overload
+        dev.goBack({ map: 'map_farm', x: 150, y: 250, khu: 5 }, 'Test obj overload', 'test');
+        var stBObj = TB.st.back;
+        log('goBack object overload sets map', stBObj && stBObj.map === 'map_farm');
+        log('goBack object overload sets x, y (150, 250)', stBObj && stBObj.x === 150 && stBObj.y === 250);
+        log('goBack object overload sets khu = 5', stBObj && stBObj.khu === 5);
+
+        // 5. Test tickGoBack zone switching when arriving at map in wrong khu
+        // Player lands in map_farm, but in Khu 1 (while b.khu is 3)
+        window.PNTT.KhuUI.khu = 1;
+        window.PNTT.KhuUI.soKhu = 5;
+        g.mapId = 'map_farm';
+        g.sw.map.data.id = 'map_farm';
+        g.me.x = 40; g.me.y = 24; // Standing at board center (dist = 0 <= reach)
+        dev.goBack('map_farm', 100, 200, 'Về chỗ cũ sau boss', 'bh', 3);
+
+        // First tick of tickGoBack: detects needKhu -> initiates khuGo -> touches board
+        var ret1 = dev.tickGoBack(g);
+        log('tickGoBack returns true while handling khu switch', ret1 === true);
+        log('st.back.khuWant set to 3', TB.st.back && TB.st.back.khuWant === 3);
+
+        // Open KhuUI and next tick
+        window.PNTT.KhuUI._open = true;
+        var ret2 = dev.tickGoBack(g);
+        log('tickGoBack sends khu switch packet when KhuUI is open', window.PNTT.KhuUI.khu === 3);
+
+        // Player is now at Khu 3!
+        // Next tick: zone is now 3, character is at (40, 24) -> walks to (100, 200)
+        var ret3 = dev.tickGoBack(g);
+        log('st.back.khuDone is marked true', TB.st.back && TB.st.back.khuDone === true);
+
+        // Teleport player near destination (100, 200)
+        g.me.x = 95; g.me.y = 195;
+        TB.st.lastAutoPress = -1e9; // ensure setAuto cooldown has expired
+        swMock.autoOn = false;
+        var ret4 = dev.tickGoBack(g);
+        log('tickGoBack completes when destination reached in correct khu', ret4 === false);
+        log('st.back is cleared on arrival', TB.st.back === null);
+        log('Game auto is turned back ON (autoOn=' + swMock.autoOn + ', toggled=' + window.autoToggledCount + ')', swMock.autoOn === true);
+
+        // 6. Test map with only 1 zone (soKhu <= 1): no khu switch attempt
+        window.PNTT.KhuUI.khu = 1;
+        window.PNTT.KhuUI.soKhu = 1;
+        g.mapId = 'map_farm';
+        g.me.x = 98; g.me.y = 198;
+        dev.goBack('map_farm', 100, 200, 'Single zone return', 'bh', 2);
+        var retSingle = dev.tickGoBack(g);
+        log('Single zone map finishes directly without khu switch', retSingle === false);
+        log('st.back is cleared for single zone', TB.st.back === null);
+
+        // 7. Test fallback if Bảng Khu fails (b.khuFail): does not hang
+        window.PNTT.KhuUI.khu = 1;
+        window.PNTT.KhuUI.soKhu = 5;
+        window.PNTT.KhuUI._open = false;
+        // Far away from destination (40, 24 vs 100, 200)
+        g.me.x = 40; g.me.y = 24;
+        var origProps = g.sw.map.props;
+        g.sw.map.props = [];
+        dev.goBack('map_farm', 100, 200, 'Fallback return', 'bh', 4);
+        var retFail1 = dev.tickGoBack(g); // tries to find board -> fails
+        log('b.khuFail set when board cannot be reached', TB.st.back && TB.st.back.khuFail === true);
+        // Teleport to destination
+        g.me.x = 98; g.me.y = 198;
+        var retFail2 = dev.tickGoBack(g); // proceeds to finish in current khu
+        log('tickGoBack completes despite khuFail', retFail2 === false);
+        g.sw.map.props = origProps;
+
+      } catch (err) {
+        log('ERROR in test execution: ' + err.message + '\n' + err.stack, false);
+      }
+
+      console.log('Total tests: ' + (window.testResults.passed + window.testResults.failed) + ' | Passed: ' + window.testResults.passed + ' | Failed: ' + window.testResults.failed);
+    })();
+  </script>
+</body>
+</html>

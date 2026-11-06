@@ -1,0 +1,28 @@
+Thương Đội (săn & tin Thiên Đạo) · Bãi Đá k2 · memooo · trợ thủ v0.63.8 · bắt đầu 14:39:35 4/11/2026
+===== TÓM TẮT =====
+✅ Thương Đội (săn & tin Thiên Đạo) · Bãi Đá k2 · memooo · 0:59
+Kết quả: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+🎁 Thu được: không có gì
+📜 Diễn biến cuối:
+[0:00] Bắt đầu Thương Đội (săn & tin Thiên Đạo) · Bãi Đá k2 · memooo · trợ thủ đang bật · v0.63.8
+[0:00] → đi tới Bãi Đá
+[0:39] → đổi sang khu 2 (Thiên Đạo báo)
+[0:39] → săn Kiếp Tặc · khu 2
+[0:42] Hạ Kiếp Tặc
+[0:42] → nhặt hồn rơi
+[0:44] Hoàn thành: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+[0:59] Kết thúc · Kết quả: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Thương Đội (săn & tin Thiên Đạo) · Bãi Đá k2 · memooo · trợ thủ đang bật · v0.63.8
+[0:00] → đi tới Bãi Đá
+[0:00] máu 100% · LL 96% · Thảo Dược Cốc (720,432) · quái <400px 2 · người thù 0 · Tự Động bật · việc: đi tới Bãi Đá · việc: đi tới Bãi Đá
+[0:10] máu 100% · LL 100% · Thảo Dược Cốc (565,496) · quái <400px 1 · người thù 0 · Tự Động tắt · việc: đi tới Bãi Đá · việc: đi tới Bãi Đá
+[0:20] máu 100% · LL 100% · Thảo Dược Cốc (464,577) · quái <400px 5 · người thù 0 · Tự Động tắt · việc: đi tới Bãi Đá · việc: đi tới Bãi Đá
+[0:30] máu 100% · LL 100% · Rừng Trúc (292,290) · quái <400px 11 · người thù 0 · Tự Động tắt · việc: đi tới Bãi Đá · việc: đi tới Bãi Đá
+[0:39] → đổi sang khu 2 (Thiên Đạo báo)
+[0:39] → săn Kiếp Tặc · khu 2
+[0:40] máu 100% · LL 100% · Bãi Đá (379,792) · quái <400px 5 · người thù 0 · Tự Động bật · đánh Kiếp Tặc 28% · việc: săn Kiếp Tặc · khu 2 · việc: săn Kiếp Tặc · khu 2 · mục tiêu Kiếp Tặc 28%
+[0:42] Hạ Kiếp Tặc
+[0:42] → nhặt hồn rơi
+[0:44] Hoàn thành: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+[0:59] Kết thúc · Kết quả: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về

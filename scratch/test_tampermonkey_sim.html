@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>
+    // Simulate page
+    window.PNTT = { gameStarted: true, testVal: 123 };
+  </script>
+</head>
+
+<body>
+  <div id="output"></div>
+  <script>
+    // Simulate userscript with unsafeWindow
+    var unsafeWindow = window; // In real Tampermonkey, unsafeWindow is the page window
+    var mockGM_xmlhttpRequest = function (opts) {
+      document.getElementById('output').textContent = 'GM_XHR_CALLED: ' + opts.url;
+    };
+
+    (function () {
+      'use strict';
+      var window = (typeof unsafeWindow !== 'undefined' && unsafeWindow) ? unsafeWindow : (typeof window !== 'undefined' ? window : this);
+      var GM_xmlhttpRequest = mockGM_xmlhttpRequest;
+
+      // Check if window.PNTT is accessible
+      var pnttOk = window.PNTT && window.PNTT.testVal === 123;
+
+      // Check if GM_xmlhttpRequest is called
+      if (typeof GM_xmlhttpRequest === 'function') {
+        GM_xmlhttpRequest({ url: 'https://api.telegram.org/test' });
+      }
+
+      document.getElementById('output').textContent += ' | PNTT_OK: ' + pnttOk;
+    })();
+  </script>
+</body>
+
+</html>

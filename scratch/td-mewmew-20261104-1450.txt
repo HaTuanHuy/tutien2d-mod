@@ -1,0 +1,32 @@
+Thương Đội (săn & tin Thiên Đạo) · Bãi Đá k10 · mewmew · trợ thủ v0.63.8 · bắt đầu 14:50:29 4/11/2026
+===== TÓM TẮT =====
+✅ Thương Đội (săn & tin Thiên Đạo) · Bãi Đá k10 · mewmew · 1:08
+Kết quả: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+🎁 Thu được: không có gì
+📜 Diễn biến cuối:
+[0:10] → chờ đoàn hiện ở Bãi Đá khu 10 (Thiên Đạo báo trước 20 giây)
+[0:20] → săn Tiêu Sư · khu 10
+[0:42] Hạ Tiêu Sư
+[0:42] → săn Thương Nhân · khu 10
+[0:51] Hạ Thương Nhân
+[0:51] → nhặt hồn rơi
+[0:53] Hoàn thành: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+[1:08] Kết thúc · Kết quả: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Thương Đội (săn & tin Thiên Đạo) · Bãi Đá k10 · mewmew · trợ thủ đang bật · v0.63.8
+[0:00] → đi tới Bãi Đá
+[0:00] máu 100% · LL 98% · Miếu Ông Trường Con (720,244) · quái <400px 1 · người thù 0 · Tự Động tắt · việc: đi tới Bãi Đá · việc: đi tới Bãi Đá
+[0:03] → đổi sang khu 10 (Thiên Đạo báo)
+[0:10] máu 100% · LL 100% · Bãi Đá (605,400) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: đổi sang khu 10 (Thiên Đạo báo) · việc: đổi sang khu 10 (Thiên Đạo báo)
+[0:10] → chờ đoàn hiện ở Bãi Đá khu 10 (Thiên Đạo báo trước 20 giây)
+[0:20] → săn Tiêu Sư · khu 10
+[0:20] máu 100% · LL 92% · Bãi Đá (688,464) · quái <400px 0 · người thù 0 · Tự Động bật · việc: săn Tiêu Sư · khu 10 · việc: săn Tiêu Sư · khu 10 · mục tiêu Tiêu Sư 99%
+[0:30] máu 100% · LL 89% · Bãi Đá (656,400) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Tiêu Sư 52% · việc: săn Tiêu Sư · khu 10 · việc: săn Tiêu Sư · khu 10 · mục tiêu Tiêu Sư 52%
+[0:40] máu 100% · LL 92% · Bãi Đá (656,400) · quái <400px 0 · người thù 0 · Tự Động bật · đánh Tiêu Sư 11% · việc: săn Tiêu Sư · khu 10 · việc: săn Tiêu Sư · khu 10 · mục tiêu Tiêu Sư 11%
+[0:42] Hạ Tiêu Sư
+[0:42] → săn Thương Nhân · khu 10
+[0:50] máu 100% · LL 86% · Bãi Đá (656,400) · quái <400px 0 · người thù 0 · Tự Động bật · đánh Thương Nhân 8% · việc: săn Thương Nhân · khu 10 · việc: săn Thương Nhân · khu 10 · mục tiêu Thương Nhân 8%
+[0:51] Hạ Thương Nhân
+[0:51] → nhặt hồn rơi
+[0:53] Hoàn thành: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+[1:08] Kết thúc · Kết quả: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về

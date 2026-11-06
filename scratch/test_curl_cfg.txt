@@ -1,0 +1,4 @@
+create-dirs
+url = "https://tutien2d.com/assets/items/icon_phap_boi_tam_yeu.png"
+output = "d:/Tutien2d/tutien2d.com/scratch/test_icon_tam_yeu.png"
+

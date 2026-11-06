@@ -1,0 +1,178 @@
+Bí cảnh (Huyết Xích / Yên Lãng) · mewmew · trợ thủ v0.63.3 · bắt đầu 01:41:49 4/11/2026
+===== TÓM TẮT =====
+✅ Bí cảnh (Huyết Xích / Yên Lãng) · mewmew · 11:46
+🎁 Thu được: Linh Thạch ×258, Bích Vân Diệp ×4, Linh Thúy ×1, Linh Kê Can ×1, Phong Vân Linh Phiến ×1, Thổ Độn Phù ×1
+📜 Diễn biến cuối:
+[11:08] → đánh Đồng Thi Khôi · dọn đường · còn 5p43s · chờ vòng chiêu nổ
+[11:09] → đánh Đồng Thi Khôi · dọn đường · còn 5p42s
+[11:12] → đánh Tộc Trưởng · Tộc Trưởng 33% · còn 5p41s
+[11:22] → nhặt đồ quanh xác Tộc Trưởng · còn 1p00s
+[11:22] → nhặt đồ quanh xác Tộc Trưởng · còn 59s
+[11:23] → thắng · chờ đồ rơi · còn 58s
+[11:30] → thắng · đang rời · còn 52s
+[11:46] Kết thúc
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Bí cảnh (Huyết Xích / Yên Lãng) · mewmew · trợ thủ đang bật · v0.63.3
+[0:00] → mở Yên Lãng Sơn (lần 1)
+[0:00] máu 100% · LL 100% · Yên Lãng Sơn (656,1983) · quái <400px 6 · người thù 0 · Tự Động tắt
+[0:00] → tập hợp ở chân núi · còn 11p58s
+[0:10] máu 100% · LL 100% · Yên Lãng Sơn (656,1983) · quái <400px 5 · người thù 0 · Tự Động tắt
+[0:18] → đánh Hầu Tộc Côn Thủ · dọn đường · còn 11p40s
+[0:19] → đánh Nhím Tộc Tuần Vệ · Tuần Vệ (mở phong ấn linh thảo) · còn 11p39s
+[0:20] → đánh Xà Tộc Nỏ Thủ · dọn đường · còn 11p38s
+[0:20] máu 100% · LL 94% · Yên Lãng Sơn (684,1882) · quái <400px 5 · người thù 0 · Tự Động bật · đánh Nhím Tộc Tuần Vệ 100%
+[0:22] → đánh Nhím Tộc Tuần Vệ · dọn đường · còn 11p36s
+[0:28] → đánh Nhím Tộc Tuần Vệ · Tuần Vệ (mở phong ấn linh thảo) · còn 11p30s
+[0:28] → đánh Hầu Tộc Kiếm Thủ · dọn đường · còn 11p30s
+[0:29] → đánh Nhím Tộc Đao Binh · dọn đường · còn 11p29s
+[0:30] máu 100% · LL 100% · Yên Lãng Sơn (697,1787) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Nhím Tộc Đao Binh 9%
+[0:31] → đánh Nhím Tộc Tuần Vệ · Tuần Vệ (mở phong ấn linh thảo) · còn 11p28s
+[0:31] → đánh Tĩnh Sơn Hổ · dọn đường · còn 11p27s
+[0:40] máu 100% · LL 96% · Yên Lãng Sơn (548,1713) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 94%
+[0:51] máu 95% · LL 94% · Yên Lãng Sơn (548,1713) · quái <400px 4 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 87%
+[1:01] máu 92% · LL 94% · Yên Lãng Sơn (548,1713) · quái <400px 4 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 80%
+[1:11] máu 96% · LL 88% · Yên Lãng Sơn (548,1713) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 74%
+[1:21] máu 99% · LL 91% · Yên Lãng Sơn (592,1744) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 67%
+[1:31] máu 100% · LL 86% · Yên Lãng Sơn (592,1744) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 61%
+[1:41] máu 93% · LL 86% · Yên Lãng Sơn (592,1744) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 53%
+[1:51] máu 100% · LL 79% · Yên Lãng Sơn (592,1744) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 45%
+[2:01] máu 96% · LL 83% · Yên Lãng Sơn (592,1744) · quái <400px 2 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 38%
+[2:12] máu 95% · LL 72% · Yên Lãng Sơn (592,1744) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 30%
+[2:22] máu 90% · LL 77% · Yên Lãng Sơn (592,1744) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 23%
+[2:32] máu 100% · LL 75% · Yên Lãng Sơn (592,1744) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 16%
+[2:42] máu 91% · LL 71% · Yên Lãng Sơn (592,1744) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 9%
+[2:52] máu 92% · LL 77% · Yên Lãng Sơn (592,1744) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 2%
+[2:55] → đánh Nhím Tộc Tuần Vệ · Tuần Vệ (mở phong ấn linh thảo) · còn 9p03s
+[2:56] → đánh Nhím Tộc Tuần Vệ · Tuần Vệ (mở phong ấn linh thảo) · còn 9p02s · chờ vòng chiêu nổ
+[2:57] → đánh Nhím Tộc Tuần Vệ · Tuần Vệ (mở phong ấn linh thảo) · còn 9p01s
+[2:58] → đánh Nhím Tộc Tuần Vệ · dọn đường · còn 9p00s
+[3:00] → đánh Xà Tộc Nỏ Thủ · dọn đường · còn 8p58s
+[3:02] máu 100% · LL 76% · Yên Lãng Sơn (569,1381) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Nhím Tộc Tuần Vệ 32%
+[3:02] → đánh Nhím Tộc Tuần Vệ · dọn đường · còn 8p56s
+[3:05] → hái linh thảo · còn 8p53s
+[3:12] máu 100% · LL 100% · Yên Lãng Sơn (662,1467) · quái <400px 0 · người thù 0 · Tự Động tắt
+[3:21] → tới Trấn Sơn Bia · còn 8p36s
+[3:22] → đánh Trấn Sơn Bia · Trấn Sơn Bia (còn 3) · còn 8p36s
+[3:22] máu 100% · LL 100% · Yên Lãng Sơn (747,1421) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Trấn Sơn Bia 100%
+[3:23] → đánh Nhím Tộc Đao Binh · dọn đường · còn 8p34s
+[3:26] → đánh Hầu Tộc Kiếm Thủ · dọn đường · còn 8p32s
+[3:26] → đánh Trấn Sơn Bia · Trấn Sơn Bia (còn 3) · còn 8p31s
+[3:33] máu 84% · LL 95% · Yên Lãng Sơn (749,1082) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Trấn Sơn Bia 23%
+[3:37] → đánh Hầu Tộc Côn Thủ · dọn đường · còn 8p20s
+[3:40] → đánh Trấn Sơn Bia · Trấn Sơn Bia (còn 2) · còn 8p18s
+[3:43] máu 69% · LL 96% · Yên Lãng Sơn (897,901) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Trấn Sơn Bia 86%
+[3:45] → ⏸ lệnh Tĩnh: đứng yên, không đánh
+[3:48] → đánh Trấn Sơn Bia · Trấn Sơn Bia (còn 2) · còn 8p10s
+[3:49] → nhặt đồ · còn 8p08s
+[3:50] → đánh Trấn Sơn Bia · Trấn Sơn Bia (còn 1) · còn 8p08s
+[3:51] → đánh Nhím Tộc Thương Binh · dọn đường · còn 8p07s
+[3:53] → đánh Trấn Sơn Bia · Trấn Sơn Bia (còn 1) · còn 8p05s
+[3:53] máu 82% · LL 96% · Yên Lãng Sơn (568,911) · quái <400px 2 · người thù 0 · Tự Động bật
+[3:53] → đánh Xà Tộc Nỏ Thủ · dọn đường · còn 8p05s
+[3:56] → đánh Trấn Sơn Bia · Trấn Sơn Bia (còn 1) · còn 8p02s
+[4:01] → chờ Tộc Trưởng tỉnh ở Tế Đàn · còn 7p56s
+[4:03] máu 78% · LL 99% · Yên Lãng Sơn (353,764) · quái <400px 0 · người thù 0 · Tự Động tắt
+[4:06] → đánh Xà Tộc Hộ Vệ · dọn đường · còn 7p51s
+[4:13] máu 93% · LL 100% · Yên Lãng Sơn (724,400) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Xà Tộc Hộ Vệ 47%
+[4:16] → đánh Tộc Trưởng · Tộc Trưởng 74% · còn 7p42s
+[4:21] → ⏸ lệnh Tĩnh: đứng yên, không đánh
+[4:23] máu 53% · LL 100% · Yên Lãng Sơn (798,335) · quái <400px 1 · người thù 0 · Tự Động tắt · đánh Tộc Trưởng 53%
+[4:26] → đánh Tộc Trưởng · Tộc Trưởng 51% · còn 7p33s
+[4:26] → đánh Đồng Thi Khôi · dọn đường · còn 7p33s
+[4:26] → đánh Thanh Thi Khôi · dọn đường · còn 7p33s
+[4:26] → đánh Đồng Thi Khôi · dọn đường · còn 7p33s
+[4:31] → đánh Tộc Trưởng · Tộc Trưởng 23% · còn 7p27s
+[4:33] máu 81% · LL 98% · Yên Lãng Sơn (848,431) · quái <400px 1 · người thù 0 · Tự Động bật
+[4:37] → nhặt đồ quanh xác Tộc Trưởng · còn 1p00s
+[4:38] → nhặt đồ quanh xác Tộc Trưởng · còn 59s
+[4:39] → thắng · chờ đồ rơi · còn 58s
+[4:43] máu 94% · LL 100% · Yên Lãng Sơn (848,432) · quái <400px 0 · người thù 0 · Tự Động tắt
+[4:45] → thắng · đang rời · còn 52s
+[4:53] → chờ vào Yên Lãng Sơn
+[4:53] → tập hợp ở chân núi · còn 11p58s
+[4:53] máu 100% · LL 100% · Yên Lãng Sơn (656,1983) · quái <400px 5 · người thù 0 · Tự Động tắt
+[5:03] máu 100% · LL 100% · Yên Lãng Sơn (656,1983) · quái <400px 6 · người thù 0 · Tự Động tắt
+[5:11] → đánh Hầu Tộc Côn Thủ · dọn đường · còn 11p40s
+[5:13] → đánh Nhím Tộc Tuần Vệ · Tuần Vệ (mở phong ấn linh thảo) · còn 11p38s
+[5:13] → đánh Xà Tộc Nỏ Thủ · dọn đường · còn 11p38s
+[5:13] máu 100% · LL 98% · Yên Lãng Sơn (712,1850) · quái <400px 6 · người thù 0 · Tự Động bật
+[5:16] → đánh Nhím Tộc Tuần Vệ · dọn đường · còn 11p36s
+[5:21] → đánh Nhím Tộc Tuần Vệ · Tuần Vệ (mở phong ấn linh thảo) · còn 11p31s
+[5:22] → đánh Xà Tộc Phi Châm · dọn đường · còn 11p29s
+[5:24] máu 100% · LL 97% · Yên Lãng Sơn (656,1550) · quái <400px 7 · người thù 0 · Tự Động bật · đánh Xà Tộc Phi Châm 60%
+[5:26] → đánh Nhím Tộc Đao Binh · dọn đường · còn 11p25s
+[5:28] → đánh Xà Tộc Phi Châm · dọn đường · còn 11p23s
+[5:32] → đánh Nhím Tộc Tuần Vệ · dọn đường · còn 11p20s
+[5:34] máu 95% · LL 100% · Yên Lãng Sơn (788,1615) · quái <400px 4 · người thù 0 · Tự Động bật · đánh Nhím Tộc Tuần Vệ 69%
+[5:34] → đánh Hầu Tộc Côn Thủ · dọn đường · còn 11p17s
+[5:36] → đánh Nhím Tộc Tuần Vệ · dọn đường · còn 11p15s
+[5:39] → tìm Tuần Vệ · còn 11p12s
+[5:40] → hái linh thảo · còn 11p12s
+[5:42] → đánh Tĩnh Sơn Hổ · dọn đường · còn 11p09s
+[5:44] máu 97% · LL 87% · Yên Lãng Sơn (777,1622) · quái <400px 2 · người thù 0 · Tự Động bật
+[5:54] máu 100% · LL 96% · Yên Lãng Sơn (733,1651) · quái <400px 2 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 91%
+[5:56] → hái linh thảo · còn 10p55s
+[6:04] → đánh Tĩnh Sơn Hổ · dọn đường · còn 10p48s
+[6:04] máu 100% · LL 95% · Yên Lãng Sơn (723,1700) · quái <400px 1 · người thù 0 · Tự Động tắt · đánh Tĩnh Sơn Hổ 87%
+[6:15] máu 100% · LL 100% · Yên Lãng Sơn (559,1711) · quái <400px 2 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 84%
+[6:25] máu 91% · LL 95% · Yên Lãng Sơn (601,1755) · quái <400px 2 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 80%
+[6:35] máu 87% · LL 92% · Yên Lãng Sơn (592,1758) · quái <400px 2 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 74%
+[6:46] máu 92% · LL 100% · Yên Lãng Sơn (592,1758) · quái <400px 2 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 70%
+[6:56] máu 87% · LL 96% · Yên Lãng Sơn (592,1758) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 65%
+[7:07] máu 81% · LL 91% · Yên Lãng Sơn (592,1758) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 61%
+[7:17] máu 82% · LL 100% · Yên Lãng Sơn (592,1758) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 56%
+[7:27] máu 88% · LL 98% · Yên Lãng Sơn (592,1758) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 52%
+[7:38] máu 77% · LL 100% · Yên Lãng Sơn (592,1758) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 48%
+[7:48] máu 69% · LL 95% · Yên Lãng Sơn (592,1758) · quái <400px 2 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 45%
+[7:59] máu 77% · LL 99% · Yên Lãng Sơn (592,1758) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 41%
+[8:09] máu 69% · LL 96% · Yên Lãng Sơn (592,1758) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 35%
+[8:20] máu 68% · LL 90% · Yên Lãng Sơn (592,1758) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 31%
+[8:30] máu 70% · LL 95% · Yên Lãng Sơn (592,1758) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 27%
+[8:40] máu 64% · LL 93% · Yên Lãng Sơn (592,1758) · quái <400px 2 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 23%
+[8:51] máu 70% · LL 87% · Yên Lãng Sơn (592,1758) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 20%
+[9:01] máu 59% · LL 100% · Yên Lãng Sơn (592,1758) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 14%
+[9:11] máu 67% · LL 95% · Yên Lãng Sơn (592,1758) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 9%
+[9:22] máu 70% · LL 97% · Yên Lãng Sơn (592,1758) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 5%
+[9:32] máu 64% · LL 97% · Yên Lãng Sơn (592,1758) · quái <400px 2 · người thù 0 · Tự Động bật · đánh Tĩnh Sơn Hổ 1%
+[9:34] → hái linh thảo · còn 7p18s
+[9:40] → đánh Nhím Tộc Thương Binh · dọn đường · còn 7p11s
+[9:42] máu 80% · LL 92% · Yên Lãng Sơn (577,1546) · quái <400px 2 · người thù 0 · Tự Động bật
+[9:45] → đánh Xà Tộc Nỏ Thủ · dọn đường · còn 7p06s
+[9:46] → hái linh thảo · còn 7p05s
+[9:51] → đánh Trấn Sơn Bia · Trấn Sơn Bia (còn 3) · còn 7p00s
+[9:51] → đánh Nhím Tộc Đao Binh · dọn đường · còn 7p00s
+[9:52] máu 100% · LL 100% · Yên Lãng Sơn (736,1143) · quái <400px 5 · người thù 0 · Tự Động bật · đánh Trấn Sơn Bia 100%
+[9:53] → đánh Hầu Tộc Kiếm Thủ · dọn đường · còn 6p58s
+[9:57] → đánh Xà Tộc Phi Châm · dọn đường · còn 6p55s
+[9:58] → đánh Trấn Sơn Bia · Trấn Sơn Bia (còn 3) · còn 6p54s
+[10:01] → đánh Nhím Tộc Thương Binh · dọn đường · còn 6p51s
+[10:02] máu 76% · LL 99% · Yên Lãng Sơn (528,944) · quái <400px 4 · người thù 0 · Tự Động bật · đánh Trấn Sơn Bia 48%
+[10:06] → đánh Trấn Sơn Bia · Trấn Sơn Bia (còn 3) · còn 6p45s
+[10:12] máu 68% · LL 98% · Yên Lãng Sơn (272,784) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Trấn Sơn Bia 81%
+[10:13] → ⏸ lệnh Tĩnh: đứng yên, không đánh
+[10:16] → đánh Trấn Sơn Bia · Trấn Sơn Bia (còn 2) · còn 6p35s
+[10:22] máu 53% · LL 96% · Yên Lãng Sơn (272,784) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Trấn Sơn Bia 19%
+[10:32] máu 59% · LL 100% · Yên Lãng Sơn (525,816) · quái <400px 1 · người thù 0 · Tự Động tắt · đánh Trấn Sơn Bia 13%
+[10:33] → ⏸ lệnh Tĩnh: đứng yên, không đánh
+[10:42] máu 77% · LL 100% · Yên Lãng Sơn (525,816) · quái <400px 0 · người thù 0 · Tự Động tắt
+[10:46] → đánh Xà Tộc Hộ Vệ · Hộ Vệ · còn 6p06s
+[10:51] → đánh Xà Tộc Hộ Vệ · Hộ Vệ · còn 6p00s · chờ vòng chiêu nổ
+[10:52] → đánh Xà Tộc Hộ Vệ · Hộ Vệ · còn 5p59s
+[10:52] → đánh Xà Tộc Hộ Vệ · dọn đường · còn 5p59s
+[10:52] máu 94% · LL 100% · Yên Lãng Sơn (686,538) · quái <400px 3 · người thù 0 · Tự Động bật · đánh Xà Tộc Hộ Vệ 34%
+[10:55] → đánh Tộc Trưởng · Tộc Trưởng 72% · còn 5p57s
+[11:00] → ⏸ lệnh Tĩnh: đứng yên, không đánh
+[11:02] máu 100% · LL 92% · Yên Lãng Sơn (763,392) · quái <400px 1 · người thù 0 · Tự Động tắt · đánh Tộc Trưởng 63%
+[11:04] → đánh Tộc Trưởng · Tộc Trưởng 62% · còn 5p48s
+[11:05] → đánh Thanh Thi Khôi · dọn đường · còn 5p47s
+[11:07] → đánh Đồng Thi Khôi · dọn đường · còn 5p44s
+[11:08] → đánh Đồng Thi Khôi · dọn đường · còn 5p43s · chờ vòng chiêu nổ
+[11:09] → đánh Đồng Thi Khôi · dọn đường · còn 5p42s
+[11:12] → đánh Tộc Trưởng · Tộc Trưởng 33% · còn 5p41s
+[11:13] máu 100% · LL 95% · Yên Lãng Sơn (880,400) · quái <400px 1 · người thù 0 · Tự Động bật
+[11:22] → nhặt đồ quanh xác Tộc Trưởng · còn 1p00s
+[11:22] → nhặt đồ quanh xác Tộc Trưởng · còn 59s
+[11:23] máu 100% · LL 100% · Yên Lãng Sơn (851,378) · quái <400px 0 · người thù 0 · Tự Động bật
+[11:23] → thắng · chờ đồ rơi · còn 58s
+[11:30] → thắng · đang rời · còn 52s
+[11:46] Kết thúc

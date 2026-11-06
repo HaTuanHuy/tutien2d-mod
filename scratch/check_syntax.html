@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <pre id="err"></pre>
+    <script>
+        window.onerror = function (msg, url, line, col, error) {
+            document.getElementById('err').textContent = "ERROR: " + msg + " at " + line + ":" + col;
+        };
+    </script>
+    <script src="../tutien2d-helper.user.js"></script>
+    <script>
+        if (!document.getElementById('err').textContent) {
+            document.getElementById('err').textContent = "ALL GOOD: TTBot=" + typeof window.TTBot;
+        }
+    </script>
+</body>
+
+</html>

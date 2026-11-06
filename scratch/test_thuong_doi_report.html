@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="utf-8">
+  <title>Test Thuong Doi & Van Tieu Telegram Reporting (v0.63.5)</title>
+  <style>
+    body { font-family: monospace; background: #1e1e1e; color: #d4d4d4; padding: 20px; }
+    .pass { color: #4ec9b0; }
+    .fail { color: #f14c4c; font-weight: bold; }
+    .log { margin-bottom: 4px; }
+    h2 { color: #569cd6; }
+  </style>
+</head>
+<body>
+  <h2>=== TEST SUITE: THƯƠNG ĐỘI & VẬN TIÊU TELEGRAM REPORTING (v0.63.5) ===</h2>
+  <div id="logs"></div>
+
+  <script>
+    window.testResults = { passed: 0, failed: 0, tests: [] };
+    function log(msg, pass) {
+      var d = document.createElement('div');
+      d.className = 'log ' + (pass === true ? 'pass' : pass === false ? 'fail' : '');
+      d.textContent = (pass === true ? '  [PASS] ' : pass === false ? '  [FAIL] ' : '') + msg;
+      document.getElementById('logs').appendChild(d);
+      if (pass === true) window.testResults.passed++;
+      if (pass === false) { window.testResults.failed++; window.testResults.tests.push(msg); }
+      console.log(d.textContent);
+    }
+
+    var sentTgMessages = [];
+
+    var swMock = {
+      player: {
+        id: 'player_1',
+        name: 'memooo',
+        x: 500,
+        y: 500,
+        hp: 1000,
+        hpMax: 1000,
+        mp: 500,
+        mpMax: 500,
+        speed: 160,
+        state: 'idle',
+        downed: false,
+        canMeditate: true,
+        path: [],
+        setPath: function(p) { this.path = p; },
+        stop: function() { this.path = []; }
+      },
+      map: {
+        id: 'thao_duoc_coc',
+        data: {
+          id: 'thao_duoc_coc',
+          name: 'Thảo Dược Cốc',
+          enemies: []
+        },
+        props: [],
+        portals: []
+      },
+      enemies: [
+        {
+          id: 'tieu_su_1',
+          type: 'tieu_su',
+          name: 'Tiêu Sư',
+          x: 520,
+          y: 520,
+          hp: 2000,
+          hpMax: 2000,
+          dead: false,
+          def: { name: 'Tiêu Sư', human: true, hon: 'oan_hon', bodyRadius: 20 }
+        }
+      ],
+      drops: [],
+      players: [],
+      autoOn: false
+    };
+
+    window.PNTT = {
+      CONFIG: {
+        TILE: 32,
+        PLAYER: { SPEED: 160, RUN_MULT: 1.5, HIT_RADIUS: 24 },
+        TARGET: { RANGE: 400 }
+      },
+      Gateway: {
+        connected: true,
+        selfId: 'player_1',
+        cmd: function(op, data, cb) { if (cb) cb({ ok: true }); },
+        send: function() { return true; }
+      },
+      Game: { scene: swMock, time: 100 },
+      SceneWorld: swMock,
+      Player: {
+        stand: function() {},
+        reach: function() { return 26; }
+      },
+      Pathfinder: {
+        route: function() { return [{ x: 520, y: 520 }]; }
+      },
+      Input: {
+        run: true,
+        pressMeditate: function() {},
+        pressAutoToggle: function() { swMock.autoOn = !swMock.autoOn; }
+      },
+      MapData: {
+        thao_duoc_coc: { id: 'thao_duoc_coc', name: 'Thảo Dược Cốc', portals: [] },
+        thanh_thang_long: { id: 'thanh_thang_long', name: 'Thành Thăng Long', portals: [] }
+      },
+      VanTieu: {
+        TUYEN: ['rung_truc', 'thao_duoc_coc', 'thanh_thang_long'],
+        MAP_NHAN: 'rung_truc',
+        MAP_GIAO: 'thanh_thang_long',
+        tenHang: function(h) { return 'Tiêu Kỳ Vàng'; }
+      },
+      VanTieuUI: {
+        chuyen: null,
+        nhan: function(e) {}
+      },
+      Loot: {
+        PICK_R: 40
+      },
+      Inventory: {
+        bag: { oan_hon: 5, linh_thach: 10000 }
+      },
+      Progress: {
+        stones: 10000
+      },
+      KhuUI: {
+        khu: 1,
+        soKhu: 3
+      }
+    };
+  </script>
+
+  <!-- Load script -->
+  <script src="../tutien2d-helper.user.js"></script>
+
+  <script>
+    (function () {
+      try {
+        var TB = window.TTBot;
+        if (!TB) { log('TTBot not loaded', false); return; }
+        log('TTBot v' + (TB.cfg.version || '0.63.5') + ' loaded successfully', true);
+
+        // Cấu hình Telegram
+        TB.cfg.tgOn = true;
+        TB.cfg.tgToken = '123456:fake-token';
+        TB.cfg.tgChat = '-1004343654191';
+        TB.cfg.tgEv_td = true;
+        TB.cfg.tgEv_vt = true;
+
+        // Mock dev.tgSend to collect messages
+        TB.dev.eval('tgSend = function(text, cb) { window.sentTgMessages.push(text); if (cb) cb({ok: true}); }');
+
+        // Test 1: Defaults check
+        log('tgEv_td defaults to true', TB.cfg.tgEv_td === true);
+        log('tgEv_vt defaults to true', TB.cfg.tgEv_vt === true);
+
+        // Test 2: TG_EV contains td and vt
+        var hasTd = TB.dev.eval('TG_EV.some(function(e) { return e[0] === "td"; })');
+        var hasVt = TB.dev.eval('TG_EV.some(function(e) { return e[0] === "vt"; })');
+        log('TG_EV contains td (Thương Đội)', hasTd === true);
+        log('TG_EV contains vt (Vận Tiêu)', hasVt === true);
+
+        // Test 3: Thiên Đạo broadcast Thương Đội triggers Telegram notification
+        TB.dev.eval('readNews("Một Thương Đội vừa lên đường qua Thảo Dược Cốc – khu 1, có Tiêu Sư hộ tống", { kind: "khac" })');
+        var tdAlert = window.sentTgMessages.find(function(m) { return m.indexOf('Thương Đội vừa lên đường qua Thảo Dược Cốc') >= 0; });
+        log('Telegram alert sent when Thiên Đạo announces Thương Đội', !!tdAlert);
+        if (tdAlert) log('Alert content contains Khu 1: ' + (tdAlert.indexOf('Khu 1') >= 0), tdAlert.indexOf('Khu 1') >= 0);
+
+        // Test 4: Duplicate broadcast does NOT duplicate Telegram alert within 60s
+        var prevCount = window.sentTgMessages.length;
+        TB.dev.eval('readNews("Một Thương Đội vừa lên đường qua Thảo Dược Cốc – khu 1", { kind: "khac" })');
+        log('Duplicate alert within 60s is ignored', window.sentTgMessages.length === prevCount);
+
+        // Test 5: Thương Đội finish broadcast
+        TB.dev.eval('readNews("Thương Đội ở Thảo Dược Cốc khu 1 đã bị hạ!", { kind: "khac" })');
+        var doneAlert = window.sentTgMessages.find(function(m) { return m.indexOf('đã kết thúc') >= 0; });
+        log('Telegram alert sent when Thương Đội finishes', !!doneAlert);
+
+        // Test 6: Săn Thương Đội session recording
+        TB.st.td = {
+          ev: { map: 'thao_duoc_coc', khu: 1 },
+          maps: ['thao_duoc_coc'],
+          mi: 0,
+          at: performance.now(),
+          target: swMock.enemies[0],
+          seen: true,
+          step: 'săn Tiêu Sư · khu 1'
+        };
+
+        var g = TB.game();
+        TB.dev.eval('tickReport(game())');
+        var activeRec = TB.dev.eval('tgRec');
+        log('Active recording started for Thương Đội (tgRec.k === "td")', activeRec && activeRec.k === 'td');
+        log('Recording name contains map and khu', activeRec && activeRec.name.indexOf('Thảo Dược Cốc') >= 0);
+
+        // Test 7: Kill enemy logs into session
+        TB.cfg.tdHunt = true;
+        TB.dev.eval('tdWant = function() { return true; }; tdKind = function() { return "ma"; }; tdTargets = function() { return [game().sw.enemies[0]]; }');
+        swMock.enemies[0].dead = true;
+        swMock.enemies[0].hp = 0;
+        TB.dev.eval('tickThuongDoi(game())');
+        var killLogged = activeRec && activeRec.lines.some(function(l) { return l.indexOf('Hạ Tiêu Sư') >= 0; });
+        log('Target kill logged into session report', killLogged);
+
+        // Test 8: End hunt -> Gain calculation & Report sent
+        window.PNTT.Inventory.bag.oan_hon = 8; // gained 3
+        window.PNTT.Inventory.bag.linh_thach = 15000; // gained 5000
+        TB.dev.eval('tdFinish(game(), "Đủ Oán Hồn → về")');
+        TB.dev.eval('tgEnd(game(), "Đủ Oán Hồn → về")');
+
+        var finishMsg = window.sentTgMessages.find(function(m) { return m.indexOf('Săn Thương Đội') >= 0 || m.indexOf('Thương Đội') >= 0 && m.indexOf('Đủ Oán Hồn') >= 0; });
+        log('Report summary sent on hunt finish', !!finishMsg);
+        if (finishMsg) log('Summary contains gained Oán Hồn', finishMsg.indexOf('Oán Hồn') >= 0);
+
+        // Test 9: Vận Tiêu regular completion hook
+        window.PNTT.VanTieuUI.chuyen = { hang: 'vang', hp: 1000, hm: 1000 };
+        TB.dev.eval('hookVanTieu(window.PNTT)');
+        window.PNTT.VanTieuUI.nhan({ act: 'het', ly: 'giao', thuong: 15000 });
+        var vtResult = TB.st.lastVtResult;
+        log('hookVanTieu captures delivery reward (+15000 Linh Thạch)', vtResult && vtResult.indexOf('+15000 Linh Thạch') >= 0);
+
+      } catch (err) {
+        log('ERROR in test: ' + err.message + '\n' + err.stack, false);
+      }
+
+      console.log('Total tests: ' + (window.testResults.passed + window.testResults.failed) + ' | Passed: ' + window.testResults.passed + ' | Failed: ' + window.testResults.failed);
+    })();
+  </script>
+</body></html>

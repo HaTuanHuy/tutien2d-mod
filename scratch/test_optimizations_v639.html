@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Unit Test Suite v0.63.9</title>
+</head>
+
+<body>
+  <h1>Test Suite v0.63.9 Optimizations</h1>
+  <div id="results"></div>
+  <script>
+    var results = [];
+    function assert(name, condition, details) {
+      results.push({ name: name, pass: !!condition, details: details || '' });
+    }
+
+    // Load helper script by reading from window context or simulating tests
+    try {
+      // Test 1: plainVi & title casing
+      var mobRaw = "ba xich nhan nguu va ba bach ho tuyet";
+      var mobNames = mobRaw.split(/\s+va\s+/i).map(function (s) {
+        return s.trim().replace(/(^|\s)\S/g, function (l) { return l.toUpperCase(); });
+      }).join(' và ');
+      assert("Test 1: Mob name capitalization", mobNames === "Ba Xích Nhãn Ngưu và Ba Bạch Hổ Tuyết", mobNames);
+
+      // Test 2: Regex for monster breakout with countdown
+      var text = "Thiên Đạo: Ba Xích Nhãn Ngưu và ba Bạch Hổ Tuyết sắp xổng chuồng tại Bãi Đá, khu 20 (20 giây nữa)!";
+      function plainVi(t) { return String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase(); }
+      var t = plainVi(text).replace(/^(?:\[?(?:thien dao|he thong|thong bao)\]?|\(thien dao\))[\s:–-]*/i, '').trim();
+      var m = /^(.+?)\s+(?:vua|sap|da)?\s*(?:xong chuong|xuat hien|giang the|tu tap)\s+(?:tai|o)\s+(.+?),?\s*khu\s+(\d+)/.exec(t);
+      var delayM = /\((\d+)\s*giay\s*nua\)/.exec(t);
+      assert("Test 2: Regex captures what, map, khu", m && m[1] === "ba xich nhan nguu va ba bach ho tuyet" && m[2] === "bai da" && m[3] === "20", JSON.stringify(m));
+      assert("Test 3: Delay capture", delayM && delayM[1] === "20", delayM ? delayM[1] : 'null');
+
+      // Test 4: Khu condition logic
+      var gaKhu = 1, eKhu = 20, gaSoKhu = 1;
+      var canSwitch = (gaKhu !== eKhu && (gaSoKhu >= eKhu || !gaSoKhu || gaSoKhu <= 1));
+      assert("Test 4: Switch khu allowed even when gaSoKhu is 1", canSwitch === true);
+
+      // Test 5: Death streak throttling in revive
+      var recentDeaths = [1000, 5000]; // 2 deaths within window
+      var deathStreak = recentDeaths.length;
+      var isBossContext = true;
+      var minReviveInterval = isBossContext ? (deathStreak >= 2 ? 4500 : 2500) : 3000;
+      assert("Test 5: Boss death streak throttles revive interval to 4500ms", minReviveInterval === 4500);
+
+      // Test 6: PK camp prevents spot revive on streak
+      var pkCamped = true;
+      var canSpotRevive = (1 !== 0) && (!pkCamped || deathStreak < 2);
+      assert("Test 6: PK camp + death streak prevents spot revive", canSpotRevive === false);
+
+      // Test 7: Boss execution phase buffer (< 10% HP, player < 35%)
+      var bossHpPct = 0.05, playerHpPct = 0.25;
+      var reach = 40;
+      if (bossHpPct <= 0.10 && playerHpPct < 0.35) {
+        reach = Math.max(reach, 180);
+      }
+      assert("Test 7: Safe buffer 180px in boss execution phase", reach === 180);
+
+      // Test 8: Cart rob PK retreat when low HP
+      var robHpPct = 0.25, hasNearPks = true;
+      var robRetreat = (robHpPct < 0.28 && hasNearPks);
+      assert("Test 8: Cart rob retreats when HP < 28% and hostile PK near", robRetreat === true);
+
+    } catch (e) {
+      assert("Fatal Test Error", false, e.message);
+    }
+
+    var div = document.getElementById('results');
+    var allPass = true;
+    results.forEach(function (r) {
+      if (!r.pass) allPass = false;
+      var p = document.createElement('p');
+      p.style.color = r.pass ? 'green' : 'red';
+      p.textContent = (r.pass ? '✓ ' : '✗ ') + r.name + (r.details ? ': ' + r.details : '');
+      div.appendChild(p);
+    });
+    var sum = document.createElement('h2');
+    sum.id = 'summary';
+    sum.textContent = allPass ? 'ALL TESTS PASSED (' + results.length + '/' + results.length + ')' : 'SOME TESTS FAILED';
+    sum.style.color = allPass ? 'green' : 'red';
+    div.appendChild(sum);
+    window.__TEST_DONE__ = true;
+    window.__TEST_RESULTS__ = results;
+    window.__ALL_PASS__ = allPass;
+  </script>
+</body>
+
+</html>

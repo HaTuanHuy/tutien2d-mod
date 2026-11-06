@@ -1,0 +1,31 @@
+Thương Đội (săn & tin Thiên Đạo) · Rừng Trúc k10 · memooo · trợ thủ v0.63.8 · bắt đầu 15:40:37 4/11/2026
+===== TÓM TẮT =====
+✅ Thương Đội (săn & tin Thiên Đạo) · Rừng Trúc k10 · memooo · 0:55
+Kết quả: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+🎁 Thu được: không có gì
+📜 Diễn biến cuối:
+[0:19] → đổi sang khu 10 (Thiên Đạo báo)
+[0:20] → chờ đoàn hiện ở Rừng Trúc khu 10 (Thiên Đạo báo trước 20 giây)
+[0:20] → săn Kiếp Tặc · khu 10
+[0:46] Hạ Kiếp Tặc
+[0:47] Hạ Kiếp Tặc
+[0:47] → nhặt hồn rơi
+[0:48] Hoàn thành: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+[0:55] Kết thúc (chuyển sang Boss) · Kết quả: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Thương Đội (săn & tin Thiên Đạo) · Rừng Trúc k10 · memooo · trợ thủ đang bật · v0.63.8
+[0:00] → nhặt đồ rơi
+[0:00] máu 100% · LL 18% · Miếu Ông Trường Con (880,432) · quái <400px 1 · người thù 0 · Tự Động tắt · đánh Thạch Quy Đội Bia 100% · việc: nhặt đồ rơi · việc: nhặt đồ rơi
+[0:00] → đi tới Rừng Trúc
+[0:10] máu 100% · LL 41% · Bãi Đá (283,841) · quái <400px 3 · người thù 0 · Tự Động tắt · việc: đi tới Rừng Trúc · việc: đi tới Rừng Trúc
+[0:19] → đổi sang khu 10 (Thiên Đạo báo)
+[0:20] → chờ đoàn hiện ở Rừng Trúc khu 10 (Thiên Đạo báo trước 20 giây)
+[0:20] → săn Kiếp Tặc · khu 10
+[0:20] máu 100% · LL 63% · Rừng Trúc (370,247) · quái <400px 0 · người thù 0 · Tự Động bật · đánh Kiếp Tặc 100% · việc: săn Kiếp Tặc · khu 10 · việc: săn Kiếp Tặc · khu 10 · mục tiêu Kiếp Tặc 100%
+[0:30] máu 100% · LL 46% · Rừng Trúc (432,400) · quái <400px 14 · người thù 0 · Tự Động bật · đánh Kiếp Tặc 64% · việc: săn Kiếp Tặc · khu 10 · việc: săn Kiếp Tặc · khu 10 · mục tiêu Kiếp Tặc 64%
+[0:40] máu 100% · LL 23% · Rừng Trúc (432,400) · quái <400px 9 · người thù 0 · Tự Động bật · đánh Kiếp Tặc 36% · việc: săn Kiếp Tặc · khu 10 · việc: săn Kiếp Tặc · khu 10 · mục tiêu Kiếp Tặc 36%
+[0:46] Hạ Kiếp Tặc
+[0:47] Hạ Kiếp Tặc
+[0:47] → nhặt hồn rơi
+[0:48] Hoàn thành: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+[0:55] Kết thúc (chuyển sang Boss) · Kết quả: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về

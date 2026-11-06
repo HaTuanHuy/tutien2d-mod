@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="output"></div>
+<script>
+  // Page window
+  var unsafeWindow = window;
+  
+  // Simulate Tampermonkey script
+  (function () {
+    'use strict';
+    var window = (typeof unsafeWindow !== 'undefined' && unsafeWindow) ? unsafeWindow : (typeof window !== 'undefined' ? window : this);
+    
+    var origWS = window.WebSocket;
+    var hookedCount = 0;
+    var HookedWS = function(url, protocols) {
+      hookedCount++;
+      return protocols ? new origWS(url, protocols) : new origWS(url);
+    };
+    HookedWS.prototype = origWS.prototype;
+    window.WebSocket = HookedWS;
+    window._hookedCount = function() { return hookedCount; };
+  })();
+
+  // Now page creates a WebSocket
+  try {
+    var ws = new WebSocket('wss://echo.websocket.org');
+  } catch (e) {}
+
+  document.getElementById('output').textContent = 'HookedWS count: ' + window._hookedCount();
+</script>
+</body>
+</html>

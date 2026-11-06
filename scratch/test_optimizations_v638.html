@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Optimizations v0.63.8 Unit Tests</title>
+</head>
+
+<body>
+  <h2>Optimizations Test Report</h2>
+  <pre id="log"></pre>
+  <script>
+    var results = [];
+    function assert(desc, condition) {
+      if (condition) {
+        results.push("PASS: " + desc);
+      } else {
+        results.push("FAIL: " + desc);
+        console.error("FAIL: " + desc);
+      }
+    }
+
+    // Load helper source code as text to verify structures and test logic
+    fetch('../tutien2d-helper.user.js')
+      .then(function (res) { return res.text(); })
+      .then(function (src) {
+        // Test 1: TG_EV ordering
+        var idxVt = src.indexOf("['vt', 'Vận Tiêu'");
+        var idxCt = src.indexOf("['ct', 'Cướp tiêu'");
+        assert("TG_EV has 'vt' before 'ct' to prioritize escort over rob", idxVt >= 0 && idxCt >= 0 && idxVt < idxCt);
+
+        // Test 2: tickStandalone before tickCuopTieu in tick()
+        var idxTickStandalone = src.indexOf("if (tickStandalone(g)) return;");
+        var idxTickCuopTieu = src.indexOf("if (tickCuopTieu(g)) return;");
+        assert("tick() calls tickStandalone(g) before tickCuopTieu(g)", idxTickStandalone >= 0 && idxTickCuopTieu >= 0 && idxTickStandalone < idxTickCuopTieu);
+
+        // Test 3: tickCuopTieu check for vtActive/st.vt
+        var hasVtCheckInCt = src.indexOf("if (vtActive(g) || st.vt || (cfg.vtRun && !st.ct)) return false;") >= 0;
+        assert("tickCuopTieu() immediately yields if vtActive(g) or st.vt", hasVtCheckInCt);
+
+        // Test 4: Cross-map camp navigation in tickCuopTieu
+        var hasCrossMapCamp = src.indexOf("cp && cp.map && cp.map !== g.mapId") >= 0;
+        var hasStartTravelCamp = src.indexOf("startTravel(cp.map, cp.x, cp.y, 'Cướp tiêu: sang ' + mapName(cp.map) + ' camp');") >= 0;
+        assert("tickCuopTieu() starts travel when camp map differs from current map", hasCrossMapCamp && hasStartTravelCamp);
+
+        // Test 5: Role reset in tickCuopTieu when cart is lost
+        var hasRoleReset = src.indexOf("if (a.role === 'hạ người kéo' || a.role === 'đánh xe') { a.role = null; a.pk = false; }") >= 0;
+        assert("tickCuopTieu() clears stale 'hạ người kéo' role when cart is lost", hasRoleReset);
+
+        // Test 6: World Boss post-revive safety buffer
+        var hasReviveGrace = src.indexOf("st.reviveGraceUntil = now() + 3500;") >= 0;
+        var hasReachGrace = src.indexOf("if (now() < (st.reviveGraceUntil || 0) && isBoss(t) && me.hp / (me.hpMax || 1) < 0.45)") >= 0;
+        assert("tickRevive() sets st.reviveGraceUntil = now() + 3500", hasReviveGrace);
+        assert("smartMove() keeps 180px safe reach during grace period for low HP", hasReachGrace);
+
+        // Test 7: Smart free movement & stayFarm pause
+        var hasManualTracking = src.indexOf("if (g && g.P && g.P.Input && g.P.Input.hasManualMove && g.P.Input.hasManualMove()) { st.lastManualAt = now(); }") >= 0;
+        var hasManualGraceInStayFarm = src.indexOf("var manualRecent = (now() - (st.lastManualAt || 0)) < 15000;") >= 0;
+        var hasStayFarmPaused = src.indexOf("st.stayFarmPaused = true;") >= 0;
+        assert("tick() tracks st.lastManualAt on manual input", hasManualTracking);
+        assert("tickStayFarm() respects 15s manual movement grace period", hasManualGraceInStayFarm);
+        assert("tickStayFarm() pauses when player manually travels to another map", hasStayFarmPaused);
+
+        // Test 8: Chat parsing regex handles Thiên Đạo escaped beasts
+        function plainVi(t) { return String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase(); }
+        var rawMsg = "Thiên Đạo: Ba Xích Nhãn Ngưu và ba Bạch Hổ Tuyết sắp xổng chuồng tại Bãi Đá, khu 20 (20 giây nữa)!";
+        var t = plainVi(rawMsg).replace(/^(?:\[?(?:thien dao|he thong|thong bao)\]?|\(thien dao\))[\s:–-]*/i, '').trim();
+        var m = /^(.+?)\s+(?:vua|sap|da)?\s*(?:xong chuong|xuat hien|giang the|tu tap)\s+(?:tai|o)\s+(.+?),?\s*khu\s+(\d+)/.exec(t);
+        assert("Regex parses beasts names", m && m[1] === "ba xich nhan nguu va ba bach ho tuyet");
+        assert("Regex parses map name", m && m[2] === "bai da");
+        assert("Regex parses khu number", m && m[3] === "20");
+        var delayM = /\((\d+)\s*giay\s*nua\)/.exec(t);
+        assert("Regex parses seconds delay", delayM && delayM[1] === "20");
+
+        // Display results
+        var logEl = document.getElementById('log');
+        logEl.textContent = results.join('\n');
+        window.__TEST_DONE__ = true;
+      })
+      .catch(function (err) {
+        document.getElementById('log').textContent = "ERROR: " + err.message;
+        window.__TEST_DONE__ = true;
+      });
+  </script>
+</body>
+
+</html>

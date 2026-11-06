@@ -1,0 +1,17 @@
+Cướp tiêu · mewmew · trợ thủ v0.63.8 · bắt đầu 18:01:29 4/11/2026
+===== TÓM TẮT =====
+✅ Cướp tiêu · mewmew · 0:36
+🎁 Thu được: không có gì
+📜 Diễn biến cuối:
+[0:00] Bắt đầu Cướp tiêu · mewmew · trợ thủ đang bật · v0.63.8
+[0:00] → ra Mỏ Linh Thạch camp
+[0:12] → hết lượt cướp hôm nay · đứng canh / hộ tống đồng đội
+[0:36] Kết thúc
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Cướp tiêu · mewmew · trợ thủ đang bật · v0.63.8
+[0:00] → ra Mỏ Linh Thạch camp
+[0:00] máu 100% · LL 100% · Chân Núi Tản Viên (272,864) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: ra Mỏ Linh Thạch camp
+[0:10] máu 100% · LL 100% · Bãi Đá (604,390) · quái <400px 1 · người thù 1 · Tự Động tắt · việc: ra Mỏ Linh Thạch camp
+[0:12] → hết lượt cướp hôm nay · đứng canh / hộ tống đồng đội
+[0:20] máu 100% · LL 100% · Mỏ Linh Thạch (142,440) · quái <400px 8 · người thù 1 · Tự Động tắt · việc: hết lượt cướp hôm nay · đứng canh / hộ tống đồng đội
+[0:36] Kết thúc

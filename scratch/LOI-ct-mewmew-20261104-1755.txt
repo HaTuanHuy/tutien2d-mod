@@ -1,0 +1,56 @@
+Cướp tiêu · mewmew · trợ thủ v0.63.8 · bắt đầu 17:55:41 4/11/2026
+===== TÓM TẮT =====
+🚨 Cướp tiêu · mewmew · 2:16 · gục 5 lần
+🎁 Thu được: Linh Thạch ×4, Huyền Thiết Khoáng ×3
+🟡 Máu 25% mà vẫn tiến về phía địch / trụ địch (còn 209px) · việc: cướp Tiêu Kỳ Vàng · 3122/3240 · còn 1 lượt cướp
+🔴 Gục · máu 10 giây trước: 100→100→98→93→99→55→51→53→23→24→25 · việc: cướp Tiêu Kỳ Vàng · 3122/3240 · còn 1 lượt cướp · quái quanh: không · người thù quanh: chuppy 90%, chienthien 100%
+🔴 Gục · máu 10 giây trước: 36→38→39→39→40→45→47→48→52→38→11 · việc: cướp Tiêu Kỳ Vàng · 3015/3240 · còn 1 lượt cướp · quái quanh: không · người thù quanh: chienthien 90%
+🔴 Gục · máu 10 giây trước: 19→20→24→26→28→29→31→33→12→4→5 · việc: cướp Tiêu Kỳ Vàng · 2647/3240 · còn 1 lượt cướp · quái quanh: không · người thù quanh: chienthien 40%
+🔴 Gục · máu 10 giây trước: 29→31→33→12→4→5→0→0→0→36→31 · việc: cướp Tiêu Kỳ Vàng · 2587/3240 · còn 1 lượt cướp · quái quanh: không · người thù quanh: chienthien 30%
+🔴 Gục · máu 10 giây trước: 0→0→0→35→36→39→40→43→44→33→31 · việc: cướp Tiêu Kỳ Vàng · 2448/3240 · còn 1 lượt cướp · quái quanh: không · người thù quanh: chienthien 45%
+📜 Diễn biến cuối:
+[1:06] ⚠ Gục · máu 10 giây trước: 0→0→0→35→36→39→40→43→44→33→31 · việc: cướp Tiêu Kỳ Vàng · 2448/3240 · còn 1 lượt cướp · quái quanh: không · người thù quanh: chienthien 45%
+[1:10] ↺ hồi sinh
+[1:10] → ra Mỏ Linh Thạch camp
+[1:17] → ra Mỏ Linh Thạch camp cướp tiêu
+[1:17] → ra Mỏ Linh Thạch camp
+[1:21] → đứng chờ 9% đường xe ở Mỏ Linh Thạch (chỗ đã chọn · còn ~58s đường xe, 1 người cần ~219s → có thể không kịp) · 1 người cùng đánh · Mỏ Linh Thạch khu 1 · còn 1 lượt cướp
+[1:29] → cướp Tiêu Kỳ Vàng · 2540/3240 · còn 1 lượt cướp
+[2:16] Kết thúc (chuyển sang Vận Tiêu)
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Cướp tiêu · mewmew · trợ thủ đang bật · v0.63.8
+[0:00] → ra Bãi Đá camp cướp tiêu
+[0:00] máu 100% · LL 100% · Mỏ Linh Thạch (152,407) · quái <400px 3 · người thù 0 · Tự Động tắt · việc: ra Bãi Đá camp cướp tiêu
+[0:00] → cướp Tiêu Kỳ Vàng · 3240/3240 · còn 1 lượt cướp
+[0:10] máu 25% · LL 94% · Mỏ Linh Thạch (612,46) · quái <400px 0 · người thù 3 · Tự Động tắt · việc: cướp Tiêu Kỳ Vàng · 3122/3240 · còn 1 lượt cướp
+[0:10] ⚠ Máu 25% mà vẫn tiến về phía địch / trụ địch (còn 209px) · việc: cướp Tiêu Kỳ Vàng · 3122/3240 · còn 1 lượt cướp
+[0:12] ⚠ Gục · máu 10 giây trước: 100→100→98→93→99→55→51→53→23→24→25 · việc: cướp Tiêu Kỳ Vàng · 3122/3240 · còn 1 lượt cướp · quái quanh: không · người thù quanh: chuppy 90%, chienthien 100%
+[0:15] ↺ hồi sinh
+[0:17] → Tiêu Kỳ Vàng qua cổng sang Thung Lũng → đuổi theo
+[0:20] → cướp Tiêu Kỳ Vàng · 3140/3240 · còn 1 lượt cướp
+[0:20] máu 40% · LL 92% · Thung Lũng (112,895) · quái <400px 0 · người thù 1 · Tự Động tắt · việc: cướp Tiêu Kỳ Vàng · 3149/3240 · còn 1 lượt cướp
+[0:27] ⚠ Gục · máu 10 giây trước: 36→38→39→39→40→45→47→48→52→38→11 · việc: cướp Tiêu Kỳ Vàng · 3015/3240 · còn 1 lượt cướp · quái quanh: không · người thù quanh: chienthien 90%
+[0:30] máu 0% · LL 78% · Thung Lũng (240,816) · quái <400px 0 · người thù 1 · Tự Động tắt · việc: cướp Tiêu Kỳ Vàng · 3015/3240 · còn 1 lượt cướp
+[0:31] ↺ hồi sinh
+[0:40] máu 24% · LL 54% · Thung Lũng (240,816) · quái <400px 0 · người thù 1 · Tự Động tắt · việc: cướp Tiêu Kỳ Vàng · 2818/3240 · còn 1 lượt cướp
+[0:49] ⚠ Gục · máu 10 giây trước: 19→20→24→26→28→29→31→33→12→4→5 · việc: cướp Tiêu Kỳ Vàng · 2647/3240 · còn 1 lượt cướp · quái quanh: không · người thù quanh: chienthien 40%
+[0:50] máu 0% · LL 34% · Thung Lũng (240,816) · quái <400px 0 · người thù 1 · Tự Động tắt · việc: cướp Tiêu Kỳ Vàng · 2647/3240 · còn 1 lượt cướp
+[0:52] ↺ hồi sinh
+[0:55] ⚠ Gục · máu 10 giây trước: 29→31→33→12→4→5→0→0→0→36→31 · việc: cướp Tiêu Kỳ Vàng · 2587/3240 · còn 1 lượt cướp · quái quanh: không · người thù quanh: chienthien 30%
+[0:58] ↺ hồi sinh
+[1:00] máu 39% · LL 18% · Thung Lũng (240,816) · quái <400px 0 · người thù 1 · Tự Động tắt · việc: cướp Tiêu Kỳ Vàng · 2556/3240 · còn 1 lượt cướp
+[1:06] ⚠ Gục · máu 10 giây trước: 0→0→0→35→36→39→40→43→44→33→31 · việc: cướp Tiêu Kỳ Vàng · 2448/3240 · còn 1 lượt cướp · quái quanh: không · người thù quanh: chienthien 45%
+[1:10] ↺ hồi sinh
+[1:10] → ra Mỏ Linh Thạch camp
+[1:10] máu 61% · LL 11% · Chân Núi Tản Viên (303,786) · quái <400px 0 · người thù 1 · Tự Động tắt · việc: ra Mỏ Linh Thạch camp
+[1:17] → ra Mỏ Linh Thạch camp cướp tiêu
+[1:17] → ra Mỏ Linh Thạch camp
+[1:21] máu 74% · LL 41% · Mỏ Linh Thạch (112,447) · quái <400px 6 · người thù 0 · Tự Động tắt · việc: ra Mỏ Linh Thạch camp
+[1:21] → đứng chờ 9% đường xe ở Mỏ Linh Thạch (chỗ đã chọn · còn ~58s đường xe, 1 người cần ~219s → có thể không kịp) · 1 người cùng đánh · Mỏ Linh Thạch khu 1 · còn 1 lượt cướp
+[1:29] → cướp Tiêu Kỳ Vàng · 2540/3240 · còn 1 lượt cướp
+[1:31] máu 88% · LL 53% · Thung Lũng (200,859) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: cướp Tiêu Kỳ Vàng · 2435/3240 · còn 1 lượt cướp
+[1:41] máu 100% · LL 33% · Thung Lũng (240,816) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: cướp Tiêu Kỳ Vàng · 1932/3240 · còn 1 lượt cướp
+[1:51] máu 100% · LL 1% · Thung Lũng (240,816) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: cướp Tiêu Kỳ Vàng · 1319/3240 · còn 1 lượt cướp
+[2:01] máu 100% · LL 2% · Thung Lũng (240,816) · quái <400px 0 · người thù 2 · Tự Động tắt · đánh Tiêu Xa Vàng 21% · việc: cướp Tiêu Kỳ Vàng · 686/3240 · còn 1 lượt cướp
+[2:11] máu 100% · LL 2% · Thung Lũng (240,816) · quái <400px 0 · người thù 2 · Tự Động tắt · đánh Tiêu Xa Vàng 7% · việc: cướp Tiêu Kỳ Vàng · 235/3240 · còn 1 lượt cướp
+[2:16] Kết thúc (chuyển sang Vận Tiêu)

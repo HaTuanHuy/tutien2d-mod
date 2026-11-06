@@ -1,0 +1,29 @@
+Thương Đội (săn & tin Thiên Đạo) · Bãi Đá k10 · memooo · trợ thủ v0.63.8 · bắt đầu 14:50:29 4/11/2026
+===== TÓM TẮT =====
+✅ Thương Đội (săn & tin Thiên Đạo) · Bãi Đá k10 · memooo · 0:54
+Kết quả: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+🎁 Thu được: Linh Thạch ×1, Hiệp Nghĩa Lệnh ×1
+📜 Diễn biến cuối:
+[0:03] → đổi sang khu 10 (Thiên Đạo báo)
+[0:10] → chờ đoàn hiện ở Bãi Đá khu 10 (Thiên Đạo báo trước 20 giây)
+[0:20] → săn Kiếp Tặc · khu 10
+[0:34] Hạ Kiếp Tặc
+[0:37] Hạ Kiếp Tặc
+[0:37] → nhặt hồn rơi
+[0:39] Hoàn thành: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+[0:54] Kết thúc · Kết quả: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Thương Đội (săn & tin Thiên Đạo) · Bãi Đá k10 · memooo · trợ thủ đang bật · v0.63.8
+[0:00] → đi tới Bãi Đá
+[0:00] máu 100% · LL 20% · Miếu Ông Trường Con (720,298) · quái <400px 1 · người thù 0 · Tự Động tắt · đánh Thạch Quy Đội Bia 58% · việc: đi tới Bãi Đá · việc: đi tới Bãi Đá
+[0:03] → đổi sang khu 10 (Thiên Đạo báo)
+[0:10] → chờ đoàn hiện ở Bãi Đá khu 10 (Thiên Đạo báo trước 20 giây)
+[0:10] máu 100% · LL 47% · Bãi Đá (686,463) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: chờ đoàn hiện ở Bãi Đá khu 10 (Thiên Đạo báo trước 20 giây) · việc: chờ đoàn hiện ở Bãi Đá khu 10 (Thiên Đạo báo trước 20 giây)
+[0:20] → săn Kiếp Tặc · khu 10
+[0:20] máu 100% · LL 61% · Bãi Đá (686,463) · quái <400px 0 · người thù 0 · Tự Động bật · việc: săn Kiếp Tặc · khu 10 · việc: săn Kiếp Tặc · khu 10 · mục tiêu Kiếp Tặc 98%
+[0:30] máu 100% · LL 51% · Bãi Đá (686,463) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Kiếp Tặc 53% · việc: săn Kiếp Tặc · khu 10 · việc: săn Kiếp Tặc · khu 10 · mục tiêu Kiếp Tặc 53%
+[0:34] Hạ Kiếp Tặc
+[0:37] Hạ Kiếp Tặc
+[0:37] → nhặt hồn rơi
+[0:39] Hoàn thành: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+[0:54] Kết thúc · Kết quả: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về

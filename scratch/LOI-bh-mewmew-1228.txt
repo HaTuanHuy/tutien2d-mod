@@ -1,0 +1,18 @@
+Boss · Xích Nhãn Ngưu · Yêu Thú Cấp 1 · memooo · trợ thủ v0.63.7 · bắt đầu 12:28:17 4/11/2026
+===== TÓM TẮT =====
+🚨 Boss · Xích Nhãn Ngưu · Yêu Thú Cấp 1 · memooo · 0:44 · gục 1 lần
+🎁 Thu được: Trừ Ma Lệnh ×1
+🔴 Gục · máu 10 giây trước: 100→100→100→100→100→100→63→38→27→27 · việc: - · quái quanh: Xích Nhãn Ngưu 10%, Xích Nhãn Ngưu 19%, Xích Nhãn Ngưu 41%, Bạch Hổ Tuyết 29% · người thù quanh: khaidzz 50%
+📜 Diễn biến cuối:
+[0:00] Bắt đầu Boss · Xích Nhãn Ngưu · Yêu Thú Cấp 1 · memooo · trợ thủ đang bật · v0.63.7
+[0:14] ⚠ Gục · máu 10 giây trước: 100→100→100→100→100→100→63→38→27→27 · việc: - · quái quanh: Xích Nhãn Ngưu 10%, Xích Nhãn Ngưu 19%, Xích Nhãn Ngưu 41%, Bạch Hổ Tuyết 29% · người thù quanh: khaidzz 50%
+[0:15] ↺ hồi sinh
+[0:44] Kết thúc
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Boss · Xích Nhãn Ngưu · Yêu Thú Cấp 1 · memooo · trợ thủ đang bật · v0.63.7
+[0:00] máu 100% · LL 96% · Bãi Đá (642,400) · quái <400px 6 · người thù 3 · Tự Động bật · boss Xích Nhãn Ngưu · Yêu Thú Cấp 1 99% · chưa có số liệu công
+[0:10] máu 51% · LL 100% · Bãi Đá (624,400) · quái <400px 6 · người thù 4 · Tự Động bật · đánh Xích Nhãn Ngưu 46% · boss Xích Nhãn Ngưu · Yêu Thú Cấp 1 46% · chưa có số liệu công
+[0:14] ⚠ Gục · máu 10 giây trước: 100→100→100→100→100→100→63→38→27→27 · việc: - · quái quanh: Xích Nhãn Ngưu 10%, Xích Nhãn Ngưu 19%, Xích Nhãn Ngưu 41%, Bạch Hổ Tuyết 29% · người thù quanh: khaidzz 50%
+[0:15] ↺ hồi sinh
+[0:20] máu 40% · LL 89% · Bãi Đá (624,576) · quái <400px 1 · người thù 3 · Tự Động bật · boss Bạch Hổ Tuyết · Yêu Thú Cấp 1 66% · chưa có số liệu công
+[0:44] Kết thúc

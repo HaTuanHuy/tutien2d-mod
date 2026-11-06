@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Tu Tien 2D Helper",
+  "version": "1.0",
+  "content_scripts": [
+    {
+      "matches": ["https://tutien2d.com/*", "https://www.tutien2d.com/*"],
+      "js": ["tutien2d-helper.user.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ]
+}

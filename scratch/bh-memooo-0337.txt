@@ -1,0 +1,24 @@
+Boss · Thần Thú Xích Long · memooo · trợ thủ v0.63.5 · bắt đầu 03:37:59 4/11/2026
+===== TÓM TẮT =====
+✅ Boss · Thần Thú Xích Long · memooo · 2:21
+🎯 Công boss: Sát thương 1308/1000 ngưỡng · trúng 0.8% · ĐỦ điều kiện nhận đồ
+🎁 Thu được: không có gì
+📜 Diễn biến cuối:
+[0:00] Bắt đầu Boss · Thần Thú Xích Long · memooo · trợ thủ đang bật · v0.63.5
+[2:21] Kết thúc
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Boss · Thần Thú Xích Long · memooo · trợ thủ đang bật · v0.63.5
+[0:00] máu 91% · LL 100% · Miếu Ông Trường Con (459,524) · quái <400px 4 · người thù 0 · Tự Động tắt · đánh Thạch Quy Đội Bia 52%
+[0:10] máu 99% · LL 100% · Bãi Đá (728,548) · quái <400px 3 · người thù 0 · Tự Động tắt
+[0:20] máu 100% · LL 100% · Rừng Trúc (323,157) · quái <400px 7 · người thù 0 · Tự Động tắt
+[0:30] máu 100% · LL 100% · Long Uyên Cốc (880,496) · quái <400px 0 · người thù 0 · Tự Động bật
+[0:40] máu 100% · LL 94% · Long Uyên Cốc (816,528) · quái <400px 1 · người thù 0 · Tự Động tắt · boss Thần Thú · Xích Long 88% · chưa có số liệu công
+[0:51] máu 100% · LL 100% · Long Uyên Cốc (816,528) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thần Thú 67% · boss Thần Thú · Xích Long 67% · Sát thương 344/1000 ngưỡng · trúng 0.0% · chưa đủ ngưỡng
+[1:01] máu 100% · LL 92% · Long Uyên Cốc (816,528) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thần Thú 41% · boss Thần Thú · Xích Long 41% · Sát thương 526/1000 ngưỡng · trúng 0.0% · chưa đủ ngưỡng
+[1:11] máu 100% · LL 97% · Long Uyên Cốc (816,528) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thần Thú 23% · boss Thần Thú · Xích Long 23% · Sát thương 1021/1000 ngưỡng · trúng 0.4% · ĐỦ điều kiện nhận đồ
+[1:22] máu 16% · LL 100% · Long Uyên Cốc (372,496) · quái <400px 0 · người thù 0 · Tự Động bật · đánh Thần Thú 13%
+[1:32] máu 27% · LL 100% · Long Uyên Cốc (785,496) · quái <400px 1 · người thù 0 · Tự Động bật · đánh Thần Thú 8% · boss Thần Thú · Xích Long 8% · Sát thương 1308/1000 ngưỡng · trúng 0.8% · ĐỦ điều kiện nhận đồ
+[1:42] máu 41% · LL 98% · Long Uyên Cốc (881,496) · quái <400px 0 · người thù 0 · Tự Động bật
+[1:52] máu 53% · LL 100% · Long Uyên Cốc (881,496) · quái <400px 0 · người thù 0 · Tự Động bật
+[2:02] máu 65% · LL 100% · Long Uyên Cốc (881,496) · quái <400px 0 · người thù 0 · Tự Động bật
+[2:21] Kết thúc

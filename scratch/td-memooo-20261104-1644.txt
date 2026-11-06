@@ -1,0 +1,32 @@
+Thương Đội (săn & tin Thiên Đạo) · Rừng Trúc k15 · memooo · trợ thủ v0.63.8 · bắt đầu 16:44:42 4/11/2026
+===== TÓM TẮT =====
+✅ Thương Đội (săn & tin Thiên Đạo) · Rừng Trúc k15 · memooo · 1:02
+Kết quả: Không tìm thấy Thương Đội → về
+🎁 Thu được: Linh Thạch ×2
+📜 Diễn biến cuối:
+[0:20] → đổi sang khu 15 (Thiên Đạo báo)
+[0:20] → chờ đoàn hiện ở Rừng Trúc khu 15 (Thiên Đạo báo trước 20 giây)
+[0:23] → dò khắp Rừng Trúc khu 15 tìm đoàn (còn 8 chỗ)
+[0:34] → đi tới Chân Núi Tản Viên
+[0:37] → đổi sang khu 15 (Thiên Đạo báo)
+[0:39] → dò khắp Chân Núi Tản Viên khu 15 tìm đoàn (còn 6 chỗ)
+[0:46] Hoàn thành: Không tìm thấy Thương Đội → về
+[1:02] Kết thúc · Kết quả: Không tìm thấy Thương Đội → về
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Thương Đội (săn & tin Thiên Đạo) · Rừng Trúc k15 · memooo · trợ thủ đang bật · v0.63.8
+[0:00] → đi tới Rừng Trúc
+[0:00] máu 100% · LL 37% · Miếu Ông Trường Con (254,685) · quái <400px 2 · người thù 0 · Tự Động tắt · việc: đi tới Rừng Trúc · việc: đi tới Rừng Trúc
+[0:00] → nhặt đồ rơi
+[0:02] → đi tới Rừng Trúc
+[0:10] máu 100% · LL 59% · Bãi Đá (531,678) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: đi tới Rừng Trúc · việc: đi tới Rừng Trúc
+[0:20] → đổi sang khu 15 (Thiên Đạo báo)
+[0:20] máu 100% · LL 81% · Rừng Trúc (299,94) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: đổi sang khu 15 (Thiên Đạo báo) · việc: đổi sang khu 15 (Thiên Đạo báo)
+[0:20] → chờ đoàn hiện ở Rừng Trúc khu 15 (Thiên Đạo báo trước 20 giây)
+[0:23] → dò khắp Rừng Trúc khu 15 tìm đoàn (còn 8 chỗ)
+[0:30] máu 100% · LL 100% · Rừng Trúc (939,576) · quái <400px 21 · người thù 0 · Tự Động tắt · việc: dò khắp Rừng Trúc khu 15 tìm đoàn (còn 3 chỗ) · việc: dò khắp Rừng Trúc khu 15 tìm đoàn (còn 3 chỗ)
+[0:34] → đi tới Chân Núi Tản Viên
+[0:37] → đổi sang khu 15 (Thiên Đạo báo)
+[0:39] → dò khắp Chân Núi Tản Viên khu 15 tìm đoàn (còn 6 chỗ)
+[0:40] máu 100% · LL 100% · Chân Núi Tản Viên (495,656) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: dò khắp Chân Núi Tản Viên khu 15 tìm đoàn (còn 5 chỗ) · việc: dò khắp Chân Núi Tản Viên khu 15 tìm đoàn (còn 5 chỗ)
+[0:46] Hoàn thành: Không tìm thấy Thương Đội → về
+[1:02] Kết thúc · Kết quả: Không tìm thấy Thương Đội → về

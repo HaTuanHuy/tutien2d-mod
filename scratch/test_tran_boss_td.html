@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test Auto Tran Boss TD v0.63.21</title>
+</head>
+<body>
+  <div id="logs"></div>
+  <script>
+    window.testResults = { passed: 0, failed: 0, logs: [] };
+    function log(msg, pass) {
+      var d = document.createElement('div');
+      d.textContent = (pass === true ? '[PASS] ' : pass === false ? '[FAIL] ' : '[INFO] ') + msg;
+      document.getElementById('logs').appendChild(d);
+      if (pass === true) window.testResults.passed++;
+      if (pass === false) { window.testResults.failed++; window.testResults.logs.push(msg); }
+      console.log(d.textContent);
+    }
+  </script>
+
+  <script>
+    window.PNTT = {};
+  </script>
+
+  <script src="../src/core/utils.f3a5ec533e9c.js"></script>
+  <script src="../src/world/mapdata.430a546fd419.js"></script>
+  <script src="../src/world/map_tamgioi.c3a33f0e9b23.js"></script>
+  <script src="../src/entities/enemy.7739f83bfc3f.js"></script>
+  <script src="../src/systems/formations.b88e901817ed.js"></script>
+
+  <script>
+    var swMock = {
+      player: {
+        id: 'player_1',
+        name: 'memooo',
+        x: 500, y: 500, hp: 1000, hpMax: 1000, mp: 500, mpMax: 500,
+        realmId: 'ket_dan_1',
+        state: 'idle',
+        isLeader: true
+      },
+      map: { data: { id: 'bai_da_hang_gio' } },
+      enemies: [],
+      drops: [],
+      autoOn: true
+    };
+
+    window.PNTT.sw = swMock;
+    window.PNTT.SceneWorld = swMock;
+    window.PNTT.Game = { scene: swMock, time: 100 };
+    window.PNTT.Player = { stand: function(){}, reach: function(){return 26;} };
+    window.PNTT.Inventory = {
+      count: function(item) { return 1; },
+      has: function(item, n) { return true; }
+    };
+    window.PNTT.Progress = {
+      realmId: 'ket_dan_1',
+      stones: 999999,
+      spendStones: function() { return true; }
+    };
+    window.PNTT.FormationUI = {
+      blocked: function() { return null; },
+      activeId: null,
+      pending: null,
+      realmOk: function() { return true; }
+    };
+    window.PNTT.Gateway = {
+      formationBegin: function(defId, budget, pt) {
+        window.lastFormation = { defId: defId, budget: budget, pt: pt };
+        return 'req_123';
+      }
+    };
+    window.PNTT.Input = {
+      run: true,
+      hasManualMove: function(){ return false; },
+      pressMeditate: function(){},
+      pressAutoToggle: function(){ swMock.autoOn = !swMock.autoOn; }
+    };
+  </script>
+
+  <!-- Load Helper Script -->
+  <script src="../tutien2d-helper.user.js"></script>
+
+  <script>
+    var TB = window.TTBot;
+    log('TTBot loaded: ' + !!TB, !!TB);
+    log('Version is 0.63.21: ' + (TB.VERSION === '0.63.21'), TB.VERSION === '0.63.21');
+
+    var g = TB.game();
+    log('Game state exists: ' + !!g, !!g);
+
+    // Test default configuration
+    var cfg = TB.cfg;
+    log('Default tranOnlyBossTd is true: ' + (cfg.tranOnlyBossTd === true), cfg.tranOnlyBossTd === true);
+    log('Default autoTran is true: ' + (cfg.autoTran === true), cfg.autoTran === true);
+
+    var isAllowed = function(t) {
+      return TB.dev.eval('isTranAllowed(game(), ' + (t ? JSON.stringify(t) : 'null') + ')');
+    };
+
+    // Test 1: Quái thường Heo Rừng -> Không cho phép dựng trận
+    var normalMob = { type: 'heo_rung', x: 510, y: 510, hp: 500, hpMax: 500, def: { name: 'Heo Rừng', contactDmg: 5 } };
+    log('isTranAllowed on normal mob (Heo Rừng): ' + isAllowed(normalMob), isAllowed(normalMob) === false);
+
+    // Test 1b: Quái thường Thạch Quy Đội Bia (level 7) -> Không cho phép dựng trận
+    var thachQuy = { type: 'thach_quy', x: 510, y: 510, hp: 120, hpMax: 120, def: { name: 'Thạch Quy Đội Bia', level: 7, contactDmg: 5 } };
+    log('isTranAllowed on normal mob (Thạch Quy): ' + isAllowed(thachQuy), isAllowed(thachQuy) === false);
+
+    // Test 1c: Quái thường Xuyên Sơn Giáp (level 6) -> Không cho phép dựng trận
+    var xuyenSonGiap = { type: 'xuyen_son_giap', x: 510, y: 510, hp: 90, hpMax: 90, def: { name: 'Xuyên Sơn Giáp', level: 6, contactDmg: 5 } };
+    log('isTranAllowed on normal mob (Xuyên Sơn Giáp): ' + isAllowed(xuyenSonGiap), isAllowed(xuyenSonGiap) === false);
+
+    // Test 2: Yêu thú Xổng Chuồng (Xích Nhãn Ngưu) -> ĐƯỢC PHÉP dựng trận!
+    TB.st.xc = { step: 'săn xổng chuồng' };
+    var xcMob = { type: 'xich_nhan_nguu', x: 510, y: 510, hp: 50000, hpMax: 50000, def: { name: 'Xích Nhãn Ngưu · Yêu Thú Cấp 1', lootLastHitOnly: true, contactDmg: 10 } };
+    log('isTranAllowed on xong chuong (Xích Nhãn Ngưu): ' + isAllowed(xcMob), isAllowed(xcMob) === true);
+    TB.st.xc = null;
+
+    // Test 3: Hoạt động Biến dị -> Không cho phép dựng trận
+    TB.st.bd = { step: 'săn biến dị' };
+    log('isTranAllowed on bien di: ' + isAllowed(normalMob), isAllowed(normalMob) === false);
+    TB.st.bd = null;
+
+    // Test 4: Hoạt động Cướp Tiêu / Vận Tiêu / Linh Thụ -> Không cho phép dựng trận
+    TB.st.ct = { step: 'cướp tiêu' };
+    log('isTranAllowed on cuop tieu: ' + isAllowed(normalMob), isAllowed(normalMob) === false);
+    TB.st.ct = null;
+
+    TB.st.lt = { step: 'linh thu' };
+    log('isTranAllowed on linh thu: ' + isAllowed(normalMob), isAllowed(normalMob) === false);
+    TB.st.lt = null;
+
+    // Test 5: Săn Boss World (st.bh active) -> ĐƯỢC PHÉP!
+    TB.st.bh = { phase: 'fight', boss: { type: 'song_duc_ma_bao' } };
+    log('isTranAllowed during st.bh: ' + isAllowed(normalMob), isAllowed(normalMob) === true);
+    TB.st.bh = null;
+
+    // Test 6: Mục tiêu là Boss World (Song Dực Ma Báo) -> ĐƯỢC PHÉP!
+    var wbMob = { type: 'song_duc_ma_bao', x: 510, y: 510, hp: 2000000, hpMax: 2000000, def: { name: 'Song Dực Ma Báo', contactDmg: 10, isBoss: true, respawnSec: 7200 } };
+    log('isTranAllowed on world boss target: ' + isAllowed(wbMob), isAllowed(wbMob) === true);
+
+    // Test 7: Săn Thương Đội (st.td active) -> ĐƯỢC PHÉP!
+    TB.st.td = { step: 'săn thương đội' };
+    log('isTranAllowed during st.td: ' + isAllowed(normalMob), isAllowed(normalMob) === true);
+    TB.st.td = null;
+
+    // Test 8: Mục tiêu là quái Thương Đội (Tiêu Sư) -> ĐƯỢC PHÉP!
+    var tieuSu = { type: 'tieu_su', x: 510, y: 510, hp: 50000, hpMax: 50000, def: { name: 'Tiêu Sư', contactDmg: 10, human: true, hon: 'oan_hon' } };
+    log('isTranAllowed on tieu_su target: ' + isAllowed(tieuSu), isAllowed(tieuSu) === true);
+
+    // Test 9: Mục tiêu là quái Thương Đội (Kiếp Tặc) -> ĐƯỢC PHÉP!
+    var kiepTac = { type: 'kiep_tac', x: 510, y: 510, hp: 50000, hpMax: 50000, def: { name: 'Kiếp Tặc', human: true, contactDmg: 10 } };
+    log('isTranAllowed on kiep_tac target: ' + isAllowed(kiepTac), isAllowed(kiepTac) === true);
+
+    // Test 10: Tắt tranOnlyBossTd (false) -> Cho phép quái thường
+    cfg.tranOnlyBossTd = false;
+    log('isTranAllowed unrestricted when tranOnlyBossTd=false: ' + isAllowed(normalMob), isAllowed(normalMob) === true);
+    cfg.tranOnlyBossTd = true;
+
+    // Test 11: Chạy trực tiếp tickTran(g) trên normalMob -> không tạo trận
+    window.lastFormation = null;
+    window.PNTT.FormationUI.pending = null;
+    window.PNTT.FormationUI.activeId = null;
+    swMock.player.mp = 100;
+    swMock.enemies = [normalMob];
+    TB.st.farmTarget = normalMob;
+    TB.dev.eval('tickTran(game())');
+    log('tickTran ignores normal mob (Heo Rừng): ' + (window.lastFormation === null), window.lastFormation === null);
+
+    // Test 11b: Chạy tickTran trên Thạch Quy thường với MP thấp -> không tạo trận
+    window.lastFormation = null;
+    swMock.enemies = [thachQuy];
+    TB.st.farmTarget = thachQuy;
+    TB.dev.eval('tickTran(game())');
+    log('tickTran ignores normal Thạch Quy: ' + (window.lastFormation === null), window.lastFormation === null);
+
+    // Test 11c: Chạy tickTran trên cụm 3 quái thường gom lại (n >= 3) -> không tạo trận khi tranOnlyBossTd=true
+    window.lastFormation = null;
+    var mobA = { type: 'son_chuot', x: 500, y: 500, hp: 10, hpMax: 10, def: { name: 'Sơn Chuột', contactDmg: 2 } };
+    var mobB = { type: 'son_chuot', x: 505, y: 505, hp: 10, hpMax: 10, def: { name: 'Sơn Chuột', contactDmg: 2 } };
+    var mobC = { type: 'son_chuot', x: 495, y: 495, hp: 10, hpMax: 10, def: { name: 'Sơn Chuột', contactDmg: 2 } };
+    swMock.enemies = [mobA, mobB, mobC];
+    TB.st.farmTarget = mobA;
+    TB.dev.eval('tickTran(game())');
+    log('tickTran ignores clustered normal mobs (n=3): ' + (window.lastFormation === null), window.lastFormation === null);
+
+    // Test 12: Chạy trực tiếp tickTran(g) trên world boss -> tạo trận thành công!
+    window.lastFormation = null;
+    window.PNTT.FormationUI.pending = null;
+    window.PNTT.FormationUI.activeId = null;
+    TB.st.tranAt = 0;
+    swMock.enemies = [wbMob];
+    TB.st.farmTarget = wbMob;
+    swMock.player.attackTarget = wbMob;
+    TB.dev.eval('tickTran(game())');
+    log('tickTran deploys formation on World Boss: ' + (window.lastFormation && window.lastFormation.defId), !!window.lastFormation);
+
+    // Test 13: Chạy trực tiếp tickTran(g) trên Tiêu Sư -> tạo trận thành công!
+    window.lastFormation = null;
+    window.PNTT.FormationUI.pending = null;
+    window.PNTT.FormationUI.activeId = null;
+    TB.st.tranAt = 0;
+    swMock.enemies = [tieuSu];
+    TB.st.farmTarget = tieuSu;
+    swMock.player.attackTarget = tieuSu;
+    TB.dev.eval('tickTran(game())');
+    log('tickTran deploys formation on Tiêu Sư: ' + (window.lastFormation && window.lastFormation.defId), !!window.lastFormation);
+
+    // Test 14: Chạy trực tiếp tickTran(g) trên Xích Nhãn Ngưu (Thú Xổng Chuồng) -> tạo trận thành công!
+    window.lastFormation = null;
+    window.PNTT.FormationUI.pending = null;
+    window.PNTT.FormationUI.activeId = null;
+    TB.st.tranAt = 0;
+    swMock.enemies = [xcMob];
+    TB.st.farmTarget = xcMob;
+    swMock.player.attackTarget = xcMob;
+    TB.dev.eval('tickTran(game())');
+    log('tickTran deploys formation on Thú Xổng Chuồng: ' + (window.lastFormation && window.lastFormation.defId), !!window.lastFormation);
+
+    var resH = document.createElement('h2');
+    resH.textContent = 'RESULTS: ' + window.testResults.passed + ' passed, ' + window.testResults.failed + ' failed';
+    document.body.appendChild(resH);
+  </script>
+</body>
+</html>

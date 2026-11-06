@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test Anti-Jail and Thạch Quỷ 20s Warning</title>
+</head>
+<body>
+  <div id="logs"></div>
+  <script>
+    window.testResults = { passed: 0, failed: 0, logs: [] };
+    function log(msg, pass) {
+      var d = document.createElement('div');
+      d.textContent = (pass === true ? '[PASS] ' : pass === false ? '[FAIL] ' : '[INFO] ') + msg;
+      document.getElementById('logs').appendChild(d);
+      if (pass === true) window.testResults.passed++;
+      if (pass === false) { window.testResults.failed++; window.testResults.logs.push(msg); }
+      console.log(d.textContent);
+    }
+  </script>
+
+  <script>
+    window.PNTT = {};
+  </script>
+
+  <script src="../src/core/utils.f3a5ec533e9c.js"></script>
+  <script src="../src/world/mapdata.430a546fd419.js"></script>
+  <script src="../src/world/map_tamgioi.c3a33f0e9b23.js"></script>
+  <script src="../src/entities/enemy.7739f83bfc3f.js"></script>
+  <script src="../src/systems/formations.b88e901817ed.js"></script>
+
+  <script>
+    // Setup Mock Game Environment
+    var P = window.PNTT;
+    P.CONFIG = P.CONFIG || {};
+    P.CONFIG.TILE = 32;
+    P.CONFIG.PLAYER = { HITBOX_W: 24, HITBOX_H: 32 };
+    P.HauKy = { TQ_LOAI: 'thach_quy' };
+    P.HacThi = {
+      LAO: { x0: 49, x1: 54, y0: 10, y1: 12 },
+      O_LAO: { tx: 51, ty: 11 },
+      TRUOC_LAO: { tx: 51, ty: 13 },
+      trongLao: function (tx, ty) { return ty > 10 && ty < 12 && tx > 49 && tx < 54; },
+      giamConMs: function (player) { return (P.Progress && P.Progress.hacThi) ? Math.max(0, P.Progress.hacThi.giamDen - Date.now()) : 0; },
+      dangGiam: function (player) { return P.HacThi.giamConMs(player) > 0; },
+      chuGiam: function (ms) { return Math.ceil(ms / 60000) + ' phút'; }
+    };
+    P.Progress = {
+      realmId: 'truc_co_1',
+      hacThi: { giamDen: 0 }
+    };
+    P.Game = { time: 100 };
+    P.Pathfinder = {
+      route: function (x1, y1, x2, y2) { return { path: [{ x: x2, y: y2 }] }; }
+    };
+    P.Input = {
+      pressAutoToggle: function () { },
+      setRun: function () { }
+    };
+    P.KhuUI = {
+      isOpen: function () { return false; },
+      close: function () { }
+    };
+    P.Gateway = {
+      send: function () { return true; },
+      selfId: 'player_test'
+    };
+
+    var fakePlayer = {
+      id: 'player_test',
+      name: 'memooo',
+      x: 100, y: 100,
+      hp: 1000, hpMax: 1000,
+      mp: 500, mpMax: 500,
+      path: [{ x: 50, y: 50 }]
+    };
+    var fakeMap = { data: { id: 'thanh_van_tong', name: 'Thanh Vân Tông' } };
+    var fakeSw = {
+      player: fakePlayer,
+      enemies: [],
+      map: fakeMap,
+      approach: { key: 'foe:1' },
+      autoOn: true
+    };
+    P.SceneWorld = fakeSw;
+    P.Game.scene = P.SceneWorld;
+  </script>
+
+  <!-- Load Helper Script -->
+  <script src="../tutien2d-helper.user.js"></script>
+
+  <script>
+    try {
+      log('--- 1. TEST ANTI-JAIL & THIÊN LAO KILL-SWITCH ---', null);
+      var TB = window.TTBot || window._ttbot;
+
+      // Helper function tests via dev.eval
+      var jailedNormal = TB.dev.eval('isJailed(game())');
+      log('Normal state is NOT jailed: ' + (jailedNormal === false), jailedNormal === false);
+
+      // Jailed via Progress giamDen
+      P.Progress.hacThi.giamDen = Date.now() + 600000;
+      var jailedByTime = TB.dev.eval('isJailed(game())');
+      log('Detected jail via Progress.hacThi.giamDen: ' + (jailedByTime === true), jailedByTime === true);
+
+      // Jailed via map and cell tile coords
+      P.Progress.hacThi.giamDen = 0;
+      fakeMap.data.id = 'bat_quai_thach_phan';
+      fakePlayer.x = 51 * 32; fakePlayer.y = 11 * 32;
+      var jailedByCoords = TB.dev.eval('isJailed(game())');
+      log('Detected jail via bat_quai_thach_phan & prison cell coordinates: ' + (jailedByCoords === true), jailedByCoords === true);
+
+      // Panic Kill-switch
+      TB.dev.eval('enabled = true; st.plan = { job: "farm" }; st.travel = { map: "thach_tran" }; st.farmTarget = { id: 1 }; game().me.path = [{x:1,y:1}]; game().sw.approach = {key:"t"};');
+      TB.dev.eval('panicThienLao(game(), "Kiểm tra khẩn cấp");');
+
+      var enabledState = TB.dev.eval('enabled');
+      var panicState = TB.dev.eval('st.jailedPanic');
+      var planState = TB.dev.eval('st.plan');
+      var travelState = TB.dev.eval('st.travel');
+      var farmTargetState = TB.dev.eval('st.farmTarget');
+      var pathLen = TB.dev.eval('game().me.path.length');
+      var approachState = TB.dev.eval('game().sw.approach');
+
+      log('panicThienLao disabled helper (enabled === false): ' + (enabledState === false), enabledState === false);
+      log('panicThienLao set st.jailedPanic: ' + (panicState === true), panicState === true);
+      log('panicThienLao cleared st.plan: ' + (planState === null), planState === null);
+      log('panicThienLao cleared st.travel: ' + (travelState === null), travelState === null);
+      log('panicThienLao cleared st.farmTarget: ' + (farmTargetState === null), farmTargetState === null);
+      log('panicThienLao cleared me.path to stand still: ' + (pathLen === 0), pathLen === 0);
+      log('panicThienLao cleared sw.approach: ' + (approachState === null), approachState === null);
+
+      // setEnabled(true) blocked while jailed
+      TB.dev.eval('setEnabled(true);');
+      var blockedEnabled = TB.dev.eval('enabled');
+      log('setEnabled(true) blocked while player is jailed: ' + (blockedEnabled === false), blockedEnabled === false);
+
+      // Release from jail
+      fakeMap.data.id = 'thanh_van_tong';
+      fakePlayer.x = 100; fakePlayer.y = 100;
+      var freedJail = TB.dev.eval('isJailed(game())');
+      log('Player is freed from jail: ' + (freedJail === false), freedJail === false);
+      TB.dev.eval('setEnabled(true);');
+      var resumeEnabled = TB.dev.eval('enabled');
+      var panicReset = TB.dev.eval('st.jailedPanic');
+      log('setEnabled(true) succeeds once released: ' + (resumeEnabled === true), resumeEnabled === true);
+      log('st.jailedPanic reset on re-enable: ' + (panicReset === false), panicReset === false);
+
+      // doingText status text
+      TB.dev.eval('st.jailedPanic = true;');
+      var dText = TB.dev.eval('doingText(game())');
+      log('doingText displays jail alert: ' + (/BỊ GIAM THIÊN LAO/.test(dText)), /BỊ GIAM THIÊN LAO/.test(dText));
+      TB.dev.eval('st.jailedPanic = false;');
+
+      log('--- 2. TEST THẠCH QUỶ BIẾN DỊ 20S PRE-ANNOUNCEMENT ---', null);
+      // readNews with 20s advance warning
+      TB.dev.eval('var info1 = { kind: "khac" }; readNews("Một con Thạch Quỷ biến dị sắp xuất hiện ở Thạch Phong Thung Lũng khu 1 (20 giây nữa)!", info1); window._t_info1 = info1;');
+      var tInfo1 = window._t_info1;
+      log('News parsed kind === "bd": ' + (tInfo1.kind === 'bd'), tInfo1.kind === 'bd');
+      log('News map === "thach_phong_thung_lung": ' + (tInfo1.map === 'thach_phong_thung_lung'), tInfo1.map === 'thach_phong_thung_lung');
+      log('News khu === 1: ' + (tInfo1.khu === 1), tInfo1.khu === 1);
+      log('News spawnAt > now() (+20s): ' + (tInfo1.spawnAt > TB.dev.eval('now()')), tInfo1.spawnAt > TB.dev.eval('now()'));
+
+      var evList = TB.dev.eval('bdEvents');
+      var lastEv = evList[evList.length - 1];
+      log('bdEvents recorded spawnAt with advance warning: ' + (lastEv && lastEv.spawnAt > TB.dev.eval('now()')), lastEv && lastEv.spawnAt > TB.dev.eval('now()'));
+
+      // readNews immediate spawn backward compatibility
+      TB.dev.eval('var info2 = { kind: "khac" }; readNews("Một con Thạch Quỷ biến dị vừa xuất hiện ở Thạch Trận khu 2!", info2); window._t_info2 = info2;');
+      var tInfo2 = window._t_info2;
+      log('Immediate news parsed kind === "bd": ' + (tInfo2.kind === 'bd'), tInfo2.kind === 'bd');
+      log('Immediate news map === "thach_tran": ' + (tInfo2.map === 'thach_tran'), tInfo2.map === 'thach_tran');
+      log('Immediate news khu === 2: ' + (tInfo2.khu === 2), tInfo2.khu === 2);
+      log('Immediate news spawnAt === 0: ' + (tInfo2.spawnAt === 0), tInfo2.spawnAt === 0);
+
+      log('--- 3. TEST NEW SECTS & WEAPONS LOOT PRIORITY ---', null);
+      var lp = TB.dev.eval('LOOT_SPECIAL_SCORES');
+      log('Huyết Nguyệt Luân Liêm priority 17500: ' + (lp.bi_tich_huyet_nguyet_luan_liem === 17500), lp.bi_tich_huyet_nguyet_luan_liem === 17500);
+      log('Ngọc Lưu Chân Âm priority 16500: ' + (lp.bi_tich_ngoc_luu_chan_am === 16500), lp.bi_tich_ngoc_luu_chan_am === 16500);
+      log('Cửu U Hắc Trảo priority 16000: ' + (lp.bi_tich_cuu_u_hac_trao === 16000), lp.bi_tich_cuu_u_hac_trao === 16000);
+      log('Bích Ngục Giáng Đao priority 15500: ' + (lp.bi_tich_bich_nguc_giang_dao === 15500), lp.bi_tich_bich_nguc_giang_dao === 15500);
+      log('Ma Trì Mặc priority 14500: ' + (lp.ma_tri_mac === 14500), lp.ma_tri_mac === 14500);
+      log('Tử Vân Phiên priority 14500: ' + (lp.tu_van_phien === 14500), lp.tu_van_phien === 14500);
+
+      log('--- 4. TEST WEBSOCKET HACTHI PACKET HOOK ---', null);
+      fakeMap.data.id = 'bat_quai_thach_phan';
+      fakePlayer.x = 51 * 32; fakePlayer.y = 11 * 32;
+      TB.dev.eval('st.jailedPanic = false; enabled = true;');
+      TB.dev.eval('handleServerData(JSON.stringify({ op: "hacthi", act: "giam", conMs: 300000 }));');
+      var wsPanic = TB.dev.eval('st.jailedPanic');
+      var wsEnabled = TB.dev.eval('enabled');
+      log('WebSocket hacthi giam packet triggered panic kill-switch: ' + (wsPanic === true && wsEnabled === false), wsPanic === true && wsEnabled === false);
+
+      // Summary
+      log('TOTAL: ' + window.testResults.passed + ' passed, ' + window.testResults.failed + ' failed.');
+    } catch (err) {
+      log('Exception: ' + (err && err.stack ? err.stack : err), false);
+    }
+  </script>
+</body>
+</html>

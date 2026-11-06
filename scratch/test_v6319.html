@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test Suite v0.63.19 - Log Analysis & Combat Optimizations</title>
+</head>
+<body>
+  <div id="logs"></div>
+  <script>
+    window.testResults = { passed: 0, failed: 0, logs: [] };
+    function log(msg, pass) {
+      var d = document.createElement('div');
+      d.textContent = (pass === true ? '[PASS] ' : pass === false ? '[FAIL] ' : '[INFO] ') + msg;
+      document.getElementById('logs').appendChild(d);
+      if (pass === true) window.testResults.passed++;
+      if (pass === false) { window.testResults.failed++; window.testResults.logs.push(msg); }
+      console.log(d.textContent);
+    }
+  </script>
+
+  <script>
+    window.PNTT = {};
+  </script>
+
+  <script src="../src/core/utils.f3a5ec533e9c.js"></script>
+  <script src="../src/world/mapdata.430a546fd419.js"></script>
+  <script src="../src/world/map_tamgioi.c3a33f0e9b23.js"></script>
+  <script src="../src/entities/enemy.7739f83bfc3f.js"></script>
+  <script src="../src/systems/formations.b88e901817ed.js"></script>
+
+  <script>
+    var P = window.PNTT;
+    P.CONFIG = P.CONFIG || {};
+    P.CONFIG.TILE = 32;
+    P.CONFIG.PLAYER = { HITBOX_W: 24, HITBOX_H: 32 };
+    P.CONFIG.THUNDER = { MP_COST: 5, RANGE: 180, RADIUS: 50 };
+    P.HauKy = { TQ_LOAI: 'thach_quy' };
+    P.VetNut = {
+      MAP: 'khong_gian_vet_nut',
+      VE: 'toai_khong_phu',
+      laMap: function(m) { return m === 'khong_gian_vet_nut' || m === 'vet_nut'; }
+    };
+    P.VetNutUI = { trangThai: function() { return { tt: 'CHO' }; } };
+    P.Progress = { realmId: 'truc_co_1', hacThi: { giamDen: 0 }, stones: 50000 };
+    P.Game = { time: 100 };
+    P.Pathfinder = { route: function (x1, y1, x2, y2) { return { path: [{ x: x2, y: y2 }] }; } };
+    P.Input = {
+      pressAutoToggle: function () { },
+      setRun: function () { },
+      pressMeditate: function () { window._meditated = true; }
+    };
+    P.KhuUI = { isOpen: function () { return false; }, close: function () { } };
+    P.Gateway = {
+      send: function () { return true; },
+      selfId: 'player_test',
+      socket: { readyState: 1, send: function () {} },
+      remotes: {},
+      formationBegin: function() { return 12345; }
+    };
+    P.Targeting = {
+      thuDich: function(r) { return r && r.hostile === true; }
+    };
+
+    var fakePlayer = {
+      id: 'player_test',
+      name: 'memooo',
+      x: 200, y: 300,
+      hp: 1000, hpMax: 1000,
+      mp: 500, mpMax: 500,
+      path: [],
+      target: null,
+      Progress: P.Progress,
+      canMeditate: true,
+      state: 'idle',
+      downed: false,
+      downTime: 0,
+      reviveLeft: 3,
+      speed: 68
+    };
+    var fakeMap = {
+      data: { id: 'thon_da_do', name: 'Thôn Dã Đỏ' },
+      isPassable: function () { return true; }
+    };
+    var fakeSw = {
+      player: fakePlayer,
+      enemies: [],
+      drops: [],
+      map: fakeMap,
+      mapId: 'thon_da_do',
+      findEnemy: function () { return null; },
+      approach: { key: 'foe:1' },
+      autoOn: true,
+      reviveOnSpot: function() { window._reviveSpotCalled = true; fakePlayer.downed = false; return true; },
+      reviveAtHome: function() { window._reviveHomeCalled = true; fakePlayer.downed = false; return true; }
+    };
+    P.SceneWorld = fakeSw;
+    P.Game.scene = P.SceneWorld;
+    P.HUD = { setCaption: function () {}, showToast: function () {} };
+    P.Chat = { line: function () {} };
+    P.Player = {
+      meleeDamage: function() { return 100; },
+      reach: function() { return 26; },
+      castSpell: function() { return true; },
+      castThunder: function() { return true; },
+      stand: function(me) { me.state = 'idle'; }
+    };
+
+    var dummySkills = [
+      { id: 'kiem_khi', name: 'Kiếm Khí', mp: 10, range: 150, cooldown: 1, lastCast: 0, coef: 2.0 },
+      { id: 'hoa_cau', name: 'Hỏa Cầu', mp: 25, range: 120, cooldown: 3, lastCast: 0, coef: 3.5 }
+    ];
+    P.Skills = {
+      autoRotation: function() { return dummySkills; },
+      learned: function() { return dummySkills; },
+      spellCost: function(me, def) { return { mp: (def && def.mp) || 0, sp: 0 }; },
+      dmgOf: function(def) { return ((def && def.coef) || 1) * 100; },
+      coolLeft: function(me, def) { return 0; },
+      ready: function(me, def) { return true; },
+      effectOf: function() { return null; },
+      blastTargets: function() { return []; }
+    };
+    P.Talismans = {
+      defOf: function(id) { return { id: id, name: id }; },
+      canUse: function(me, def, P) { return { ok: true }; }
+    };
+    P.TalismanBar = {
+      use: function(id) {
+        window._lastTalisman = id;
+        window._talismansUsed = window._talismansUsed || [];
+        window._talismansUsed.push(id);
+        return true;
+      }
+    };
+    P.Food = {
+      list: function() { return window._foodList || []; },
+      defOf: function(id) { return { id: id, name: 'Linh Quả' }; },
+      power: function() { return 50; },
+      eat: function(id) { window._eatenFood = id; return { ok: true }; }
+    };
+    P.Inventory = {
+      count: function(item) { return 10; },
+      bag: { linh_qua: 10 }
+    };
+  </script>
+
+  <!-- Tampermonkey environment mocks -->
+  <script>
+    window.GM_getValue = function (k, d) { return d; };
+    window.GM_setValue = function () { };
+    window.GM_xmlhttpRequest = function () { };
+    window.unsafeWindow = window;
+  </script>
+
+  <script src="../tutien2d-helper.user.js"></script>
+
+  <script>
+    try {
+      log('--- 1. TEST VERSION v0.63.19 ---', null);
+      var TB = window.TTBot || window._ttbot;
+      log('TTBot dev interface ready', !!(TB && TB.dev && TB.dev.eval));
+      var v = TB.dev.eval('VERSION');
+      log('Version is 0.63.19: ' + v, v === '0.63.19');
+
+      log('--- 2. TEST ESCAPED BEAST & CARAVAN MOB IDENTIFICATION ---', null);
+      var beastTypes = [
+        'bach_ho_tuyet', 'xich_nhan_nguu', 'xich_ma', 'ngan_mao_hong',
+        'yl_hac_tien', 'thach_quy_bd', 'xuyen_son_giap_bd', 'thach_mach_vuong',
+        'u_minh_cu_mang', 'xich_mang_vuong', 'xong_chuong_tuyet'
+      ];
+      var allBeastsMatch = beastTypes.every(function(tp) {
+        return TB.dev.eval('isLastHitOnly({ type: "' + tp + '", def: { type: "' + tp + '" } })') === true;
+      });
+      log('All 11 Escaped Beast types matched by isLastHitOnly: ' + allBeastsMatch, allBeastsMatch);
+
+      var nameMatchBeast = TB.dev.eval('isLastHitOnly({ name: "Yêu Thú Xổng Chuồng Cấp 3" })');
+      log('Beast matched by name "Yêu Thú Xổng Chuồng": ' + nameMatchBeast, nameMatchBeast === true);
+
+      var normalMobNoMatch = TB.dev.eval('isLastHitOnly({ type: "lon_rung", def: { type: "lon_rung" } })');
+      log('Normal mob (lon_rung) is NOT lastHitOnly: ' + (normalMobNoMatch === false), normalMobNoMatch === false);
+
+      var tdTypes = ['tieu_su', 'kiep_tac', 'thuong_nhan', 'tieu_xa'];
+      var allTdMatch = tdTypes.every(function(tp) {
+        return TB.dev.eval('isTdMob({ type: "' + tp + '", def: { type: "' + tp + '" } })') === true;
+      });
+      log('All 4 Caravan types matched by isTdMob: ' + allTdMatch, allTdMatch);
+
+      var tdOanHon = TB.dev.eval('isTdMob({ def: { hon: "oan_hon" } })');
+      log('Caravan mob with oan_hon matched: ' + tdOanHon, tdOanHon === true);
+
+      var tdName = TB.dev.eval('isTdMob({ name: "Tiêu Sư Áp Tải" })');
+      log('Caravan mob matched by name "Tiêu Sư": ' + tdName, tdName === true);
+
+      log('--- 3. TEST BURST TARGET DEFINITION ---', null);
+      var dummyBeast = { id: 101, type: 'bach_ho_tuyet', hp: 50000, hpMax: 50000, x: 210, y: 310, def: { type: 'bach_ho_tuyet', contactDmg: 10 } };
+      var dummyTdMob = { id: 102, type: 'tieu_su', hp: 30000, hpMax: 30000, x: 210, y: 310, def: { type: 'tieu_su', contactDmg: 10 } };
+      var dummyNormal = { id: 103, type: 'lon_rung', hp: 200, hpMax: 200, x: 210, y: 310, def: { type: 'lon_rung', contactDmg: 10 } };
+
+      fakeSw.enemies = [dummyBeast, dummyTdMob, dummyNormal];
+      TB.dev.eval('st.farmTarget = fakeSw.enemies[0];'); // dummyBeast
+      var bt1 = TB.dev.eval('burstTarget(game())');
+      log('burstTarget recognizes Escaped Beast: ' + (bt1 === dummyBeast), bt1 === dummyBeast);
+
+      TB.dev.eval('st.farmTarget = fakeSw.enemies[1];'); // dummyTdMob
+      var bt2 = TB.dev.eval('burstTarget(game())');
+      log('burstTarget recognizes Caravan Mob: ' + (bt2 === dummyTdMob), bt2 === dummyTdMob);
+
+      TB.dev.eval('st.farmTarget = fakeSw.enemies[2];'); // dummyNormal
+      var bt3 = TB.dev.eval('burstTarget(game())');
+      log('burstTarget rejects normal mob: ' + (bt3 === null), bt3 === null);
+
+      log('--- 4. TEST CHOOSE() BURST / KHÔ MÁU MODE & NO-OVERKILL BYPASS ---', null);
+      fakePlayer.mp = 25; // 5% MP
+      TB.dev.eval('cfg.noOverkill = true;');
+
+      TB.dev.eval('st.xc = null; st.td = null; st.bh = null;');
+      var cNormal = TB.dev.eval('choose(game(), fakeSw.enemies[2], 50)');
+      log('Normal mob with 5% MP triggers mode "save": ' + cNormal.mode, cNormal.mode === 'save');
+
+      var cBeast = TB.dev.eval('choose(game(), fakeSw.enemies[0], 50)');
+      log('Escaped beast with 5% MP FORCES mode "dmg": ' + cBeast.mode, cBeast.mode === 'dmg');
+      log('Escaped beast has isBurstTarget === true: ' + cBeast.isBurstTarget, cBeast.isBurstTarget === true);
+      log('Why explains Khô máu dồn DPS: ' + cBeast.why, cBeast.why.indexOf('Khô máu dồn DPS') >= 0);
+
+      var cTd = TB.dev.eval('choose(game(), fakeSw.enemies[1], 50)');
+      log('Caravan mob with 5% MP FORCES mode "dmg": ' + cTd.mode, cTd.mode === 'dmg');
+      log('Caravan mob has isBurstTarget === true: ' + cTd.isBurstTarget, cTd.isBurstTarget === true);
+
+      TB.dev.eval('st.xc = { id: 1 };');
+      var cStXc = TB.dev.eval('choose(game(), fakeSw.enemies[2], 50)');
+      log('While st.xc is active, mode is FORCED "dmg" even for any target: ' + cStXc.mode, cStXc.mode === 'dmg');
+      TB.dev.eval('st.xc = null;');
+
+      TB.dev.eval('st.td = { id: 1 };');
+      var cStTd = TB.dev.eval('choose(game(), fakeSw.enemies[2], 50)');
+      log('While st.td is active, mode is FORCED "dmg": ' + cStTd.mode, cStTd.mode === 'dmg');
+      TB.dev.eval('st.td = null;');
+
+      dummyBeast.hp = 80;
+      fakePlayer.mp = 500;
+      var cOverkillBeast = TB.dev.eval('choose(game(), fakeSw.enemies[0], 50)');
+      log('noOverkill does NOT cancel skill for Escaped Beast: ' + (cOverkillBeast.best !== null), cOverkillBeast.best !== null);
+
+      dummyNormal.hp = 80;
+      var cOverkillNormal = TB.dev.eval('choose(game(), fakeSw.enemies[2], 50)');
+      log('noOverkill DOES cancel skill for Normal Mob: ' + (cOverkillNormal.best === null), cOverkillNormal.best === null);
+
+      log('--- 5. TEST TALISMAN USAGE (THANH TÂM PHÙ THRESHOLD) ---', null);
+      window._lastTalisman = null;
+      TB.dev.eval('cfg.autoMpTal = true;');
+      fakePlayer.mp = 150; // 30% MP
+      TB.dev.eval('st.farmTarget = fakeSw.enemies[0];'); // Escaped beast
+      TB.dev.eval('talLastAt = -1e9;');
+      TB.dev.eval('tickTalismans(game());');
+      log('Thanh Tâm Phù used for Escaped Beast when MP < 35%: ' + (window._lastTalisman === 'thanh_tam'), window._lastTalisman === 'thanh_tam');
+
+      window._lastTalisman = null;
+      fakeSw.enemies = [dummyNormal];
+      TB.dev.eval('st.farmTarget = fakeSw.enemies[0];'); // Only Normal mob exists in zone
+      TB.dev.eval('talLastAt = -1e9;');
+      TB.dev.eval('tickTalismans(game());');
+      log('Thanh Tâm Phù NOT used for Normal mob when MP is 30% (> 15%): ' + (window._lastTalisman === null), window._lastTalisman === null);
+      fakeSw.enemies = [dummyBeast, dummyTdMob, dummyNormal];
+
+      log('--- 6. TEST NO MEDITATION (THIỀN) DURING BURST TARGETS ---', null);
+      TB.dev.eval('cfg.bossNoSit = true; cfg.healSit = true;');
+      TB.dev.eval('st.healing = true;');
+      fakePlayer.state = 'sit';
+      window._meditated = false;
+
+      TB.dev.eval('st.farmTarget = fakeSw.enemies[0];');
+      TB.dev.eval('tickHeal(game());');
+      var healingCancelled = TB.dev.eval('st.healing === false');
+      log('tickHealing cancels meditation during Escaped Beast hunt: ' + healingCancelled, healingCancelled);
+      log('pressMeditate triggered to stand up: ' + window._meditated, window._meditated === true);
+
+      log('--- 7. TEST FORMATION / TRẬN BÀN FOR ESCAPED BEASTS ---', null);
+      TB.dev.eval('cfg.tranOnlyBossTd = true; st.bh = false; st.td = false; st.xc = false;');
+
+      TB.dev.eval('st.xc = { id: 1, name: "Săn thú xổng" };');
+      var tranAllowedXc = TB.dev.eval('isTranAllowed(game())');
+      log('isTranAllowed allows formation when st.xc is active: ' + tranAllowedXc, tranAllowedXc === true);
+      TB.dev.eval('st.xc = null;');
+
+      var tranAllowedBeastTarget = TB.dev.eval('isTranAllowed(game(), fakeSw.enemies[0])');
+      log('isTranAllowed allows formation for Escaped Beast target: ' + tranAllowedBeastTarget, tranAllowedBeastTarget === true);
+
+      fakeSw.enemies = [dummyNormal];
+      var tranBlockedNormal = TB.dev.eval('isTranAllowed(game(), fakeSw.enemies[0])');
+      log('isTranAllowed BLOCKS formation for normal mob: ' + (tranBlockedNormal === false), tranBlockedNormal === false);
+      fakeSw.enemies = [dummyBeast, dummyTdMob, dummyNormal];
+
+      fakePlayer.state = 'idle';
+      fakePlayer.mp = 500;
+      TB.dev.eval('cfg.autoTran = true; cfg.tran_liet_hoa = true; cfg.tranMobs = 3;');
+      TB.dev.eval('st.farmTarget = fakeSw.enemies[0];');
+      window.PNTT.FormationUI = {
+        blocked: function() { return null; },
+        realmOk: function() { return true; },
+        activeId: null,
+        pending: null
+      };
+      TB.dev.eval('st.tranAt = -1e9;');
+      TB.dev.eval('tickTran(game());');
+      var tranDeployedAt = TB.dev.eval('st.tranAt');
+      log('tickTran deployed damage formation under Escaped Beast feet: ' + (tranDeployedAt > 0), tranDeployedAt > 0);
+
+      log('--- 8. TEST V0.63.19: STILL FIGHTING & MP TALISMAN DURING CART HEIST (FIX LL 1%) ---', null);
+      var dummyCart = {
+        id: 'cart_gold',
+        type: 'tieu_xa_vang',
+        name: 'Tiêu Xa Vàng',
+        x: 230, y: 300,
+        hp: 3000, hpMax: 3240,
+        def: { contactDmg: 0, bodyRadius: 28, tieuXaHang: 3 },
+        dead: false
+      };
+
+      TB.dev.eval('st.ct = { cart: dummyCart };');
+      var sfCart = TB.dev.eval('stillFighting(game())');
+      log('stillFighting returns TRUE when cart exists: ' + sfCart, sfCart === true);
+
+      TB.dev.eval('st.ct = null;');
+      TB.dev.eval('lastStrikeAt = now();');
+      var sfStrike = TB.dev.eval('stillFighting(game())');
+      log('stillFighting returns TRUE within 4s of last strike: ' + sfStrike, sfStrike === true);
+
+      window._lastTalisman = null;
+      fakePlayer.hp = 1000; fakePlayer.hpMax = 1000;
+      fakePlayer.mp = 100; fakePlayer.mpMax = 500; // 20% MP
+      TB.dev.eval('st.ct = { cart: dummyCart };');
+      TB.dev.eval('talLastAt = -1e9;');
+      TB.dev.eval('tickTalismans(game());');
+      log('tickTalismans pops Thanh Tâm Phù at 20% MP during cart heist: ' + (window._lastTalisman === 'thanh_tam'), window._lastTalisman === 'thanh_tam');
+
+      window._lastTalisman = null;
+      fakePlayer.state = 'attack';
+      fakePlayer.mp = 50; fakePlayer.mpMax = 500; // 10% MP
+      TB.dev.eval('talLastAt = -1e9;');
+      TB.dev.eval('ctBurst(game(), dummyCart);');
+      log('ctBurst pops Thanh Tâm Phù even when player state is "attack": ' + (window._lastTalisman === 'thanh_tam'), window._lastTalisman === 'thanh_tam');
+      fakePlayer.state = 'idle';
+
+      log('--- 9. TEST V0.63.19: REVIVE THROTTLE & PK CAMPED (FIX 5 DEATHS/MIN) ---', null);
+      fakePlayer.downed = true;
+      fakePlayer.downTime = 1.0;
+      TB.dev.eval('st.recentDeaths = [now() - 5000];');
+
+      TB.dev.eval('st.bh = { b: { map: "long_uyen" } };');
+      TB.dev.eval('st.lastRevive = -1e9;');
+      window._reviveSpotCalled = false;
+      TB.dev.eval('tickRevive(game());');
+      log('Boss context blocks instant revive at downTime 1.0s (delay >= 2.0s): ' + (window._reviveSpotCalled === false), window._reviveSpotCalled === false);
+
+      // 9.2. Boss context: downTime >= 3.5s (streak >= 2) -> allows spot revive, pops shield
+      fakePlayer.downTime = 4.0;
+      window._talismansUsed = [];
+      TB.dev.eval('talLastAt = -1e9;');
+      TB.dev.eval('cfg.autoShield = true; cfg.autoMpTal = true;');
+      fakePlayer.mp = 50;
+      TB.dev.eval('tickRevive(game());');
+      log('Boss context revives after 3.5s delay (streak >= 2): ' + (window._reviveSpotCalled === true), window._reviveSpotCalled === true);
+      log('Spot revive pops Kim Long / Kim Giáp shield: ' + (window._talismansUsed.indexOf('kim_long') >= 0 || window._talismansUsed.indexOf('kim_giap') >= 0), window._talismansUsed.indexOf('kim_long') >= 0 || window._talismansUsed.indexOf('kim_giap') >= 0);
+
+      // On next tick after TAL_GAP_MS, tickTalismans uses thanh_tam for low MP
+      window._talismansUsed = [];
+      TB.dev.eval('talLastAt = -1e9;');
+      TB.dev.eval('tickTalismans(game());');
+      log('Spot revive next tick pops Thanh Tâm MP talisman: ' + (window._talismansUsed.indexOf('thanh_tam') >= 0), window._talismansUsed.indexOf('thanh_tam') >= 0);
+      TB.dev.eval('st.bh = null;');
+
+      fakePlayer.downed = true;
+      fakePlayer.downTime = 5.0;
+      TB.dev.eval('st.ct = { started: true };');
+      TB.dev.eval('st.recentDeaths = [now() - 10000, now() - 2000];'); // 2 prior deaths in 30s
+      P.Gateway.remotes = {
+        foe_1: { id: 'foe_1', name: 'chienthien', x: 230, y: 300, downed: false, hostile: true }
+      };
+      window._reviveSpotCalled = false;
+      window._reviveHomeCalled = false;
+      TB.dev.eval('st.lastRevive = -1e9;');
+      TB.dev.eval('tickRevive(game());');
+      log('Camped by hostile player with streak >= 2 triggers reviveAtHome: ' + (window._reviveHomeCalled === true), window._reviveHomeCalled === true);
+      log('Camped by hostile player BLOCKS spot revive feed: ' + (window._reviveSpotCalled === false), window._reviveSpotCalled === false);
+      P.Gateway.remotes = {};
+      fakePlayer.downed = false;
+
+      log('--- 10. TEST V0.63.19: LOW HP KITING IN CART HIJACK (NO SUICIDE RUSH) ---', null);
+      fakePlayer.hp = 250; fakePlayer.hpMax = 1000; // 25% HP
+      fakePlayer.x = 200; fakePlayer.y = 300;
+      fakePlayer.path = [{ x: 250, y: 300 }, { x: 300, y: 300 }];
+      P.Gateway.remotes = {
+        foe_1: { id: 'foe_1', name: 'chienthien', x: 280, y: 300, downed: false, hostile: true }
+      };
+      TB.dev.eval('cfg.autoShield = true; talLastAt = -1e9;');
+      window._talismansUsed = [];
+      var aCt = { swings: 0, routeAt: 0 };
+      TB.dev.eval('ctStrikeCart(game(), aCt, dummyCart);');
+      log('ctStrikeCart at 25% HP with enemy player CLEARS me.path: ' + (fakePlayer.path.length === 0), fakePlayer.path.length === 0);
+      log('ctStrikeCart triggers protective shield (kim_long/kim_giap): ' + (window._talismansUsed.indexOf('kim_long') >= 0 || window._talismansUsed.indexOf('kim_giap') >= 0), window._talismansUsed.indexOf('kim_long') >= 0 || window._talismansUsed.indexOf('kim_giap') >= 0);
+      P.Gateway.remotes = {};
+
+      log('--- 11. TEST V0.63.19: DUNGEON SAFETY (NO MEDITATE IN POINT-BLANK DANGER) ---', null);
+      fakePlayer.hp = 300; fakePlayer.hpMax = 1000;
+      fakePlayer.state = 'sit';
+      window._meditated = false;
+      var dummyDungeonBoss = {
+        id: 999, type: 'u_minh_cu_mang', name: 'U Minh Cự Mãng',
+        x: 220, y: 300, hp: 50000, hpMax: 50000,
+        def: { contactDmg: 50, bodyRadius: 30 }
+      };
+      fakeSw.enemies = [dummyDungeonBoss];
+      TB.dev.eval('cfg.healSit = true; cfg.healSafe = 200;');
+      TB.dev.eval('st.healing = true; st.healMoving = false;');
+      TB.dev.eval('tickHeal(game());');
+      log('tickHeal forces character to STAND UP if sitting next to Dungeon Boss: ' + (window._meditated === true), window._meditated === true);
+
+      log('=== TOTAL: ' + window.testResults.passed + ' passed, ' + window.testResults.failed + ' failed. ===');
+    } catch (err) {
+      log('Test exception: ' + err.message + ' ' + err.stack, false);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+Thương Đội (săn & tin Thiên Đạo) · Bãi Đá k7 · mewmew · trợ thủ v0.63.8 · bắt đầu 17:32:17 4/11/2026
+===== TÓM TẮT =====
+✅ Thương Đội (săn & tin Thiên Đạo) · Bãi Đá k7 · mewmew · 1:10
+Kết quả: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+🎁 Thu được: Linh Thạch ×1, Oán Hồn ×1
+📜 Diễn biến cuối:
+[0:09] → chờ đoàn hiện ở Bãi Đá khu 7 (Thiên Đạo báo trước 20 giây)
+[0:20] → săn Tiêu Sư · khu 7
+[0:41] Hạ Tiêu Sư
+[0:41] → săn Thương Nhân · khu 7
+[0:53] Hạ Thương Nhân
+[0:53] → nhặt hồn rơi
+[0:55] Hoàn thành: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+[1:10] Kết thúc · Kết quả: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Thương Đội (săn & tin Thiên Đạo) · Bãi Đá k7 · mewmew · trợ thủ đang bật · v0.63.8
+[0:00] → nhặt đồ rơi
+[0:00] máu 100% · LL 100% · Miếu Ông Trường Con (80,403) · quái <400px 3 · người thù 0 · Tự Động tắt · việc: nhặt đồ rơi · việc: nhặt đồ rơi
+[0:01] → đi tới Bãi Đá
+[0:03] → đổi sang khu 7 (Thiên Đạo báo)
+[0:09] → chờ đoàn hiện ở Bãi Đá khu 7 (Thiên Đạo báo trước 20 giây)
+[0:10] máu 100% · LL 100% · Bãi Đá (688,464) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: chờ đoàn hiện ở Bãi Đá khu 7 (Thiên Đạo báo trước 20 giây) · việc: chờ đoàn hiện ở Bãi Đá khu 7 (Thiên Đạo báo trước 20 giây)
+[0:20] → săn Tiêu Sư · khu 7
+[0:20] máu 100% · LL 92% · Bãi Đá (688,464) · quái <400px 0 · người thù 0 · Tự Động bật · việc: săn Tiêu Sư · khu 7 · việc: săn Tiêu Sư · khu 7 · mục tiêu Tiêu Sư 100%
+[0:30] máu 100% · LL 93% · Bãi Đá (720,432) · quái <400px 0 · người thù 0 · Tự Động bật · đánh Tiêu Sư 63% · việc: săn Tiêu Sư · khu 7 · việc: săn Tiêu Sư · khu 7 · mục tiêu Tiêu Sư 63%
+[0:40] máu 100% · LL 95% · Bãi Đá (720,432) · quái <400px 0 · người thù 0 · Tự Động bật · đánh Tiêu Sư 10% · việc: săn Tiêu Sư · khu 7 · việc: săn Tiêu Sư · khu 7 · mục tiêu Tiêu Sư 10%
+[0:41] Hạ Tiêu Sư
+[0:41] → săn Thương Nhân · khu 7
+[0:50] máu 100% · LL 73% · Bãi Đá (720,432) · quái <400px 0 · người thù 0 · Tự Động bật · đánh Thương Nhân 19% · việc: săn Thương Nhân · khu 7 · việc: săn Thương Nhân · khu 7 · mục tiêu Thương Nhân 19%
+[0:53] Hạ Thương Nhân
+[0:53] → nhặt hồn rơi
+[0:55] Hoàn thành: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về
+[1:10] Kết thúc · Kết quả: Đã hạ hết Tiêu Sư / Thương Nhân của đoàn → về

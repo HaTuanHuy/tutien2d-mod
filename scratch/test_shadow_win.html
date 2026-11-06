@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><script>
+(function() {
+  'use strict';
+  try {
+    var window = { PNTT: 'mockPNTT' };
+    document.title = 'SUCCESS: ' + window.PNTT;
+  } catch (e) {
+    document.title = 'ERROR: ' + e.message;
+  }
+})();
+</script></head>
+<body></body>
+</html>

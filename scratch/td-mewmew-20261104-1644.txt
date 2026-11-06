@@ -1,0 +1,31 @@
+Thương Đội (săn & tin Thiên Đạo) · Rừng Trúc k15 · mewmew · trợ thủ v0.63.8 · bắt đầu 16:44:40 4/11/2026
+===== TÓM TẮT =====
+✅ Thương Đội (săn & tin Thiên Đạo) · Rừng Trúc k15 · mewmew · 1:03
+Kết quả: Không tìm thấy Thương Đội → về
+🎁 Thu được: Linh Thạch ×1
+📜 Diễn biến cuối:
+[0:19] → đổi sang khu 15 (Thiên Đạo báo)
+[0:20] → chờ đoàn hiện ở Rừng Trúc khu 15 (Thiên Đạo báo trước 20 giây)
+[0:25] → dò khắp Rừng Trúc khu 15 tìm đoàn (còn 8 chỗ)
+[0:37] → đi tới Chân Núi Tản Viên
+[0:40] → đổi sang khu 15 (Thiên Đạo báo)
+[0:42] → dò khắp Chân Núi Tản Viên khu 15 tìm đoàn (còn 6 chỗ)
+[0:48] Hoàn thành: Không tìm thấy Thương Đội → về
+[1:03] Kết thúc · Kết quả: Không tìm thấy Thương Đội → về
+===== NHẬT KÝ =====
+[0:00] Bắt đầu Thương Đội (săn & tin Thiên Đạo) · Rừng Trúc k15 · mewmew · trợ thủ đang bật · v0.63.8
+[0:00] → nhặt đồ rơi
+[0:00] máu 100% · LL 89% · Miếu Ông Trường Con (304,221) · quái <400px 2 · người thù 0 · Tự Động tắt · việc: nhặt đồ rơi · việc: nhặt đồ rơi
+[0:00] → đi tới Rừng Trúc
+[0:10] máu 100% · LL 100% · Bãi Đá (440,752) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: đi tới Rừng Trúc · việc: đi tới Rừng Trúc
+[0:19] → đổi sang khu 15 (Thiên Đạo báo)
+[0:20] máu 100% · LL 100% · Rừng Trúc (324,106) · quái <400px 9 · người thù 0 · Tự Động tắt · việc: đổi sang khu 15 (Thiên Đạo báo) · việc: đổi sang khu 15 (Thiên Đạo báo)
+[0:20] → chờ đoàn hiện ở Rừng Trúc khu 15 (Thiên Đạo báo trước 20 giây)
+[0:25] → dò khắp Rừng Trúc khu 15 tìm đoàn (còn 8 chỗ)
+[0:30] máu 100% · LL 100% · Rừng Trúc (592,720) · quái <400px 19 · người thù 0 · Tự Động tắt · việc: dò khắp Rừng Trúc khu 15 tìm đoàn (còn 4 chỗ) · việc: dò khắp Rừng Trúc khu 15 tìm đoàn (còn 4 chỗ)
+[0:37] → đi tới Chân Núi Tản Viên
+[0:40] → đổi sang khu 15 (Thiên Đạo báo)
+[0:40] máu 100% · LL 100% · Chân Núi Tản Viên (278,811) · quái <400px 0 · người thù 0 · Tự Động tắt · việc: đổi sang khu 15 (Thiên Đạo báo) · việc: đổi sang khu 15 (Thiên Đạo báo)
+[0:42] → dò khắp Chân Núi Tản Viên khu 15 tìm đoàn (còn 6 chỗ)
+[0:48] Hoàn thành: Không tìm thấy Thương Đội → về
+[1:03] Kết thúc · Kết quả: Không tìm thấy Thương Đội → về

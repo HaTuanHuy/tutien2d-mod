@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Cướp Tiêu Haul Test</title>
+</head>
+
+<body>
+  <div id="logs"></div>
+  <script>
+    window.testResults = { passed: 0, failed: 0, logs: [] };
+    function log(msg, pass) {
+      var d = document.createElement('div');
+      d.textContent = (pass === true ? '[PASS] ' : pass === false ? '[FAIL] ' : '[INFO] ') + msg;
+      document.getElementById('logs').appendChild(d);
+      if (pass === true) window.testResults.passed++;
+      if (pass === false) { window.testResults.failed++; window.testResults.logs.push(msg); }
+      console.log(d.textContent);
+    }
+  </script>
+
+  <!-- Define PNTT before scripts -->
+  <script>
+    window.PNTT = {};
+  </script>
+
+  <!-- Load real game scripts -->
+  <script src="../src/core/utils.f3a5ec533e9c.js"></script>
+  <script src="../src/world/mapdata.430a546fd419.js"></script>
+  <script src="../src/world/map_tamgioi.c3a33f0e9b23.js"></script>
+  <script src="../src/world/map_three_maps.3fbb466c6c1e.js"></script>
+  <script src="../src/world/map_thung_lung_v2.1253d7c3f604.js"></script>
+  <script src="../src/entities/enemy.7739f83bfc3f.js"></script>
+
+  <script>
+    var swMock = {
+      player: {
+        id: 'player_1',
+        name: 'memooo',
+        x: 500, y: 500, hp: 1000, hpMax: 1000, mp: 500, mpMax: 500,
+        speed: 160, state: 'idle', downed: false, canMeditate: true,
+        path: [], setPath: function (p) { this.path = p; }, stop: function () { this.path = []; }
+      },
+      map: { data: window.PNTT.MapData.TAN_VIEN },
+      enemies: [], drops: [], players: [], autoOn: true
+    };
+
+    window.PNTT.CONFIG = { TILE: 32, PLAYER: { SPEED: 160, RUN_MULT: 1.5, HIT_RADIUS: 24 }, TARGET: { RANGE: 400 } };
+    window.PNTT.Gateway = { connected: true, selfId: 'player_1', cmd: function (op, d, cb) { if (cb) cb({ ok: true }); }, send: function () { return true; } };
+    window.PNTT.Game = { scene: swMock, time: 100 };
+    window.PNTT.SceneWorld = swMock;
+    window.PNTT.Player = { stand: function () { }, reach: function () { return 26; } };
+    window.PNTT.Pathfinder = { route: function () { return [{ x: 520, y: 520 }]; } };
+    window.PNTT.Input = { run: true, hasManualMove: function () { return false; }, pressMeditate: function () { }, pressAutoToggle: function () { swMock.autoOn = !swMock.autoOn; } };
+    window.PNTT.Loot = { PICK_R: 40 };
+    window.PNTT.Inventory = { bag: { linh_thach: 10000 } };
+    window.PNTT.Progress = { stones: 10000 };
+    window.PNTT.KhuUI = { khu: 1, soKhu: 20 };
+
+    // VanTieu mock with cart in possession (stolen cart)
+    window.PNTT.VanTieu = {
+      TUYEN: ['thang_long', 'tan_vien', 'thanh_truc_lam'],
+      MAP_NHAN: 'thang_long',
+      MAP_GIAO: 'thang_long',
+      NPC_NHAN: 'huan_su_huynh',
+      NPC_GIAO: 'banh_tien_sinh',
+      tenHang: function (h) { return 'Tiêu Thạch'; },
+      dangChuyen: function () { return { hang: 'tieu_thach', cartId: 'cart_123' }; }
+    };
+    window.PNTT.VanTieuUI = {
+      chuyen: { hang: 'tieu_thach', cartId: 'cart_123' }
+    };
+
+    window.unsafeWindow = window;
+  </script>
+
+  <script src="../tutien2d-helper.user.js"></script>
+
+  <script>
+    (function () {
+      try {
+        var TB = window.TTBot;
+        log('TTBot loaded', !!TB);
+
+        // Configure Cướp Tiêu ON, Vận Tiêu OFF
+        TB.cfg.ctRun = true;
+        TB.cfg.vtRun = false;
+
+        var g = TB.game();
+        log('TB.game() exists: ' + !!g, !!g);
+
+        // Check vtActive
+        var vtAct = TB.dev.eval('vtActive(game())');
+        log('vtActive(g) is true when cart stolen: ' + vtAct, vtAct === true);
+
+        // Run tickCuopTieu(g)
+        var ret = TB.dev.eval('tickCuopTieu(game())');
+        log('tickCuopTieu returns true (busy hauling): ' + ret, ret === true);
+        log('st.ct exists: ' + !!TB.st.ct, !!TB.st.ct);
+        log('st.ct.haul is true: ' + (TB.st.ct && TB.st.ct.haul), !!(TB.st.ct && TB.st.ct.haul));
+        log('st.ct.step is hauling: ' + (TB.st.ct && TB.st.ct.step), /kéo xe/.test(TB.st.ct && TB.st.ct.step));
+
+        // Test ctEventName yielding to xổng chuồng
+        TB.dev.eval('xcEvents.push({ map: "bai_da_hang_gio", khu: 20, types: ["xich_nhan_nguu"], what: "Xích Nhãn Ngưu", at: Date.now(), done: false })');
+        var evName = TB.dev.eval('ctEventName(game(), false)');
+        log('ctEventName yields to xổng chuồng: ' + evName, evName === 'săn xổng chuồng');
+
+      } catch (err) {
+        log('CRASH: ' + err.message + '\n' + err.stack, false);
+      }
+    })();
+  </script>
+</body>
+
+</html>

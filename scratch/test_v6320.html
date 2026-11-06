@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test Suite v0.63.20 - Deep Sỹ Sách Điện (Hư Thiên) Optimizations</title>
+</head>
+<body>
+  <div id="logs"></div>
+  <script>
+    window.testResults = { passed: 0, failed: 0, logs: [] };
+    function log(msg, pass) {
+      var d = document.createElement('div');
+      d.textContent = (pass === true ? '[PASS] ' : pass === false ? '[FAIL] ' : '[INFO] ') + msg;
+      document.getElementById('logs').appendChild(d);
+      if (pass === true) window.testResults.passed++;
+      if (pass === false) { window.testResults.failed++; window.testResults.logs.push(msg); }
+      console.log(d.textContent);
+    }
+  </script>
+
+  <script>
+    window.PNTT = {};
+  </script>
+
+  <script src="../src/core/utils.f3a5ec533e9c.js"></script>
+  <script src="../src/world/mapdata.430a546fd419.js"></script>
+  <script src="../src/world/map_tamgioi.c3a33f0e9b23.js"></script>
+  <script src="../src/entities/enemy.7739f83bfc3f.js"></script>
+  <script src="../src/systems/formations.b88e901817ed.js"></script>
+  <script src="../src/systems/hu_thien.932325909848.js"></script>
+
+  <script>
+    var P = window.PNTT;
+    P.CONFIG = P.CONFIG || {};
+    P.CONFIG.TILE = 32;
+    P.CONFIG.PLAYER = { HITBOX_W: 24, HITBOX_H: 32 };
+    P.CONFIG.THUNDER = { MP_COST: 5, RANGE: 180, RADIUS: 50 };
+    P.Progress = { realmId: 'truc_co_1', hacThi: { giamDen: 0 }, stones: 50000 };
+    P.Game = { time: 100 };
+    P.Pathfinder = { route: function (x1, y1, x2, y2) { return { path: [{ x: x2, y: y2 }] }; } };
+    P.Input = {
+      pressAutoToggle: function () { },
+      setRun: function () { },
+      pressMeditate: function () { window._meditated = true; },
+      pressFlyToggle: function () { window._flyToggled = true; },
+      hasManualMove: function () { return false; }
+    };
+    P.KhuUI = { isOpen: function () { return false; }, close: function () { } };
+    P.Gateway = {
+      send: function () { return true; },
+      selfId: 'player_test',
+      socket: { readyState: 1, send: function () {} },
+      remotes: {},
+      formationBegin: function(defId, budget, pt) { window._tranDung = defId; return 12345; },
+      connected: true,
+      ready: true,
+      cmd: function(c, b, cb) { if (cb) cb({ ok: true }); }
+    };
+    P.Targeting = {
+      thuDich: function(r) { return r && r.hostile === true; },
+      khoaVao: function(r) { window._khoaVaoTarget = r; return true; }
+    };
+
+    var fakePlayer = {
+      id: 'player_test',
+      name: 'memooo',
+      x: 200, y: 300,
+      hp: 1000, hpMax: 1000,
+      mp: 500, mpMax: 500,
+      path: [],
+      target: null,
+      Progress: P.Progress,
+      canMeditate: true,
+      state: 'idle',
+      downed: false,
+      downTime: 0,
+      reviveLeft: 3,
+      speed: 68,
+      flying: false,
+      setPath: function(p) { this.path = p; }
+    };
+    var fakeMap = {
+      data: {
+        id: 'hu_thien_1',
+        name: 'Ải 1 · Dược Viên',
+        htSanh: { tx0: 0, tx1: 15, ty0: 0, ty1: 15 },
+        htCamChe: { tx0: 10, tx1: 20, ty0: 10, ty1: 20 }
+      },
+      pxWidth: 2000,
+      pxHeight: 2000,
+      isPassable: function () { return true; }
+    };
+    var fakeSw = {
+      player: fakePlayer,
+      enemies: [],
+      drops: [],
+      map: fakeMap,
+      mapId: 'hu_thien_1',
+      findEnemy: function () { return null; },
+      approach: { key: 'foe:1' },
+      autoOn: true
+    };
+    P.SceneWorld = fakeSw;
+    P.Game.scene = P.SceneWorld;
+    P.HUD = { setCaption: function () {}, showToast: function () {} };
+    P.Chat = { line: function () {} };
+    P.Player = {
+      reach: function() { return 60; },
+      canFly: function() { return true; },
+      sit: function(v) { if (v) fakePlayer.state = 'sit'; else fakePlayer.state = 'idle'; window._playerSat = v; },
+      stand: function() { fakePlayer.state = 'idle'; window._playerStood = true; }
+    };
+    P.Skills = {
+      spellCost: function() { return { mp: 10, sp: 0 }; },
+      autoRotation: function() { return []; },
+      dmgOf: function() { return 100; }
+    };
+    P.Talismans = {
+      defOf: function(id) { return { id: id, name: id }; },
+      canUse: function() { return true; }
+    };
+    P.TalismanBar = {
+      use: function(id) { window._talUsed = id; window._talList = window._talList || []; window._talList.push(id); }
+    };
+    P.Inventory = {
+      count: function(id) { return 5; },
+      bag: {}
+    };
+    P.FormationUI = {
+      blocked: function() { return false; },
+      pending: null
+    };
+    P.Formations = {
+      DEFS: {
+        loan_loi_hoa: { id: 'loan_loi_hoa', name: 'Loan Lôi Hỏa Trận', item: 'tran_ban_loan_loi_hoa', radius: 96, windupMs: 900 },
+        tu_tuong: { id: 'tu_tuong', name: 'Tứ Tượng Trận', item: 'tran_ban_tu_tuong', radius: 96, windupMs: 900 },
+        liet_hoa: { id: 'liet_hoa', name: 'Liệt Hỏa Trận', item: 'tran_ban_liet_hoa', radius: 96, windupMs: 900 }
+      },
+      fullBudget: function() { return 100; }
+    };
+    P.HuThienUI = {
+      st: {
+        doi: { ngocPhu: 0, can: 3, moAi1: false },
+        toi: { ngocPhu: 0 },
+        ai2: { rao: false, tru: [{ song: true, hp: 90, mau: 'xanh' }, { song: true, hp: 40, mau: 'do' }] },
+        dinh: { song: true, hp: 100, da: false },
+        doiMinh: ['player_test', 'ally_1']
+      },
+      gio: function() { return Date.now(); },
+      khongDich: function(id, r) {
+        if (id === 'player_test' || id === 'ally_1') return true;
+        if (r && r.inSafe) return true;
+        return false;
+      }
+    };
+  </script>
+
+  <!-- Load Userscript -->
+  <script src="../tutien2d-helper.user.js"></script>
+
+  <script>
+    try {
+      var TB = window.TTBot;
+      log('--- BẮT ĐẦU KIỂM TRA TỐI ƯU SỸ SÁCH ĐIỆN (v0.63.20) ---');
+
+      // Test 1: Version check
+      var vVal = TB.dev.eval('VERSION');
+      var vOk = vVal >= '0.63.20';
+      log('Test 1: Version script là >= 0.63.20 (thực tế: ' + vVal + ')', vOk);
+
+      // Setup common objects
+      TB.dev.eval('cfg.htRun = true; cfg.autoTran = true; cfg.autoShield = true; cfg.autoHaste = true;');
+      TB.dev.eval('st.ht = { inside: true, step: "" };');
+
+      // Test 2: Safe Hall Recovery (Anti-Death Loop)
+      fakePlayer.x = 100; fakePlayer.y = 100; // in htSanh
+      fakePlayer.hp = 300; fakePlayer.hpMax = 1000;
+      fakePlayer.mp = 150; fakePlayer.mpMax = 500;
+      fakePlayer.downed = false;
+      fakePlayer.state = 'idle';
+      fakeSw.mapId = 'hu_thien_1';
+      fakeMap.data.id = 'hu_thien_1';
+      window._playerSat = false;
+
+      var rSafe = TB.dev.eval('tickHuThien(game())');
+      var stStep = TB.dev.eval('st.ht && st.ht.step');
+      var safeStepOk = /vùng an toàn · thiền hồi phục/.test(stStep || '');
+      log('Test 2.1: Phát hiện vừa hồi sinh trong Sảnh an toàn với máu thấp (step: ' + stStep + ')', safeStepOk);
+      log('Test 2.2: Tự động ngồi thiền hồi phục (P.Player.sit: ' + window._playerSat + ', me.state: ' + fakePlayer.state + ')', window._playerSat === true && fakePlayer.state === 'sit');
+
+      // Test 3: Khi máu hồi phục đầy (>= 88% HP, >= 65% MP) thì tự đứng dậy tiếp chiến
+      fakePlayer.hp = 950; fakePlayer.mp = 450;
+      TB.dev.eval('tickHuThien(game())');
+      log('Test 3: Khi máu/LL hồi phục đầy, tự động đứng dậy xuất chiến (me.state: ' + fakePlayer.state + ')', fakePlayer.state === 'idle');
+
+      // Test 4: Ải 1 · Ưu tiên nhặt Sỹ Sách Ngọc Phù rơi trên đất nếu cá nhân chưa đủ 3 viên
+      fakePlayer.x = 500; fakePlayer.y = 500; // ngoài sảnh
+      P.HuThienUI.st.doi.moAi1 = false;
+      P.HuThienUI.st.doi.ngocPhu = 1;
+      P.HuThienUI.st.toi.ngocPhu = 1; // cá nhân mới có 1 < 3
+      fakeSw.drops = [
+        { state: 'ground', itemId: 'htd_ngoc_phu', x: 530, y: 530, lootId: 101 }
+      ];
+      fakeSw.enemies = [
+        { type: 'htd_thu_ve', x: 800, y: 800, hp: 960, hpMax: 960, dead: false }
+      ];
+      TB.dev.eval('tickHuThien(game())');
+      var stepPhu = TB.dev.eval('st.ht && st.ht.step');
+      var phuPickOk = /lao tới nhặt Sỹ Sách Ngọc Phù/.test(stepPhu || '');
+      log('Test 4: Ải 1 ưu tiên lao tới nhặt Sỹ Sách Ngọc Phù rơi trên đất (step: ' + stepPhu + ')', phuPickOk);
+
+      // Test 5: Ải 1 · Cửa đã mở (doi.moAi1 = true) -> tự bước qua cổng sang Ải 2
+      fakeSw.drops = [];
+      P.HuThienUI.st.doi.moAi1 = true;
+      TB.dev.eval('tickHuThien(game())');
+      var stepAi2 = TB.dev.eval('st.ht && st.ht.step');
+      var goAi2Ok = /cửa Ải 1 đã mở → sang Ải 2/.test(stepAi2 || '');
+      log('Test 5: Ải 1 cửa mở lập tức sang Ải 2 (step: ' + stepAi2 + ')', goAi2Ok);
+
+      // Test 6: Ải 2 · Focus Fire Trụ máu thấp hơn
+      fakeSw.mapId = 'hu_thien_2';
+      fakeMap.data = {
+        id: 'hu_thien_2',
+        name: 'Ải 2 · Băng Hỏa Trận',
+        htCamChe: { tx0: 30, ty0: 16, tx1: 45, ty1: 20 },
+        htRao: { tx0: 30, ty0: 16, tx1: 31, ty1: 20 },
+        htTranNhan: []
+      };
+      P.HuThienUI.st.ai2.rao = false;
+      var towerBang = { def: { isBoss: false, contactDmg: 0, truBan: true, name: 'Trụ Băng' }, type: 'htd_tru_bang', x: 600, y: 600, hp: 18000, hpMax: 20000, dead: false };
+      var towerHoa = { def: { isBoss: false, contactDmg: 0, truBan: true, name: 'Trụ Hoả' }, type: 'htd_tru_hoa', x: 900, y: 900, hp: 6000, hpMax: 20000, dead: false }; // máu thấp hơn
+      fakeSw.enemies = [towerBang, towerHoa];
+      TB.dev.eval('tickHuThien(game())');
+      var stepTower = TB.dev.eval('st.ht && st.ht.step');
+      var focusTowerOk = /dồn sát thương/.test(stepTower || '');
+      var pinObj = TB.dev.eval('st.pin && st.pin.t');
+      var targetIsHoa = pinObj === towerHoa;
+      log('Test 6.1: Ải 2 tấn công trụ (step: ' + stepTower + ')', focusTowerOk);
+      log('Test 6.2: Ưu tiên focus Trụ Hỏa còn 6000 HP thay vì Trụ Băng 18000 HP', targetIsHoa);
+
+      // Test 7: Ải 2 · Hàng rào mở (ai2.rao = true) -> Tự bay qua hành lang cấm che sang Ải 3
+      window._flyToggled = false;
+      fakePlayer.flying = false;
+      P.HuThienUI.st.ai2.rao = true;
+      fakePlayer.x = 400; fakePlayer.y = 400; // trong htCamChe
+      TB.dev.eval('tickHuThien(game())');
+      var stepFly = TB.dev.eval('st.ht && st.ht.step');
+      var flyToAi3Ok = /hàng rào đã mở → bay qua hành lang sang Ải 3/.test(stepFly || '');
+      log('Test 7: Ải 2 sập trụ mở rào -> tự bật Phi Hành bay qua hành lang sang Ải 3 (step: ' + stepFly + ')', flyToAi3Ok);
+
+      // Test 8: Ải 3 · PK Tông Môn tự vệ khi có địch tông khác áp sát
+      fakeSw.mapId = 'hu_thien_3';
+      fakeMap.data = {
+        id: 'hu_thien_3',
+        name: 'Ải 3 · Nội Điện',
+        htDinh: { tx: 24, ty: 17 }
+      };
+      fakePlayer.hp = 700; fakePlayer.hpMax = 1000; fakePlayer.mp = 500; fakePlayer.mpMax = 500;
+      P.HuThienUI.st.dinh.song = true;
+      P.HuThienUI.st.dinh.da = false;
+      var bossDinh = { def: { isBoss: true, name: 'Sỹ Sách Đỉnh' }, type: 'htd_dinh', x: 1000, y: 1000, hp: 19200, hpMax: 19200, dead: false };
+      fakeSw.enemies = [bossDinh];
+
+      // Có người chơi tông khác ở cự ly 160px
+      var rivalPlayer = { id: 'rival_123', name: 'Độc Cô Cầu Bại', x: 250, y: 350, hp: 0.40, downed: false };
+      P.Gateway.remotes = { 'rival_123': rivalPlayer };
+      window._tranDung = null;
+      window._talList = [];
+      window._talUsed = null;
+      fakePlayer.x = 200; fakePlayer.y = 300;
+      TB.dev.eval('talLastAt = -1e9;');
+
+      TB.dev.eval('tickHuThien(game())');
+      var stepPk = TB.dev.eval('st.ht && st.ht.step');
+      var pkSelfDefOk = /PK tông môn: diệt Độc Cô Cầu Bại/.test(stepPk || '');
+      log('Test 8.1: Ải 3 tự động chuyển PK tự vệ khi kẻ địch tông khác áp sát (step: ' + stepPk + ')', pkSelfDefOk);
+      log('Test 8.2: Tự động kích hoạt khiên hộ thân khi bị địch áp sát (talUsed: ' + window._talUsed + ')', window._talUsed === 'kim_long' || window._talUsed === 'kim_giap');
+      log('Test 8.3: Tự động dựng trận bàn sát thương / khống chế tạo vùng bảo vệ (tranDung: ' + window._tranDung + ')', !!window._tranDung);
+
+      // Test 9: Ải 3 · Khi an toàn không có địch áp sát -> tập trung đánh Sỹ Sách Đỉnh
+      P.Gateway.remotes = {}; // không có địch
+      fakePlayer.hp = 1000; fakePlayer.hpMax = 1000;
+      TB.dev.eval('tickHuThien(game())');
+      var stepBoss = TB.dev.eval('st.ht && st.ht.step');
+      var attackBossOk = /đánh Sỹ Sách Đỉnh/.test(stepBoss || '');
+      log('Test 9: Khi an toàn không có địch quanh mình, tập trung dồn dame Boss Sỹ Sách Đỉnh (step: ' + stepBoss + ')', attackBossOk);
+
+      // Test 10: Ải 3 · Sỹ Sách Đỉnh phun lửa Nova (máu <= 22%, cự ly < 185px)
+      bossDinh.hp = 3000; // 3000 / 19200 = 15.6% <= 22%
+      bossDinh.x = 260; bossDinh.y = 300; // cách 60px
+      fakePlayer.hp = 600; fakePlayer.hpMax = 1000; // máu 60% < 70%
+      window._talUsed = null;
+      TB.dev.eval('talLastAt = -1e9;');
+      TB.dev.eval('tickHuThien(game())');
+      log('Test 10: Sỹ Sách Đỉnh máu <= 22% phun lửa Nova -> tự kích hoạt khiên chống cháy (tal: ' + window._talUsed + ')', window._talUsed === 'kim_long' || window._talUsed === 'kim_giap');
+
+      // Test 11: Ải 3 · Sỹ Sách Đỉnh ngã (dinh.da = true) -> Quét đồ, bật Tốc Hành, Bảo Kê Vận Bảo Vật Cực Hiếm
+      fakePlayer.hp = 1000; fakePlayer.hpMax = 1000; fakePlayer.mp = 500; fakePlayer.mpMax = 500;
+      P.HuThienUI.st.dinh.da = true;
+      fakeSw.enemies = [];
+      var rareDrop = {
+        state: 'ground',
+        itemId: 'hoang_loi_thuong',
+        kind: 'item',
+        lootId: 999,
+        ht: true,
+        vanMs: 3000, // cần vận 3s (channelDrop)
+        x: 210, y: 310
+      };
+      fakeSw.drops = [rareDrop];
+      fakePlayer.path = [{ x: 500, y: 500 }]; // đang có đường đi
+      window._tranDung = null;
+      window._talUsed = null;
+      TB.dev.eval('talLastAt = -1e9;');
+
+      TB.dev.eval('tickHuThien(game())');
+      var stepDrop = TB.dev.eval('st.ht && st.ht.step');
+      var channelOk = /đứng yên vận/.test(stepDrop || '');
+      var pathCleared = fakePlayer.path.length === 0;
+      log('Test 11.1: Tranh bảo vật Sỹ Sách Đỉnh cực hiếm cần đứng yên vận (step: ' + stepDrop + ')', channelOk);
+      log('Test 11.2: Dừng hẳn di chuyển để không bị ngắt thanh vận (path length: ' + fakePlayer.path.length + ')', pathCleared);
+      log('Test 11.3: Tự động bật khiên Kim Long / Kim Giáp bảo vệ chống gián đoạn (tal: ' + window._talUsed + ')', window._talUsed === 'kim_long' || window._talUsed === 'kim_giap');
+      log('Test 11.4: Tự động bung Trận Bàn khống chế khu vực nhặt bảo vật (tran: ' + window._tranDung + ')', !!window._tranDung);
+
+      log('TOTAL: PASSED ' + window.testResults.passed + ', FAILED ' + window.testResults.failed, window.testResults.failed === 0);
+
+    } catch (err) {
+      log('LỖI NGOẠI LỆ: ' + err.message + '\n' + err.stack, false);
+    }
+  </script>
+</body>
+</html>

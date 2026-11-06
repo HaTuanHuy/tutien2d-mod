@@ -1,0 +1,8 @@
+# Dữ liệu tài khoản & Cookie cá nhân (Bảo mật tuyệt đối)
+launcher_profile/
+profiles/
+*.log
+
+# File tạm thời kiểm thử
+scratch/out_*.html
+scratch/*.log

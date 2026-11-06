@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test Vet Nut Door and No Sit</title>
+</head>
+<body>
+  <div id="logs"></div>
+  <script>
+    window.testResults = { passed: 0, failed: 0, logs: [] };
+    function log(msg, pass) {
+      var d = document.createElement('div');
+      d.textContent = (pass === true ? '[PASS] ' : pass === false ? '[FAIL] ' : '[INFO] ') + msg;
+      document.getElementById('logs').appendChild(d);
+      if (pass === true) window.testResults.passed++;
+      if (pass === false) { window.testResults.failed++; window.testResults.logs.push(msg); }
+      console.log(d.textContent);
+    }
+  </script>
+
+  <script>
+    window.PNTT = {};
+  </script>
+
+  <script src="../src/core/utils.f3a5ec533e9c.js"></script>
+  <script src="../src/world/mapdata.430a546fd419.js"></script>
+  <script src="../src/world/map_tamgioi.c3a33f0e9b23.js"></script>
+  <script src="../src/entities/enemy.7739f83bfc3f.js"></script>
+  <script src="../src/systems/formations.b88e901817ed.js"></script>
+
+  <script>
+    var stoodUp = false;
+    var pressMeditateCalled = false;
+
+    var vnMapData = {
+      id: 'vet_nut_khong_gian',
+      width: 100,
+      height: 100,
+      vn: {
+        hom: { x0: 45, x1: 55, y0: 45, y1: 55 },
+        ruong: { x: 1600, y: 1600 },
+        lo: [
+          { boss: { x: 1000, y: 1000 }, tru: [{ x: 1100, y: 1100 }, { x: 1150, y: 1150 }, { x: 1200, y: 1200 }] },
+          { boss: { x: 2000, y: 2000 }, tru: [{ x: 2100, y: 2100 }, { x: 2150, y: 2150 }, { x: 2200, y: 2200 }] },
+          { boss: { x: 3000, y: 3000 }, tru: [{ x: 3100, y: 3100 }, { x: 3150, y: 3150 }, { x: 3200, y: 3200 }] },
+          { boss: { x: 4000, y: 4000 }, tru: [{ x: 4100, y: 4100 }, { x: 4150, y: 4150 }, { x: 4200, y: 4200 }] },
+          { boss: { x: 5000, y: 5000 }, tru: [{ x: 5100, y: 5100 }, { x: 5150, y: 5150 }, { x: 5200, y: 5200 }] }
+        ]
+      }
+    };
+
+    var playerObj = {
+      id: 'player_1',
+      name: 'memooo',
+      x: 500, y: 500, hp: 400, hpMax: 1000, mp: 200, mpMax: 500,
+      realmId: 'ket_dan_1',
+      state: 'idle',
+      canMeditate: true,
+      setPath: function(pts){ this.path = pts ? pts.slice() : []; },
+      path: []
+    };
+
+    var swMock = {
+      player: playerObj,
+      map: { data: vnMapData },
+      enemies: [],
+      drops: [],
+      autoOn: true
+    };
+
+    window.PNTT.sw = swMock;
+    window.PNTT.SceneWorld = swMock;
+    window.PNTT.Game = { scene: swMock, time: 100 };
+    window.PNTT.CONFIG = {
+      TILE: 32,
+      PLAYER: {
+        HITBOX_W: 24,
+        HITBOX_H: 32,
+        SPEED: 68,
+        RUN_MULT: 1.5,
+        REACH: 26,
+        ATTACK_TIME: 0.8
+      },
+      TARGET: { RANGE: 400 }
+    };
+    window.PNTT.Pathfinder = {
+      route: function(m, x1, y1, x2, y2) {
+        return [{ x: x2, y: y2 }];
+      }
+    };
+    window.PNTT.TileMap = {
+      width: 100,
+      height: 100,
+      blocked: new Uint8Array(10000)
+    };
+    window.PNTT.Player = {
+      stand: function(me){
+        stoodUp = true;
+        if (me) me.state = 'idle';
+      },
+      reach: function(){ return 26; }
+    };
+    window.PNTT.Inventory = {
+      count: function(item) { return 10; },
+      has: function(item, n) { return true; }
+    };
+    window.PNTT.Progress = {
+      realmId: 'ket_dan_1',
+      stones: 999999
+    };
+    window.PNTT.Gateway = {
+      selfId: 'player_1',
+      remotes: {}
+    };
+    window.PNTT.Input = {
+      run: true,
+      hasManualMove: function(){ return false; },
+      pressMeditate: function(){
+        pressMeditateCalled = true;
+        playerObj.state = (playerObj.state === 'sit' ? 'idle' : 'sit');
+      },
+      pressAutoToggle: function(){ swMock.autoOn = !swMock.autoOn; }
+    };
+
+    var vnState = {
+      tt: 'DANG',
+      mang: 3,
+      cam: {},
+      cua: {
+        sanh: [1, 1, 1, 1, 1],
+        an: [0, 0, 0, 0, 0],
+        lo: [0, 0, 0, 0, 0]
+      },
+      an: [null, null, null, null, null]
+    };
+
+    window.PNTT.VetNut = {
+      laMap: function(m) { return m === 'vet_nut_khong_gian'; },
+      trongHom: function(md, x, y) { return x >= 1400 && x <= 1800 && y >= 1400 && y <= 1800; },
+      trongSanh: function(md, x, y) { return x < 600 && y < 600; },
+      tenCong: function(k) { return ['Kim', 'Mộc', 'Thủy', 'Hỏa', 'Thổ'][k] || 'Kim'; },
+      hoMonTai: function(md, k) { return { x: 700 + k * 100, y: 700 }; },
+      loTai: function(md, x, y) { return 0; },
+      AN: { r: 24 }
+    };
+
+    window.PNTT.VetNutUI = {
+      nhan: function(e) {},
+      trangThai: function() { return vnState; },
+      st: { nut: { den: Date.now() + 600000, map: 'vet_nut_khong_gian' } }
+    };
+  </script>
+
+  <!-- Load Helper Script -->
+  <script src="../tutien2d-helper.user.js"></script>
+
+  <script>
+    try {
+      var TB = window.TTBot;
+      log('TTBot loaded: ' + !!TB, !!TB);
+
+      var g = TB.game();
+      log('Game state recognized as Vết Nứt: ' + TB.dev.eval('vnIn(game())'), TB.dev.eval('vnIn(game())') === true);
+
+      // ==========================================
+      // TEST 1: CẤM THIỀN TRONG VẾT NỨT
+      // ==========================================
+      TB.st.healing = true;
+      playerObj.state = 'sit';
+      pressMeditateCalled = false;
+      stoodUp = false;
+
+      TB.dev.eval('tickHeal(game())');
+      log('tickHeal in VN cancels st.healing: ' + (TB.st.healing === false), TB.st.healing === false);
+      log('tickHeal in VN stands up from sit: ' + (pressMeditateCalled || stoodUp), (pressMeditateCalled || stoodUp));
+
+      // Test vnInside standalone stand-up
+      TB.st.healing = true;
+      playerObj.state = 'sit';
+      stoodUp = false;
+      pressMeditateCalled = false;
+      TB.st.vn = { inside: true, doorFound: false };
+      TB.dev.eval('vnInside(game())');
+      log('vnInside stands up immediately: ' + (playerObj.state !== 'sit' && TB.st.healing === false), (playerObj.state !== 'sit' && TB.st.healing === false));
+
+      // ==========================================
+      // TEST 2: THÔNG BÁO TÌM ĐƯỢC CỬA QUA CHAT / READNEWS
+      // ==========================================
+      TB.st.vn = { inside: true, doorFound: false };
+      TB.dev.eval('readNews("Lối Mộc đã thông! Các vị đạo hữu mau vào!", {})');
+      log('readNews parses door announcement: doorFound is true: ' + (TB.st.vn.doorFound === true), TB.st.vn.doorFound === true);
+      log('readNews parses lane index correctly (Mộc = 1): ' + (TB.st.vn.doorLane === 1), TB.st.vn.doorLane === 1);
+
+      // ==========================================
+      // TEST 3: GÓI TIN MÁY CHỦ VETNUTUI.NHAN
+      // ==========================================
+      TB.dev.eval('tgHook(game().P)');
+
+      TB.st.vn = { inside: true, doorFound: false };
+      window.PNTT.VetNutUI.nhan({ act: 'lo', kq: 'thong', k: 2 });
+      log('VetNutUI.nhan act:lo thong triggers doorFound: ' + (TB.st.vn.doorFound === true), TB.st.vn.doorFound === true);
+      log('VetNutUI.nhan sets doorLane to 2: ' + (TB.st.vn.doorLane === 2), TB.st.vn.doorLane === 2);
+
+      TB.st.vn = { inside: true, doorFound: false };
+      window.PNTT.VetNutUI.nhan({ act: 'cua', an: [0, 0, 0, 1, 0] });
+      log('VetNutUI.nhan act:cua an[3]=1 triggers doorFound: ' + (TB.st.vn.doorFound === true), TB.st.vn.doorFound === true);
+      log('VetNutUI.nhan sets doorLane to 3: ' + (TB.st.vn.doorLane === 3), TB.st.vn.doorLane === 3);
+
+      // ==========================================
+      // TEST 4: KHI CHƯA TÌM ĐƯỢC CỬA -> ĐÁNH QUÁI ĐUỔI
+      // ==========================================
+      TB.st.vn = { inside: true, doorFound: false, doorFoundAt: 0, lane: 0 };
+      vnState.cua.lo = [0, 0, 0, 0, 0];
+      vnState.cua.an = [0, 0, 0, 0, 0];
+      playerObj.x = 1000; playerObj.y = 1000; // ngoài sảnh
+
+      var chasingMob = {
+        id: 'mob_chase',
+        type: 'yeu_thu',
+        x: 1010, y: 1010,
+        hp: 10000, hpMax: 10000,
+        state: 'chase',
+        def: { name: 'Quái Vết Nứt', contactDmg: 50, bodyRadius: 20 }
+      };
+      swMock.enemies = [chasingMob];
+
+      TB.dev.eval('vnInside(game())');
+      log('When door NOT found, engagedBy fights chasing mob: ' + (/đang đuổi mình/.test(TB.st.vn.step || '')), /đang đuổi mình/.test(TB.st.vn.step || ''));
+
+      // ==========================================
+      // TEST 5: KHI ĐÃ TÌM ĐƯỢC CỬA -> BỎ QUA TOÀN BỘ QUÁI TRÊN ĐƯỜNG
+      // ==========================================
+      TB.st.vn = { inside: true, doorFound: true, doorFoundAt: Date.now(), doorLane: 1, lane: 1 };
+      vnState.cua.lo = [0, 1, 0, 0, 0]; // Lối Mộc thông
+
+      // Chasing mob is still there
+      TB.st.vn.step = '';
+      TB.dev.eval('vnInside(game())');
+      log('When door IS found, chasing mob is IGNORED (step does NOT fight mob): ' + (!/đang đuổi mình/.test(TB.st.vn.step)), !/đang đuổi mình/.test(TB.st.vn.step));
+      log('Bot rushes to pillar with door message: ' + (/tìm được cửa/.test(TB.st.vn.step) || /trụ ấn/.test(TB.st.vn.step)), /tìm được cửa/.test(TB.st.vn.step) || /trụ ấn/.test(TB.st.vn.step));
+
+      // Test vnFight direct rejection
+      var fightResult = TB.dev.eval('vnFight(game(), st.vn, game().sw.enemies[0])');
+      log('vnFight rejects non-hom mob when doorFound is true: ' + (fightResult === false), fightResult === false);
+      log('vnFight clears target and st.farmTarget: ' + (TB.st.farmTarget === null), TB.st.farmTarget === null);
+
+      // Test vnFight ALLOWS vn_hom (Hòm Hư Không)
+      var homMob = {
+        id: 'hom_1',
+        type: 'vn_hom',
+        x: 1600, y: 1600,
+        hp: 100000, hpMax: 100000,
+        def: { name: 'Hòm Hư Không', contactDmg: 0, bodyRadius: 40 }
+      };
+      var fightHomResult = TB.dev.eval('vnFight(game(), st.vn, ' + JSON.stringify(homMob) + ')');
+      log('vnFight accepts vn_hom even when doorFound is true: ' + (fightHomResult === true), fightHomResult === true);
+      log('vnFight targets vn_hom: ' + (TB.st.farmTarget !== null), TB.st.farmTarget !== null);
+
+      // Summary
+      log('TOTAL: ' + window.testResults.passed + ' passed, ' + window.testResults.failed + ' failed.');
+    } catch (err) {
+      log('Exception: ' + (err && err.stack ? err.stack : err), false);
+    }
+  </script>
+</body>
+</html>
