@@ -199,56 +199,61 @@ namespace TuTienLauncher {
             }
         }
 
-        private string DownloadCode() {
-            // Tầng 1: WebClient với TLS 1.2
+        private bool DownloadModToFiles(string path1, string path2) {
+            string url = "https://raw.githubusercontent.com/HaTuanHuy/tutien2d-mod/main/tutien2d-helper.user.js";
+
+            // Tầng 1: WebClient tải mảng bytes nguyên bản UTF-8 (Không bao giờ bị lỗi font / mojibake)
             try {
                 EnableTls();
                 using (WebClient wc = new WebClient()) {
                     wc.Headers.Add("User-Agent", "TuTienLauncher");
-                    string s = wc.DownloadString("https://raw.githubusercontent.com/HaTuanHuy/tutien2d-mod/main/tutien2d-helper.user.js");
-                    if (!string.IsNullOrEmpty(s) && s.Length > 1000) return s;
+                    byte[] data = wc.DownloadData(url);
+                    if (data != null && data.Length > 1000) {
+                        File.WriteAllBytes(path1, data);
+                        if (!string.IsNullOrEmpty(path2)) File.WriteAllBytes(path2, data);
+                        return true;
+                    }
                 }
             } catch { }
 
-            // Tầng 2: Fallback bằng curl.exe có sẵn trên Windows 10 / 11
+            // Tầng 2: Fallback bằng curl.exe tải thẳng ra file (-o) giữ nguyên 100% byte gốc
             try {
-                ProcessStartInfo psi = new ProcessStartInfo("curl.exe", "-sL https://raw.githubusercontent.com/HaTuanHuy/tutien2d-mod/main/tutien2d-helper.user.js") {
-                    RedirectStandardOutput = true,
+                ProcessStartInfo psi = new ProcessStartInfo("curl.exe", string.Format("-sL \"{0}\" -o \"{1}\"", url, path1)) {
                     UseShellExecute = false,
                     CreateNoWindow = true
                 };
                 using (Process p = Process.Start(psi)) {
-                    string s = p.StandardOutput.ReadToEnd();
                     p.WaitForExit(10000);
-                    if (!string.IsNullOrEmpty(s) && s.Length > 1000) return s;
+                    if (File.Exists(path1) && new FileInfo(path1).Length > 1000) {
+                        if (!string.IsNullOrEmpty(path2)) File.Copy(path1, path2, true);
+                        return true;
+                    }
                 }
             } catch { }
 
-            // Tầng 3: Fallback bằng PowerShell Invoke-WebRequest
+            // Tầng 3: Fallback bằng PowerShell DownloadFile (ghi thẳng byte ra đĩa)
             try {
-                ProcessStartInfo psi = new ProcessStartInfo("powershell.exe", "-NoProfile -Command \"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/HaTuanHuy/tutien2d-mod/main/tutien2d-helper.user.js')\"") {
-                    RedirectStandardOutput = true,
+                string psCmd = string.Format("-NoProfile -Command \"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (New-Object Net.WebClient).DownloadFile('{0}', '{1}')\"", url, path1);
+                ProcessStartInfo psi = new ProcessStartInfo("powershell.exe", psCmd) {
                     UseShellExecute = false,
                     CreateNoWindow = true
                 };
                 using (Process p = Process.Start(psi)) {
-                    string s = p.StandardOutput.ReadToEnd();
                     p.WaitForExit(10000);
-                    if (!string.IsNullOrEmpty(s) && s.Length > 1000) return s;
+                    if (File.Exists(path1) && new FileInfo(path1).Length > 1000) {
+                        if (!string.IsNullOrEmpty(path2)) File.Copy(path1, path2, true);
+                        return true;
+                    }
                 }
             } catch { }
 
-            return null;
+            return false;
         }
 
         private void DownloadModSync() {
-            try {
-                string code = DownloadCode();
-                if (!string.IsNullOrEmpty(code)) {
-                    File.WriteAllText(Path.Combine(baseDir, "tutien2d-helper.user.js"), code);
-                    File.WriteAllText(Path.Combine(extDir, "tutien2d-helper.user.js"), code);
-                }
-            } catch { }
+            string sourceMod = Path.Combine(baseDir, "tutien2d-helper.user.js");
+            string destMod = Path.Combine(extDir, "tutien2d-helper.user.js");
+            DownloadModToFiles(sourceMod, destMod);
         }
 
         private void LaunchAcc(string accId) {
@@ -300,15 +305,14 @@ namespace TuTienLauncher {
             lblStatus.Text = "Đang tải bản Mod mới từ GitHub...";
             System.Threading.ThreadPool.QueueUserWorkItem(delegate {
                 try {
-                    string code = DownloadCode();
-                    if (!string.IsNullOrEmpty(code) && code.Length > 1000) {
-                        File.WriteAllText(Path.Combine(baseDir, "tutien2d-helper.user.js"), code);
-                        File.WriteAllText(Path.Combine(extDir, "tutien2d-helper.user.js"), code);
+                    string sourceMod = Path.Combine(baseDir, "tutien2d-helper.user.js");
+                    string destMod = Path.Combine(extDir, "tutien2d-helper.user.js");
+                    bool ok = DownloadModToFiles(sourceMod, destMod);
+                    if (ok) {
                         this.BeginInvoke((MethodInvoker)delegate {
                             lblStatus.Text = "Cập nhật Mod mới nhất thành công!";
                             MessageBox.Show("Đã cập nhật bản Mod mới nhất từ GitHub thành công!");
                         });
-                        return;
                     } else {
                         this.BeginInvoke((MethodInvoker)delegate {
                             lblStatus.Text = "Không thể tải Mod từ GitHub, vui lòng thử lại sau.";
