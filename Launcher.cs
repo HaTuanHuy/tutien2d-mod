@@ -155,16 +155,64 @@ namespace TuTienLauncher {
             } catch { }
         }
 
-        private void DownloadModSync() {
+        private static void EnableTls() {
             try {
-                ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072 | (SecurityProtocolType)12288 | SecurityProtocolType.Tls;
+                ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072; // TLS 1.2
+            } catch {
+                try {
+                    ServicePointManager.SecurityProtocol = (SecurityProtocolType)768 | SecurityProtocolType.Tls;
+                } catch { }
+            }
+        }
+
+        private string DownloadCode() {
+            // Tầng 1: WebClient với TLS 1.2
+            try {
+                EnableTls();
                 using (WebClient wc = new WebClient()) {
                     wc.Headers.Add("User-Agent", "TuTienLauncher");
-                    string code = wc.DownloadString("https://raw.githubusercontent.com/HaTuanHuy/tutien2d-mod/main/tutien2d-helper.user.js");
-                    if (!string.IsNullOrEmpty(code) && code.Length > 1000) {
-                        File.WriteAllText(Path.Combine(baseDir, "tutien2d-helper.user.js"), code);
-                        File.WriteAllText(Path.Combine(extDir, "tutien2d-helper.user.js"), code);
-                    }
+                    string s = wc.DownloadString("https://raw.githubusercontent.com/HaTuanHuy/tutien2d-mod/main/tutien2d-helper.user.js");
+                    if (!string.IsNullOrEmpty(s) && s.Length > 1000) return s;
+                }
+            } catch { }
+
+            // Tầng 2: Fallback bằng curl.exe có sẵn trên Windows 10 / 11
+            try {
+                ProcessStartInfo psi = new ProcessStartInfo("curl.exe", "-sL https://raw.githubusercontent.com/HaTuanHuy/tutien2d-mod/main/tutien2d-helper.user.js") {
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+                using (Process p = Process.Start(psi)) {
+                    string s = p.StandardOutput.ReadToEnd();
+                    p.WaitForExit(10000);
+                    if (!string.IsNullOrEmpty(s) && s.Length > 1000) return s;
+                }
+            } catch { }
+
+            // Tầng 3: Fallback bằng PowerShell Invoke-WebRequest
+            try {
+                ProcessStartInfo psi = new ProcessStartInfo("powershell.exe", "-NoProfile -Command \"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/HaTuanHuy/tutien2d-mod/main/tutien2d-helper.user.js')\"") {
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+                using (Process p = Process.Start(psi)) {
+                    string s = p.StandardOutput.ReadToEnd();
+                    p.WaitForExit(10000);
+                    if (!string.IsNullOrEmpty(s) && s.Length > 1000) return s;
+                }
+            } catch { }
+
+            return null;
+        }
+
+        private void DownloadModSync() {
+            try {
+                string code = DownloadCode();
+                if (!string.IsNullOrEmpty(code)) {
+                    File.WriteAllText(Path.Combine(baseDir, "tutien2d-helper.user.js"), code);
+                    File.WriteAllText(Path.Combine(extDir, "tutien2d-helper.user.js"), code);
                 }
             } catch { }
         }
@@ -218,19 +266,19 @@ namespace TuTienLauncher {
             lblStatus.Text = "Đang tải bản Mod mới từ GitHub...";
             System.Threading.ThreadPool.QueueUserWorkItem(delegate {
                 try {
-                    ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072 | (SecurityProtocolType)12288 | SecurityProtocolType.Tls;
-                    using (WebClient wc = new WebClient()) {
-                        wc.Headers.Add("User-Agent", "TuTienLauncher");
-                        string code = wc.DownloadString("https://raw.githubusercontent.com/HaTuanHuy/tutien2d-mod/main/tutien2d-helper.user.js");
-                        if (!string.IsNullOrEmpty(code) && code.Length > 1000) {
-                            File.WriteAllText(Path.Combine(baseDir, "tutien2d-helper.user.js"), code);
-                            File.WriteAllText(Path.Combine(extDir, "tutien2d-helper.user.js"), code);
-                            this.BeginInvoke((MethodInvoker)delegate {
-                                lblStatus.Text = "Cập nhật Mod mới nhất thành công!";
-                                MessageBox.Show("Đã cập nhật bản Mod mới nhất từ GitHub thành công!");
-                            });
-                            return;
-                        }
+                    string code = DownloadCode();
+                    if (!string.IsNullOrEmpty(code) && code.Length > 1000) {
+                        File.WriteAllText(Path.Combine(baseDir, "tutien2d-helper.user.js"), code);
+                        File.WriteAllText(Path.Combine(extDir, "tutien2d-helper.user.js"), code);
+                        this.BeginInvoke((MethodInvoker)delegate {
+                            lblStatus.Text = "Cập nhật Mod mới nhất thành công!";
+                            MessageBox.Show("Đã cập nhật bản Mod mới nhất từ GitHub thành công!");
+                        });
+                        return;
+                    } else {
+                        this.BeginInvoke((MethodInvoker)delegate {
+                            lblStatus.Text = "Không thể tải Mod từ GitHub, vui lòng thử lại sau.";
+                        });
                     }
                 } catch (Exception ex) {
                     this.BeginInvoke((MethodInvoker)delegate {
@@ -245,7 +293,7 @@ namespace TuTienLauncher {
         [STAThread]
         static void Main() {
             try {
-                ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072 | (SecurityProtocolType)12288 | SecurityProtocolType.Tls;
+                ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
             } catch { }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
