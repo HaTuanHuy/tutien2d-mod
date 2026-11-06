@@ -88,10 +88,10 @@ namespace TuTienLauncher {
         }
 
         private string FindBrowser() {
-            // 1. Dò tìm qua Registry của Windows
+            // 1. Dò tìm qua Registry của Windows (Ưu tiên Google Chrome hàng đầu, kế tiếp là Microsoft Edge)
             string[] regKeys = new string[] {
-                @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe",
-                @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe"
+                @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe",
+                @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe"
             };
             foreach (string rk in regKeys) {
                 try {
@@ -110,18 +110,18 @@ namespace TuTienLauncher {
                 } catch { }
             }
 
-            // 2. Dò tìm các đường dẫn cài đặt phổ biến của Edge, Chrome, Cốc Cốc, Brave
+            // 2. Dò tìm các đường dẫn cài đặt phổ biến (Ưu tiên Chrome -> Edge -> Cốc Cốc -> Brave)
             string localApp = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string progFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
             string progFilesX86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
 
             string[] candidates = new string[] {
-                Path.Combine(progFilesX86, @"Microsoft\Edge\Application\msedge.exe"),
-                Path.Combine(progFiles, @"Microsoft\Edge\Application\msedge.exe"),
-                Path.Combine(localApp, @"Microsoft\Edge\Application\msedge.exe"),
                 Path.Combine(progFiles, @"Google\Chrome\Application\chrome.exe"),
                 Path.Combine(progFilesX86, @"Google\Chrome\Application\chrome.exe"),
                 Path.Combine(localApp, @"Google\Chrome\Application\chrome.exe"),
+                Path.Combine(progFilesX86, @"Microsoft\Edge\Application\msedge.exe"),
+                Path.Combine(progFiles, @"Microsoft\Edge\Application\msedge.exe"),
+                Path.Combine(localApp, @"Microsoft\Edge\Application\msedge.exe"),
                 Path.Combine(localApp, @"CocCoc\Browser\Application\browser.exe"),
                 Path.Combine(progFiles, @"CocCoc\Browser\Application\browser.exe"),
                 Path.Combine(progFilesX86, @"CocCoc\Browser\Application\browser.exe"),
@@ -277,6 +277,7 @@ namespace TuTienLauncher {
                     "--app=\"https://tutien2d.com\" " +
                     "--user-data-dir=\"{0}\" " +
                     "--load-extension=\"{1}\" " +
+                    "--enable-extensions " +
                     "--no-first-run " +
                     "--no-default-browser-check " +
                     "--disable-background-networking " +

@@ -695,3 +695,23 @@ Qua rà soát chi tiết mã nguồn phân phối vật phẩm (`loot.ef0f82c625
 - Bổ sung file tiện ích `ChayGame.bat`:
   - Khởi chạy trực tiếp `javaw -jar TuTien2D.jar` không cần cài đặt phức tạp.
   - Vượt qua rào cản cảnh báo của Windows 11 Smart App Control và Antivirus mà không bị chặn.
+
+---
+
+## 25. NÂNG CẤP ƯU TIÊN GOOGLE CHROME VÀ BỔ SUNG CỜ --enable-extensions CHO MOD
+
+### 25.1. Bối Cảnh & Nhu Cầu
+- Trước đây `TuTien2D.exe` và `TuTien2D.jar` ưu tiên quét Microsoft Edge đầu tiên, dẫn đến việc trên các máy Windows có cả Chrome và Edge thì phần mềm luôn tự động bật Edge.
+- Người dùng có nhu cầu chơi qua Google Chrome để tận dụng sự ổn định, quen thuộc và các tiện ích tài khoản Google.
+
+### 25.2. Các Cải Tiến Đã Triển Khai
+1. **Đảo Thứ Tự Ưu Tiên Trình Duyệt (`FindBrowser`)**:
+   - Vị trí số 1: **Google Chrome** (`chrome.exe`) thông qua Registry (`App Paths\chrome.exe`) và 3 đường dẫn chuẩn (Program Files, Program Files x86, LocalAppData).
+   - Vị trí số 2: **Microsoft Edge** (`msedge.exe`).
+   - Vị trí số 3: **Cốc Cốc** (`browser.exe`).
+   - Vị trí số 4: **Brave** (`brave.exe`).
+2. **Bổ Sung Cờ `--enable-extensions`**:
+   - Bổ sung `--enable-extensions` vào danh sách tham số khởi chạy Chromium ở chế độ `--app`. Đảm bảo Chrome luôn nạp extension mod ngoại tuyến (`launcher_extension/`) mà không bị cơ chế chặn của app mode làm ẩn trợ thủ.
+3. **Đồng Bộ Hoá Cả Hai Nền Tảng**:
+   - Biên dịch và cập nhật `TuTien2D.exe` (C# WinForms 64-bit).
+   - Biên dịch và cập nhật `TuTien2D.jar` (Java Swing bytecode 1.8).
