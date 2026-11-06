@@ -1,44 +1,44 @@
 @echo off
-setlocal
 set "BASE=%~dp0"
 title Tu Tien 2D - Da Tai Khoan
-chcp 65001 >nul
 cls
 echo =======================================================
 echo          TU TIEN 2D ONLINE - DA TAI KHOAN
 echo =======================================================
-echo  [1] Vào Game - TÀI KHOẢN 1 (Chính)
-echo  [2] Vào Game - TÀI KHOẢN 2 (Phụ)
-echo  [3] Vào Game - TÀI KHOẢN 3
-echo  [4] Mở Bảng điều khiển Giao diện (Dark Mode GUI)
-echo  [5] Cập nhật Mod mới nhất từ GitHub
+echo  [1] Vao Game - TAI KHOAN 1 (Chinh)
+echo  [2] Vao Game - TAI KHOAN 2 (Phu)
+echo  [3] Vao Game - TAI KHOAN 3
+echo  [4] Cap nhat Mod moi nhat tu GitHub
+echo  [5] Tao phim tat ra man hinh Desktop
 echo =======================================================
-set /p choice="Nhập số tài khoản muốn mở (1, 2, 3) [Mặc định 1]: "
+set /p choice="Nhap lua chon (1-5, mac dinh 1): "
 
 if "%choice%"=="" set choice=1
 if "%choice%"=="1" (
-    call "%BASE%Choi_Acc1.bat"
+    start "" "%BASE%Choi_Acc1.bat"
     exit
 )
 if "%choice%"=="2" (
-    call "%BASE%Choi_Acc2.bat"
+    start "" "%BASE%Choi_Acc2.bat"
     exit
 )
 if "%choice%"=="3" (
-    call "%BASE%Choi_Acc3.bat"
+    start "" "%BASE%Choi_Acc3.bat"
     exit
 )
 if "%choice%"=="4" (
-    start "" powershell -ExecutionPolicy Bypass -WindowStyle Hidden -File "%BASE%Launcher.ps1"
+    echo Dang tai ban Mod moi nhat tu GitHub...
+    curl.exe -sL "https://raw.githubusercontent.com/HaTuanHuy/tutien2d-mod/main/tutien2d-helper.user.js" -o "%BASE%tutien2d-helper.user.js"
+    copy /y "%BASE%tutien2d-helper.user.js" "%BASE%launcher_extension\tutien2d-helper.user.js" >nul
+    echo Da cap nhat thanh cong!
+    pause
     exit
 )
 if "%choice%"=="5" (
-    echo Đang kiểm tra cập nhật từ GitHub...
-    curl.exe -sL "https://raw.githubusercontent.com/HaTuanHuy/tutien2d-mod/main/tutien2d-helper.user.js" -o "%BASE%tutien2d-helper.user.js"
-    echo Đã cập nhật bản Mod mới nhất thành công!
+    call "%BASE%Tao_Phim_Tat_Desktop.bat"
     pause
     exit
 )
 
-call "%BASE%Choi_Acc1.bat"
+start "" "%BASE%Choi_Acc1.bat"
 exit
