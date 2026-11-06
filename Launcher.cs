@@ -196,14 +196,19 @@ namespace TuTienLauncher {
                     "--disable-component-update " +
                     "--disable-domain-reliability " +
                     "--disable-sync " +
+                    "--disable-renderer-backgrounding " +
+                    "--disable-backgrounding-occluded-windows " +
+                    "--enable-low-end-device-mode " +
                     "--enable-gpu-rasterization " +
                     "--ignore-gpu-blocklist " +
+                    "--autoplay-policy=no-user-gesture-required " +
                     "--window-size=1280,760",
                     profile, extDir
                 );
 
                 Process.Start(new ProcessStartInfo(browserPath, args) { UseShellExecute = false });
-                lblStatus.Text = "Đã mở " + accId.ToUpper() + " thành công!";
+                string bName = Path.GetFileNameWithoutExtension(browserPath);
+                lblStatus.Text = string.Format("Đã mở {0} thành công qua {1}!", accId.ToUpper(), bName);
             } catch (Exception ex) {
                 MessageBox.Show("Lỗi mở game: " + ex.Message);
             }
