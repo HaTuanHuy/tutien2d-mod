@@ -675,3 +675,23 @@ Qua rà soát chi tiết mã nguồn phân phối vật phẩm (`loot.ef0f82c625
 
 
 
+
+---
+
+## 24. GIẢI THÍCH KIẾN TRÚC: MICROEMULATOR / ANGELCHIP VÀ GAME WEB TU TIÊN 2D
+
+### 24.1. Bản Chất Kỹ Thuật: MicroEmulator / AngelChip vs Web HTML5
+1. **MicroEmulator / AngelChip**:
+   - Là bộ giả lập máy điện thoại di động bàn phím Nokia cổ (hệ máy J2ME CLDC-1.1 / MIDP-2.0).
+   - Được thiết kế cho các game Java di động truyền thống (Ninja School, Ngọc Rồng, Avatar). Toàn bộ game vẽ qua canvas J2ME và socket TCP thô.
+   - Không có nhân trình duyệt web (Chromium/WebKit), không hỗ trợ HTML5/Canvas/WebGL, không có động cơ V8 JavaScript, không hỗ trợ WebSocket mã hoá SSL (WSS).
+2. **Tu Tiên 2D Online (`tutien2d.com`)**:
+   - Là Web Game HTML5 hiện đại chạy trên nền tảng Chromium (Edge/Chrome/Cốc Cốc).
+   - Bản mod `tutien2d-helper.user.js` là Userscript can thiệp DOM & WebSocket.
+   - Khi thả file JAR vào AngelChip sẽ nhận lỗi `Unable to find MANIFEST in MIDlet jar` do AngelChip tìm kiếm cấu trúc MIDlet của Nokia.
+
+### 24.2. Giải Pháp Hỗ Trợ Người Dùng
+- File `TuTien2D.jar` là **Java SE Desktop Launcher** (ứng dụng máy tính độc lập).
+- Bổ sung file tiện ích `ChayGame.bat`:
+  - Khởi chạy trực tiếp `javaw -jar TuTien2D.jar` không cần cài đặt phức tạp.
+  - Vượt qua rào cản cảnh báo của Windows 11 Smart App Control và Antivirus mà không bị chặn.
